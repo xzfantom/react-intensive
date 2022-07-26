@@ -1,0 +1,13 @@
+.FormInput {
+  padding-top: 10px;
+}
+
+.FormInput label {
+  display: block;
+  text-align: left;
+}
+
+.FormInput input{
+  width: 100%;
+  background-color: #DCD6F7;
+}

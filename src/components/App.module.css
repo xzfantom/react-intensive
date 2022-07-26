@@ -1,0 +1,24 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #A6B1E1;
+  color: #73AB84;
+}
+
+.App {
+  text-align: center;
+}
+
+.AppHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 29px;
+  color: #3D5A80;
+}

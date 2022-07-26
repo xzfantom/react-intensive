@@ -1,1 +1,3 @@
-# react-intensive
+# Andersen JS Intensive
+
+## React Homework 1

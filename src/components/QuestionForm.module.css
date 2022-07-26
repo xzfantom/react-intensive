@@ -1,0 +1,15 @@
+.QuestionForm {
+  width: 500px;
+  margin: 0 auto;
+  padding: 0 10px 10px 10px;
+  background-color: #3D5A80;
+}
+
+.buttons {
+  margin-top: 10px;
+}
+
+.buttons input{
+  background-color: #DCD6F7;
+  width: 50%;
+}

@@ -1,0 +1,13 @@
+.FormTextarea {
+  padding-top: 10px;
+}
+
+.FormTextarea label {
+  display: block;
+  text-align: left;
+}
+
+.FormTextarea textarea{
+  width: 100%;
+  background-color: #DCD6F7;
+}
