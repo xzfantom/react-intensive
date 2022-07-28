@@ -1,10 +1,12 @@
 import React from "react";
+import s from "./CustomInput.module.css";
 
-const Input = (props) => {
+const CustomInput = (props) => {
   const { value, placeholder, onChange, name, type } = props;
   return (
     <div>
       <input
+        className={s.input}
         type={type}
         value={value}
         placeholder={placeholder}
@@ -14,5 +16,4 @@ const Input = (props) => {
     </div>
   );
 };
-git
-export default Input;
+export default CustomInput;
