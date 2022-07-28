@@ -23,11 +23,13 @@
 
 .buttons {
   margin-top: 10px;
+  
 }
 
-.buttons input{
+.buttons button{
   background-color: #DCD6F7;
   width: 50%;
+  height: 30px;
 }
 
 .AppHeader {

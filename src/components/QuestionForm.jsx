@@ -56,7 +56,6 @@ class QuestionForm extends React.Component {
 
   handleSubmit() {
     const copyState = { ...this.state };
-    console.log(copyState);
     let hasErrors = false;
     for (const [key, value] of Object.entries(copyState)) {
       copyState[key] = value.trim();
@@ -190,8 +189,8 @@ class QuestionForm extends React.Component {
           <FormTextarea id='lastproject' name='Описание последнего проекта' value={this.state.lastproject} onChange={this.handleInput} />
           <ErrorMessage error={this.state.lastprojectError} />
           <div className={style.buttons}>
-            <input type="button" name="cancel" value="Отмена" onClick={this.handleReset} />
-            <input type="button" name="save" value="Сохранить" onClick={this.handleSubmit} />
+            <button type="button" name="cancel" onClick={this.handleReset}>Отмена</button>
+            <button type="button" name="save" onClick={this.handleSubmit}>Сохранить</button>
           </div>
         </form>
       </div>
