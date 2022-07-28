@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/andersen/static/css/main.55eba00c.css",
-    "main.js": "/andersen/static/js/main.3ba0bf91.js",
-    "index.html": "/andersen/index.html",
-    "main.55eba00c.css.map": "/andersen/static/css/main.55eba00c.css.map",
-    "main.3ba0bf91.js.map": "/andersen/static/js/main.3ba0bf91.js.map"
+    "main.css": "/react-intensive/static/css/main.55eba00c.css",
+    "main.js": "/react-intensive/static/js/main.3ba0bf91.js",
+    "index.html": "/react-intensive/index.html",
+    "main.55eba00c.css.map": "/react-intensive/static/css/main.55eba00c.css.map",
+    "main.3ba0bf91.js.map": "/react-intensive/static/js/main.3ba0bf91.js.map"
   },
   "entrypoints": [
     "static/css/main.55eba00c.css",
