@@ -1,0 +1,22 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.main>label::first-letter {
+  text-transform: uppercase;
+}
+
+.main > input {
+  padding: 5px;
+}
+
+
+.main > span {
+  color: red;
+  font-weight: bold;
+  font-size: 10px;
+}
+
