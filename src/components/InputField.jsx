@@ -10,7 +10,6 @@ class InputField extends Component {
     return (
       <div>
         <label>{this.props.field}</label>
-        <br />
         <input
           className="common"
           value={value}

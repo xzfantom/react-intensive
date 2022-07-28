@@ -20,29 +20,12 @@ class App extends Component {
     };
   }
 
-  onChangeName = (name) => {
-    this.setState({ name });
-  };
-  onChangeSurname = (surname) => {
-    this.setState({ surname });
-  };
-  onChangeDateOfBirth = (dateOfBirth) => {
-    this.setState({ dateOfBirth });
-  };
-  onChangePhone = (phone) => {
-    this.setState({ phone });
-  };
-  onChangePage = (page) => {
-    this.setState({ page });
-  };
-  onChangeAboutMe = (aboutMe) => {
-    this.setState({ aboutMe });
-  };
-  onChangeTechStack = (techStack) => {
-    this.setState({ techStack });
-  };
-  onChangeLastProject = (lastProject) => {
-    this.setState({ lastProject });
+  genHandler = (fieldName) => {
+    return (field, errorField) => {
+      let state = {};
+      state[fieldName] = field;
+      this.setState(state);
+    };
   };
 
   mySubmit = (event) => {
@@ -54,57 +37,49 @@ class App extends Component {
     console.log(result);
   };
   render() {
-    const name = this.state.name;
-    const surname = this.state.surname;
-    const dateOfBirth = this.state.dateOfBirth;
-    const phone = this.state.phone;
-    const page = this.state.page;
-    const aboutMe = this.state.aboutMe;
-    const techStack = this.state.techStack;
-    const lastProject = this.state.lastProject;
     return (
       <form onSubmit={this.mySubmit}>
         <FormHeader />
         <div>
           <InputField
-            value={name}
+            value={this.state.name}
             field="Имя"
-            onChangeValue={this.onChangeName}
+            onChangeValue={this.genHandler('name')}
           />
           <InputField
-            value={surname}
+            value={this.state.surname}
             field="Фамилия"
-            onChangeValue={this.onChangeSurname}
+            onChangeValue={this.genHandler('surname')}
           />
           <InputField
-            value={dateOfBirth}
+            value={this.state.dateOfBirth}
             field="Дата рождения"
-            onChangeValue={this.onChangeDateOfBirth}
+            onChangeValue={this.genHandler('dateOfBirth')}
           />
           <InputField
-            value={phone}
+            value={this.state.phone}
             field="Телефон"
-            onChangeValue={this.onChangePhone}
+            onChangeValue={this.genHandler('phone')}
           />
           <InputField
-            value={page}
+            value={this.state.page}
             field="Сайт"
-            onChangeValue={this.onChangePage}
+            onChangeValue={this.genHandler('page')}
           />
           <TextAreaField
-            value={aboutMe}
+            value={this.state.aboutMe}
             field="О себе"
-            onChangeValue={this.onChangeAboutMe}
+            onChangeValue={this.genHandler('aboutMe')}
           />
           <TextAreaField
-            value={techStack}
+            value={this.state.techStack}
             field="Стек технологий"
-            onChangeValue={this.onChangeTechStack}
+            onChangeValue={this.genHandler('techStack')}
           />
           <TextAreaField
-            value={lastProject}
+            value={this.state.lastProject}
             field="Описание последнего проекта"
-            onChangeValue={this.onChangeLastProject}
+            onChangeValue={this.genHandler('lastProject')}
           />
         </div>
         <Button type="submit" value="Сохранить" />

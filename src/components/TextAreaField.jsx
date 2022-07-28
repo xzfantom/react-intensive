@@ -8,10 +8,7 @@ class TextAreaField extends Component {
     const value = this.props.value;
     return (
       <div>
-        <label>
-          {this.props.field}
-          <br />
-        </label>
+        <label>{this.props.field}</label>
         <textarea
           className="common"
           value={value}
