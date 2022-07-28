@@ -1,0 +1,14 @@
+.btnWrap{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    width: 83%;
+}
+.tamplate{
+    margin: 0 auto;
+    width: 60%;
+    border: 2px solid var(--color-green);
+    padding: 20px 20px ;
+    margin-bottom: 30px;
+    word-wrap: break-word
+}
