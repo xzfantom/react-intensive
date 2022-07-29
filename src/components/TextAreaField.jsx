@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../cssModules/textAreaField.module.css';
 
 class TextAreaField extends Component {
   onChange = (event) => {

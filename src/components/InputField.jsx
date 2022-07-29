@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../cssModules/inputField.module.css';
 
 class InputField extends Component {
   onChange = (event) => {
@@ -11,7 +12,6 @@ class InputField extends Component {
       <div>
         <label>{this.props.field}</label>
         <input
-          className="common"
           value={value}
           placeholder={this.props.field}
           onChange={this.onChange}

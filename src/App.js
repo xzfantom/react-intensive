@@ -3,7 +3,7 @@ import Button from './components/Button';
 import FormHeader from './components/FormHeader';
 import InputField from './components/InputField';
 import TextAreaField from './components/TextAreaField';
-import './App.css';
+import './cssModules/app.module.css';
 
 class App extends Component {
   constructor(props) {
@@ -30,10 +30,7 @@ class App extends Component {
 
   mySubmit = (event) => {
     event.preventDefault();
-    let result = {};
-    for (let i = 0; i < Object.entries(this.state).length; i++) {
-      result[Object.keys(this.state)[i]] = Object.values(this.state)[i];
-    }
+    let result = { ...this.state };
     console.log(result);
   };
   render() {
