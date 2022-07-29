@@ -8,8 +8,8 @@ class FormTextarea extends React.Component {
   }
 
   render() {
-    const count = this.props.value.length;
-    let message = count > 600 ? 'Превышен лимит символов в поле' : `Осталось ${count}/600 символов`;
+    const count = 600 - this.props.value.length;
+    let message = count < 0 ? 'Превышен лимит символов в поле' : `Осталось ${count}/600 символов`;
     return (
       <>
         <label htmlFor={this.props.id}>{this.props.name}</label>
