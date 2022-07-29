@@ -1,0 +1,132 @@
+body {
+   background-color:rgb(162, 241, 215);
+}
+
+.formWrapper {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formQuestionnaire {
+    background-color: rgba(255, 255, 255, 0.657);
+    border: 1px solid rgb(47, 44, 44);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px black;
+    padding: 20px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.areaInput {
+    width: 100%;
+    margin: 10px 0 0 0;
+    padding: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+.customInput {
+    size: 20px;
+    margin: 10px 0px 0px 0px;
+    border-radius: 5px;
+    height: 30px;
+    padding: 0 5px;
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.labelWrapper {
+    justify-content: center;
+    align-items: center;
+    display: inline;
+    margin-bottom: 10px;
+}
+
+.bottomLabel {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputLabel {
+    width: 100%;
+    display: inline-block;
+}
+
+.btnWrapper {
+    display: inline; 
+    margin: 0 auto;
+}
+
+.capacityTextarea {
+    font-size: 12px;
+}
+
+.limTextarea {
+    font-size: 12px;
+    color: red;
+}
+
+.inputError {
+    color: red;
+}
+
+.btnSave {
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(47, 147, 47);
+    margin: 10px 20px 0px 10px;
+    font-size: 15px;
+    height: 30px;
+}
+
+.btnSave:hover {
+    background-color: rgb(136, 218, 136);
+    color: black;
+}
+
+.btnCancel {
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    background-color: rgba(216, 218, 216, 0.71);
+    margin: 10px 10px 0px 10px;
+    font-size: 15px;
+    height: 30px;
+
+}.btnCancel:hover {
+    background-color: rgba(216, 218, 216, 0.13);
+    color: black;
+}
+
+.formFinally {
+    background-color: white;
+    border: 3px solid black;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin-bottom: 50px;
+    padding: 50px;
+}
+
+.formFinally > span, .formFinally >  div {
+    font-size: 20px;
+    margin-bottom: 5px;
+    width: 100%;
+    word-break: break-all;
+}
+
+.formFinallyLabel {
+    font-size: 20px;
+    font-weight: bold;
+}
