@@ -39,7 +39,8 @@ class Form extends Component {
   };
 
   onBlur = (e) => {
-    this.setState({ [e.target.name]: e.target.value.trim() });
+    const { name, value } = e.target;
+    this.setState({ [name]: value.trim() });
   };
 
   resetForm = () => {

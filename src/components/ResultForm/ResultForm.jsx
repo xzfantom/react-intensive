@@ -2,10 +2,6 @@ import { Component } from "react";
 import "./ResultForm.css";
 
 class ResultForm extends Component {
-  componentDidMount() {
-    window.scrollTo(0, 0);
-  }
-
   render() {
     const {
       firstName,
