@@ -2,8 +2,8 @@ import React from 'react';
 import style from './FormTextArea.module.css';
 
 export default function FormTextArea(props) {
-  const count = props.value.length;
-  const message = count > 600 ? 'Превышен лимит символов в поле' : `Осталось ${count}/600 символов`;
+  const count = 600 - props.value.length;
+  const message = count < 0 ? 'Превышен лимит символов в поле' : `Осталось ${count}/600 символов`;
 
   const handleChanges = (e) => {
     props.onChange(props.id, e);

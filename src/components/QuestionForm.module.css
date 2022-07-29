@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 0 10px 10px 10px;
   background-color: #3D5A80;
+  border-radius: 10px;
 }
 
 .QuestionForm label {
@@ -14,11 +15,13 @@
 .QuestionForm input{
   width: 100%;
   background-color: #DCD6F7;
+  border-radius: 5px;
 }
 
 .QuestionForm textarea{
   width: 100%;
   background-color: #DCD6F7;
+  border-radius: 5px;
 }
 
 .buttons {
@@ -30,6 +33,7 @@
   background-color: #DCD6F7;
   width: 50%;
   height: 30px;
+  border-radius: 5px;
 }
 
 .AppHeader {

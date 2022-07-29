@@ -11,6 +11,9 @@ export default function QuestionResult(props) {
     technologystack,
     lastproject } = props.data;
 
+  const dateBirthday = new Date(birthday);
+  const formattedBirthday = dateBirthday.toLocaleDateString('ru-RU');
+
   return (
     <div>
       <header className={style.AppHeader}>
@@ -20,27 +23,27 @@ export default function QuestionResult(props) {
         <table>
           <tbody>
             <tr>
-              <td>Дата рождения:</td>
-              <td>{birthday}</td>
+              <td>Дата рождения</td>
+              <td>{formattedBirthday}</td>
             </tr>
             <tr>
-              <td>Телефон:</td>
+              <td>Телефон</td>
               <td>{phone}</td>
             </tr>
             <tr>
-              <td>Сайт:</td>
+              <td>Сайт</td>
               <td>{website}</td>
             </tr>
             <tr>
-              <td>О себе:</td>
+              <td>О себе</td>
               <td>{about}</td>
             </tr>
             <tr>
-              <td>Стек технологий:</td>
+              <td>Стек технологий</td>
               <td>{technologystack}</td>
             </tr>
             <tr>
-              <td>Описание последнего проекта: </td>
+              <td>Описание последнего проекта</td>
               <td>{lastproject}</td>
             </tr>
           </tbody>

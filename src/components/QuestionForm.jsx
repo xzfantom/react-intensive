@@ -97,14 +97,14 @@ export default function QuestionForm(props) {
     for (const [key, value] of Object.entries(copyState)) {
       copyState[key] = value.trim();
     }
-    const hasErrors = checkName(copyState, 'name')
-      || checkName(copyState, 'secondname')
-      || checkEmpty(copyState, 'birthday')
-      || checkPhone(copyState, 'phone')
-      || checkSite(copyState, 'website')
-      || checkText(copyState, 'about')
-      || checkText(copyState, 'technologystack')
-      || checkText(copyState, 'lastproject');
+    let hasErrors = checkName(copyState, 'name');
+    hasErrors = checkName(copyState, 'secondname') || hasErrors;
+    hasErrors = checkEmpty(copyState, 'birthday') || hasErrors;
+    hasErrors = checkPhone(copyState, 'phone') || hasErrors;
+    hasErrors = checkSite(copyState, 'website') || hasErrors;
+    hasErrors = checkText(copyState, 'about') || hasErrors;
+    hasErrors = checkText(copyState, 'technologystack') || hasErrors;
+    hasErrors = checkText(copyState, 'lastproject') || hasErrors;;
     if (hasErrors) {
       setState(copyState);
     } else {

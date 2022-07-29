@@ -10,15 +10,22 @@
 .wrapper {
   width: 500px;
   margin: 0 auto;
-  padding: 0 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
   background-color: #3D5A80;
+  border-radius: 10px;
 }
 
 .wrapper td {
-  padding-top: 10px;
+  padding: 10px 5px;
   word-break: break-word;
+  width: 350px;
+}
+
+.wrapper tr {
+  background-color: #1c2a3b;
 }
 
 .wrapper tr :first-child {
   width: 150px;
+  text-align: right;
 }
