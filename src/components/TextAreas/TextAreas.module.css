@@ -1,0 +1,12 @@
+.form__text-areas {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.form__text-areas textarea {
+  font-size: 1.6rem;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
