@@ -1,0 +1,24 @@
+.AppHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 29px;
+  color: #3D5A80;
+}
+
+.wrapper {
+  width: 500px;
+  margin: 0 auto;
+  padding: 0 10px 10px 10px;
+  background-color: #3D5A80;
+}
+
+.wrapper td {
+  padding-top: 10px;
+  word-break: break-word;
+}
+
+.wrapper tr :first-child {
+  width: 150px;
+}

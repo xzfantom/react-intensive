@@ -1,3 +1,3 @@
 # Andersen JS Intensive
 
-## React Homework 2
+## React Homework 3
