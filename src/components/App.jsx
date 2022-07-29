@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import QuestionForm from './QuestionForm';
 import QuestionResult from './QuestionResult';
 
-const emptyState = () => ({
+const emptyState = {
   name: '',
   secondname: '',
   birthday: '',
@@ -12,10 +12,10 @@ const emptyState = () => ({
   technologystack: '',
   lastproject: '',
   submitted: false,
-});
+};
 
 export default function App() {
-  const [state, setState] = useState(emptyState());
+  const [state, setState] = useState({ ...emptyState });
 
   const { submitted, ...data } = state;
 
