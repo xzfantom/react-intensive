@@ -1,0 +1,10 @@
+button {
+  border-radius: 5px;
+  border-color: rgb(180, 140, 140);
+  border-width: 3px;
+  border-style: solid;
+  margin: 5px;
+  background-color: rgb(255, 255, 245);
+  height: 50px;
+  width: 100px;
+}
