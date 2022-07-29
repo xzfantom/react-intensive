@@ -1,4 +1,5 @@
 import { Component } from "react";
+import FormError from "../FormError/FormError";
 
 class Inputs extends Component {
   render() {
@@ -10,14 +11,16 @@ class Inputs extends Component {
             <input
               type="text"
               name="firstName"
-              maxLength="50"
-              minLength="2"
               value={this.props.textValue.firstName}
               onChange={this.props.onInputChange}
+              onBlur={this.props.onBlur}
               placeholder="John"
-              required
             />
           </label>
+          <FormError
+            inputErrors={this.props.textValue}
+            nameOfInput="firstName"
+          />
         </div>
 
         <div className="input-field">
@@ -26,14 +29,16 @@ class Inputs extends Component {
             <input
               type="text"
               name="lastName"
-              maxLength="50"
-              minLength="2"
               value={this.props.textValue.lastName}
               onChange={this.props.onInputChange}
               placeholder="Johnson"
-              required
+              onBlur={this.props.onBlur}
             />
           </label>
+          <FormError
+            inputErrors={this.props.textValue}
+            nameOfInput="lastName"
+          />
         </div>
 
         <div className="input-field">
@@ -41,7 +46,7 @@ class Inputs extends Component {
             Birth Date
             <input
               type="date"
-              min="1950-01-01"
+              min="1900-01-01"
               max="2022-12-31"
               name="birthDate"
               value={this.props.textValue.birthDate}
@@ -49,6 +54,10 @@ class Inputs extends Component {
               //required
             />
           </label>
+          <FormError
+            inputErrors={this.props.textValue}
+            nameOfInput="birthDate"
+          />
         </div>
 
         <div className="input-field">
@@ -59,11 +68,10 @@ class Inputs extends Component {
               name="phone"
               value={this.props.textValue.phone}
               onChange={this.props.onInputChange}
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-              //required
-              placeholder="123-123-1234"
+              placeholder="7-7777-77-77"
             />
           </label>
+          <FormError inputErrors={this.props.textValue} nameOfInput="phone" />
         </div>
 
         <div className="input-field">
@@ -76,8 +84,10 @@ class Inputs extends Component {
               value={this.props.textValue.site}
               onChange={this.props.onInputChange}
               placeholder="https://developer.mozilla.org/"
+              onBlur={this.props.onBlur}
             />
           </label>
+          <FormError inputErrors={this.props.textValue} nameOfInput="site" />
         </div>
       </div>
     );

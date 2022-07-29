@@ -1,5 +1,7 @@
 import { Component } from "react";
 import "./TextAreas.css";
+import FormError from "../FormError/FormError";
+import SymbolsCounter from "./SymbolsCounter";
 
 class TextAreas extends Component {
   render() {
@@ -16,9 +18,13 @@ class TextAreas extends Component {
               value={this.props.textValue.about}
               onChange={this.props.onTextAreaChange}
               placeholder="Few words about yourself..."
+              onBlur={this.props.onBlur}
             />
           </label>
+          <SymbolsCounter fieldLength={this.props.textValue.about.length} />
+          <FormError inputErrors={this.props.textValue} nameOfInput="about" />
         </div>
+
         <div className="input-field">
           <label>
             Technologies Stack
@@ -30,8 +36,16 @@ class TextAreas extends Component {
               value={this.props.textValue.technologies}
               onChange={this.props.onTextAreaChange}
               placeholder="HTML5, CSS3, JavaScript..."
+              onBlur={this.props.onBlur}
             />
           </label>
+          <SymbolsCounter
+            fieldLength={this.props.textValue.technologies.length}
+          />
+          <FormError
+            inputErrors={this.props.textValue}
+            nameOfInput="technologies"
+          />
         </div>
 
         <div className="input-field">
@@ -45,8 +59,11 @@ class TextAreas extends Component {
               value={this.props.textValue.project}
               onChange={this.props.onTextAreaChange}
               placeholder="Describe your last project please"
+              onBlur={this.props.onBlur}
             />
           </label>
+          <SymbolsCounter fieldLength={this.props.textValue.project.length} />
+          <FormError inputErrors={this.props.textValue} nameOfInput="project" />
         </div>
       </div>
     );
