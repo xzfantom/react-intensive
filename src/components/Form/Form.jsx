@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "./Form.css";
+import styles from "./Form.module.css";
 
 import Buttons from "../Buttons/Buttons";
 import TextAreas from "../TextAreas/TextAreas";
@@ -50,7 +50,7 @@ class Form extends Component {
   render() {
     return (
       <form
-        className="form"
+        className={styles.form}
         onSubmit={this.handleSubmit}
         onReset={this.resetForm}
       >
