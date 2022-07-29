@@ -1,20 +1,20 @@
 import { Component } from "react";
 
-import "./Buttons.css";
+import styles from "./Buttons.module.css";
 
 class Buttons extends Component {
   render() {
     return (
-      <div className="input__buttons-group">
+      <div className={styles["input__buttons-group"]}>
         <button
-          className="btn btn-outline"
+          className={`${styles.btn} ${styles["btn-outline"]}`}
           type="reset"
           onClick={() => window.scrollTo(0, 0)}
         >
           Reset the form!
         </button>
         <button
-          className="btn btn-full"
+          className={`${styles.btn} ${styles["btn-full"]}`}
           type="submit"
           onClick={() => window.scrollTo(0, 0)}
         >

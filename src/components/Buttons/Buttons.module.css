@@ -32,7 +32,6 @@
 .btn-outline:hover,
 .btn-outline:focus {
   background-color: #9c36b5;
-
   color: #f8f0fc;
 }
 
@@ -40,4 +39,11 @@
 .btn-full:focus {
   background-color: #f8f0fc;
   color: #9c36b5;
+}
+
+@media (max-width: 48rem) {
+  .input__buttons-group {
+    flex-direction: column;
+    gap: 2rem;
+  }
 }

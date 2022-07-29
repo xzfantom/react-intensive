@@ -1,4 +1,5 @@
 import { Component } from "react";
+import styles from "./FormError.module.css";
 
 class FormError extends Component {
   render() {
@@ -9,7 +10,7 @@ class FormError extends Component {
         {Object.keys(errors).map((errorItem) => {
           if (errorItem.includes(this.props.nameOfInput)) {
             return (
-              <p key={Math.random()} className="form__error">
+              <p key={Math.random()} className={styles.form__error}>
                 {errors[errorItem]}
               </p>
             );

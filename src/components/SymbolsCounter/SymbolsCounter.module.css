@@ -1,0 +1,9 @@
+.form__info-counter {
+  font-size: 1.4rem;
+  color: #398225;
+  line-height: 2;
+}
+
+.exceed {
+  color: #e03131;
+}

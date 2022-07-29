@@ -1,13 +1,14 @@
 import { Component } from "react";
-import "./TextAreas.css";
+import styles from "./TextAreas.module.css";
+import formStyles from "../Form/Form.module.css";
 import FormError from "../FormError/FormError";
-import SymbolsCounter from "./SymbolsCounter";
+import SymbolsCounter from "../SymbolsCounter/SymbolsCounter";
 
 class TextAreas extends Component {
   render() {
     return (
-      <div className="form__text-areas">
-        <div className="input-field">
+      <div className={styles["form__text-areas"]}>
+        <div className={formStyles["input-field"]}>
           <label>
             About Yourself
             <textarea
@@ -25,7 +26,7 @@ class TextAreas extends Component {
           <FormError inputErrors={this.props.textValue} nameOfInput="about" />
         </div>
 
-        <div className="input-field">
+        <div className={formStyles["input-field"]}>
           <label>
             Technologies Stack
             <textarea
@@ -48,7 +49,7 @@ class TextAreas extends Component {
           />
         </div>
 
-        <div className="input-field">
+        <div className={formStyles["input-field"]}>
           <label>
             Last Project Description
             <textarea

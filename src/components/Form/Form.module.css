@@ -27,25 +27,4 @@
     display: flex;
     flex-direction: column;
   }
-
-  .input__buttons-group {
-    flex-direction: column;
-    gap: 2rem;
-  }
-}
-
-.form__error {
-  font-size: 1.4rem;
-  color: #e03131;
-  line-height: 2;
-}
-
-.form__info-counter {
-  font-size: 1.4rem;
-  color: #398225;
-  line-height: 2;
-}
-
-.exceed {
-  color: #e03131;
 }

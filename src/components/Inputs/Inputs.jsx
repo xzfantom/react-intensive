@@ -1,11 +1,12 @@
 import { Component } from "react";
 import FormError from "../FormError/FormError";
+import styles from "../Form/Form.module.css";
 
 class Inputs extends Component {
   render() {
     return (
-      <div className="form__inputs-group">
-        <div className="input-field">
+      <div className={styles["form__inputs-group"]}>
+        <div className={styles["input-field"]}>
           <label>
             First Name
             <input
@@ -23,7 +24,7 @@ class Inputs extends Component {
           />
         </div>
 
-        <div className="input-field">
+        <div className={styles["input-field"]}>
           <label>
             Last Name
             <input
@@ -41,7 +42,7 @@ class Inputs extends Component {
           />
         </div>
 
-        <div className="input-field">
+        <div className={styles["input-field"]}>
           <label>
             Birth Date
             <input
@@ -60,7 +61,7 @@ class Inputs extends Component {
           />
         </div>
 
-        <div className="input-field">
+        <div className={styles["input-field"]}>
           <label>
             Phone number
             <input
@@ -74,7 +75,7 @@ class Inputs extends Component {
           <FormError inputErrors={this.props.textValue} nameOfInput="phone" />
         </div>
 
-        <div className="input-field">
+        <div className={styles["input-field"]}>
           <label>
             Your site
             <input
