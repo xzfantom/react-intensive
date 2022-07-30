@@ -13,7 +13,8 @@ class Form extends React.Component {
         message_01: '',
         message_02: '',
         message_03: '',
-    };
+    }
+    this.textOut = React.createRef();
 
     }
     handleChange = (event) => {
@@ -35,6 +36,97 @@ class Form extends React.Component {
             })
         document.getElementById("mainInput").reset();
     }
+
+    closeBlock = () => {
+        document.getElementById('app').style.display='none';
+        Form.reset();
+        
+    } 
+
+    handelSubmit = (e) => {
+        const validateFirst = /^[a-z0-9](?:[a-z0-9\s]{0,98}[a-z0-9])?$/.test(this.state.firstName);
+        const validateLast = this.state.lastName.length > 2;
+        const dateOf = this.state.DateOfB !== '';
+        const isPhone = /\+\d{1}\(\d{3}\)\d{3}-\d{4}/g.test(this.state.phone);
+        const isValidEmail = /^(ftp|http|https):\/\/[^ "]+$/.test(
+            this.state.email);
+        const isMess01 = this.state.message_01 !== '';
+        const isMess02 = this.state.message_02 !== '';
+        const isMess03 = this.state.message_03 !== '';
+       
+        
+
+        if (!validateFirst) {
+            alert('Напишите ваше имя корректно')
+            return
+        }
+
+        if(!validateLast) {
+            alert('Напишите вашу фамилию корректно')
+            return
+        }
+
+        if(!dateOf) {
+            alert('Введите дату')
+            return
+        }
+
+        if (!isPhone) {
+            alert('Некорректный номер')
+            return
+        }
+
+        if (!isValidEmail) {
+            alert('Некорректная почта')
+            return
+        }
+
+        if (!isMess01) {
+            alert('Вы пропустили раздел "О себе"')
+            return
+        }
+
+        if (!isMess02) {
+            alert('Вы пропустили раздел "Стек технологий"')
+            return
+        }
+
+        if (!isMess03) {
+            alert('Вы пропустили раздел "Описание последнего проекта"')
+            return
+        }
+        else{
+           
+        e.preventDefault();
+        const formData = {
+            Имя: this.state.firstName,
+            Фамилия: this.state.lastName,
+            Дата: this.state.DateOfB,
+            Телефон: this.state.phone,
+            Сайт: this.state.email,
+            Биография: this.state.message_01,
+            Стек: this.state.message_02,
+            Опыт: this.state.message_03,
+        }
+
+        console.log (formData)
+        document.getElementById('app').style.display='block';
+        this.textOut.current.innerHTML = Object.values(formData).join('<br>')
+    
+        this.setState({
+                    firstName: '',
+                    lastName: '',
+                    dateOf: '',
+                    phone: '',
+                    email: '',
+                    message_01: '',
+                    message_02: '',
+                    message_03: '',
+        
+        });
+
+    }
+    };
    
     render() {
         const{firstName, lastName, DateOfB, phone, email, message_01, message_02, message_03} = this.state;
@@ -161,6 +253,17 @@ class Form extends React.Component {
             <button className='btn' onClick={this.handelSubmit}>Сохранить</button> 
             </div>
             </form>
+
+            <div id ='app' className='formModal' style={{display: 'none', position: 'absolute'}}>
+                <h1 className='appy'>Заявка</h1>
+                <div id='application'  style={{height: '500px'}}>  
+                <p ref={this.textOut}></p>
+                <h3>{this.output}</h3>
+                </div>
+            <button className='btn btnS' onClick={this.closeBlock}>
+            Закрыть и отправить
+            </button>
+            </div>
            
         </div>
     }
