@@ -4,11 +4,10 @@ import styles               from './Form.module.css';
 
 class TextArea extends Component {
     render() {
-        const { label, rows, placeholder, name, onChange, error, counters } = this.props;
-        const countVal           = counters[name];
-        const TEXT_COUNTER       = `Осталось ${countVal}/600 символов`;
+        const { label, rows, placeholder, name, onChange, error, counter } = this.props;
+        const TEXT_COUNTER       = `Осталось ${counter}/600 символов`;
         const TEXT_ERROR         = "Превышен лимит символов в поле";
-        const DEFAULT_FIELD_ROWS = "7";
+        const DEFAULT_FIELD_ROWS = 7;
 
         return (
             <>
@@ -20,13 +19,13 @@ class TextArea extends Component {
                     onChange    = { onChange }
                     className   = { styles.textArea }
                 />
-                <span className = { (countVal >= 0) ? styles.counter : styles.disable }>
+                <span className = { (counter >= 0) ? styles.counter : styles.disable }>
                     { TEXT_COUNTER }
                 </span>
-                <span className = { (countVal < 0) ? styles.error : styles.disable }>
+                <span className = { (counter < 0) ? styles.error : styles.disable }>
                     { TEXT_ERROR }
                 </span>
-                <span className = { styles.error }>{ error[name] }</span>
+                <span className = { styles.error }>{ error }</span>
             </>
         )
     }

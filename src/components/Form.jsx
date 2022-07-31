@@ -9,7 +9,7 @@ export class Form extends Component {
     constructor( props ){
         super( props );
         this.initialState = {
-            firstName:      "",
+            firstName:       "",
             lastName:       "",
             birthday:       "",
             phone:          "",
@@ -18,7 +18,7 @@ export class Form extends Component {
             stack:          "",
             lastProject:    "",
             errors:         {
-                firstName:      "",
+                firstName:       "",
                 lastName:       "",
                 birthday:       "",
                 phone:          "",
@@ -67,7 +67,7 @@ export class Form extends Component {
         const errors    = this.state.errors;
 
         for( let i in state ) {
-            if ( state[i] < 1 ) errors[i] = "Поле пустое. Заполните пожалуйста" 
+            if ( !state[i] ) errors[i] = "Поле пустое. Заполните пожалуйста"
             else if (( i === "firstName" || i === "lastName" ) && state[i].trim().charAt(0) !== state[i].charAt(0).toUpperCase() ){
                 errors[i] = "Используйте заглавную букву для написания первого символа"
             } else if ( i === "phone" && state[i].trim() === state[i].trim().replace(/^[0-9]{1}-[0-9]{4}-[0-9]{2}-[0-9]{2}$/,'')){
@@ -75,14 +75,12 @@ export class Form extends Component {
             } else if ( i === "url" && state[i].trim() === state[i].trim().replace(/^https:\/\//,'')){
                 errors[i] = 'Введите url согласно шаблону "https://..."';
             }  else if ( state[i].length > 600 ){
-                errors[i] = " ";
+                errors[i] = " "; // this error exists to prevent submit form, when the maximum value is exceeded (checked and render by TextArea)
             } else errors[i] = ""  
             this.setState({ errors, [i]: state[i] })
         }
 
-        Object.values(errors).forEach(( val ) => {
-            if( val.length > 0 ) return isValid = false
-        });
+        isValid = !Object.values(errors).some((value) => !!value);
         return isValid;
     }
 
@@ -119,7 +117,7 @@ export class Form extends Component {
                         name        = "firstName"
                         value       = { firstName }
                         onChange    = { this.onChange }
-                        error       = { errors }
+                        error       = { errors.firstName }
                     />
                     <Input 
                         label       = "Фамилия"
@@ -127,7 +125,7 @@ export class Form extends Component {
                         name        = "lastName"
                         value       = { lastName }
                         onChange    = { this.onChange }
-                        error       = { errors }
+                        error       = { errors.lastName }
                     />
                     <Input 
                         type        = "date" 
@@ -135,7 +133,7 @@ export class Form extends Component {
                         name        = "birthday"
                         value       = { birthday }
                         onChange    = { this.onChange }
-                        error       = { errors }
+                        error       = { errors.birthday }
                     />
                     <Input 
                         type        = "tel" 
@@ -145,7 +143,7 @@ export class Form extends Component {
                         value       = { phone }
                         onChange    = { this.onChange }
                         maxLength   = "12"
-                        error       = { errors }
+                        error       = { errors.phone }
                     />
                     <Input 
                         type        = "url" 
@@ -154,7 +152,7 @@ export class Form extends Component {
                         name        = "url"
                         value       = { url }
                         onChange    = { this.onChange }
-                        error       = { errors }
+                        error       = { errors.url }
                     />
                     <TextArea 
                         label       = "О себе" 
@@ -162,8 +160,8 @@ export class Form extends Component {
                         name        = "aboutUser"
                         value       = { aboutUser }
                         onChange    = { this.onChange }
-                        error       = { errors }
-                        counters    = { counters }
+                        error       = { errors.aboutUser }
+                        counter     = { counters.aboutUser }
                     />
                     <TextArea 
                         label       = "Стек технологий"
@@ -171,8 +169,8 @@ export class Form extends Component {
                         name        = "stack"
                         value       = { stack }
                         onChange    = { this.onChange }
-                        error       = { errors }
-                        counters    = { counters }
+                        error       = { errors.stack }
+                        counter     = { counters.stack }
                     />
                     <TextArea 
                         label       = "Описание последнего проекта"
@@ -180,8 +178,8 @@ export class Form extends Component {
                         name        = "lastProject"
                         value       = { lastProject }
                         onChange    = { this.onChange }
-                        error       = { errors }
-                        counters    = { counters }
+                        error       = { errors.lastProject }
+                        counter     = { counters.lastProject }
                     />
                     <Input 
                         type        = "reset"  
