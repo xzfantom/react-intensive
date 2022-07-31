@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
+import '../cssModules/button.module.css';
 
 class Button extends Component {
   render() {
-    return (
-      <button className="common" type={this.props.type}>
-        {this.props.value}
-      </button>
-    );
+    return <button type={this.props.type}>{this.props.value}</button>;
   }
 }
 
