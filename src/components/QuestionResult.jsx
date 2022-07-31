@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './QuestionResult.module.css';
+import style from '../styles/QuestionResult.module.css';
 
 export default function QuestionResult(props) {
   let { name,

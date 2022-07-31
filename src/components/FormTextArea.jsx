@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './FormTextArea.module.css';
+import style from '../styles/FormTextArea.module.css';
 
 export default function FormTextArea(props) {
   const count = 600 - props.value.length;

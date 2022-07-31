@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import FormInput from './FormInput';
 import FormTextarea from './FormTextArea';
 import ErrorMessage from './ErrorMessage';
-import style from './QuestionForm.module.css';
+import style from '../styles/QuestionForm.module.css';
 
-const emptyState = {
+const fields = {
   name: '',
   secondname: '',
   birthday: '',
@@ -13,73 +13,61 @@ const emptyState = {
   about: '',
   technologystack: '',
   lastproject: '',
-  nameError: '',
-  secondnameError: '',
-  birthdayError: '',
-  phoneError: '',
-  websiteError: '',
-  aboutError: '',
-  technologystackError: '',
-  lastprojectError: '',
-};
+}
 
 const getInputNumbersValue = (value) => value.replace(/\D/g, '');
 
-const checkEmpty = (object, name) => {
-  object[name + 'Error'] = '';
+const checkEmpty = (object, name, errors) => {
+  errors[name] = '';
   if (!object[name]) {
-    object[name + 'Error'] = 'Поле пустое. Заполните пожалуйста';
-    return true;
+    errors[name] = 'Поле пустое. Заполните пожалуйста';
   }
-  return false;
 }
 
-const checkName = (object, name) => {
-  if (checkEmpty(object, name)) {
-    return true;
+const checkName = (object, name, errors) => {
+  checkEmpty(object, name, errors)
+  if (errors[name]) {
+    return;
   }
   if (object[name].charAt(0) !== object[name].charAt(0).toUpperCase()) {
-    object[name + 'Error'] = 'Первый символ должен быть с большой буквы';
-    return true;
+    errors[name] = 'Первый символ должен быть с большой буквы';
   }
-  return false;
 }
 
-const checkPhone = (object, name) => {
-  if (checkEmpty(object, name)) {
-    return true;
+const checkPhone = (object, name, errors) => {
+  checkEmpty(object, name, errors)
+  if (errors[name]) {
+    return;
   }
   if (!object[name].match(/\d-\d{4}-\d{2}-\d{2}/g)) {
-    object[name + 'Error'] = 'Телефон должен быть в формате X-XXXX-XX-XX';
-    return true;
+    errors[name] = 'Телефон должен быть в формате X-XXXX-XX-XX';
   }
-  return false;
 }
 
-const checkSite = (object, name) => {
-  if (checkEmpty(object, name)) {
-    return true;
+const checkSite = (object, name, errors) => {
+  checkEmpty(object, name, errors)
+  if (errors[name]) {
+    return;
   }
   if (!object[name].startsWith('https://')) {
-    object[name + 'Error'] = 'Сайт должен начинаться с https://';
-    return true;
+    errors[name] = 'Сайт должен начинаться с https://';
   }
-  return false;
 }
 
-const checkText = (object, name) => {
-  if (checkEmpty(object, name)) {
-    return true;
+const checkText = (object, name, errors) => {
+  checkEmpty(object, name, errors)
+  if (errors[name]) {
+    return;
   }
   if (!object[name].length > 600) {
-    object[name + 'Error'] = 'Ограничение 600 символов';
-    return true;
+    errors[name] = 'Ограничение 600 символов';
   }
-  return false;
 }
 
 export default function QuestionForm(props) {
-  const [state, setState] = useState({ ...emptyState });
+  const [state, setState] = useState({ ...fields });
+  const [errors, setError] = useState({ ...fields });
+
 
   const handleInput = (name, event) => {
     let value = event.target.value;
@@ -93,44 +81,31 @@ export default function QuestionForm(props) {
 
   const handleSubmit = () => {
     const copyState = { ...state };
+    const copyErrors = { ...errors };
 
     for (const [key, value] of Object.entries(copyState)) {
       copyState[key] = value.trim();
     }
-    let hasErrors = checkName(copyState, 'name');
-    hasErrors = checkName(copyState, 'secondname') || hasErrors;
-    hasErrors = checkEmpty(copyState, 'birthday') || hasErrors;
-    hasErrors = checkPhone(copyState, 'phone') || hasErrors;
-    hasErrors = checkSite(copyState, 'website') || hasErrors;
-    hasErrors = checkText(copyState, 'about') || hasErrors;
-    hasErrors = checkText(copyState, 'technologystack') || hasErrors;
-    hasErrors = checkText(copyState, 'lastproject') || hasErrors;;
+    checkName(copyState, 'name', copyErrors);
+    checkName(copyState, 'secondname', copyErrors);
+    checkEmpty(copyState, 'birthday', copyErrors);
+    checkPhone(copyState, 'phone', copyErrors);
+    checkSite(copyState, 'website', copyErrors);
+    checkText(copyState, 'about', copyErrors);
+    checkText(copyState, 'technologystack', copyErrors);
+    checkText(copyState, 'lastproject', copyErrors);
+
+    let hasErrors = Object.values(copyErrors).some((value) => !!value);
     if (hasErrors) {
-      setState(copyState);
+      setError(copyErrors);
     } else {
-      let { name,
-        secondname,
-        birthday,
-        phone,
-        website,
-        about,
-        technologystack,
-        lastproject } = copyState;
-      props.onSubmit({
-        name,
-        secondname,
-        birthday,
-        phone,
-        website,
-        about,
-        technologystack,
-        lastproject
-      });
+      props.onSubmit(copyState);
     }
   }
 
   const handleReset = () => {
-    setState({ ...emptyState });
+    setState({ ...fields });
+    setError({ ...fields });
   }
 
   return (
@@ -144,13 +119,13 @@ export default function QuestionForm(props) {
           name='Имя'
           value={state.name}
           onChange={handleInput} />
-        <ErrorMessage error={state.nameError} />
+        <ErrorMessage error={errors.name} />
         <FormInput
           id='secondname'
           name='Фамилия'
           value={state.secondname}
           onChange={handleInput} />
-        <ErrorMessage error={state.secondnameError} />
+        <ErrorMessage error={errors.secondname} />
         <FormInput
           id='birthday'
           name='Дата рождения'
@@ -158,37 +133,37 @@ export default function QuestionForm(props) {
           onChange={handleInput}
           type="date"
         />
-        <ErrorMessage error={state.birthdayError} />
+        <ErrorMessage error={errors.birthday} />
         <FormInput
           id='phone'
           name='Телефон'
           value={state.phone}
           onChange={handleInput} />
-        <ErrorMessage error={state.phoneError} />
+        <ErrorMessage error={errors.phone} />
         <FormInput
           id='website'
           name='Сайт'
           value={state.website}
           onChange={handleInput} />
-        <ErrorMessage error={state.websiteError} />
+        <ErrorMessage error={errors.website} />
         <FormTextarea
           id='about'
           name='О себе'
           value={state.about}
           onChange={handleInput} />
-        <ErrorMessage error={state.aboutError} />
+        <ErrorMessage error={errors.about} />
         <FormTextarea
           id='technologystack'
           name='Стек технологий'
           value={state.technologystack}
           onChange={handleInput} />
-        <ErrorMessage error={state.technologystackError} />
+        <ErrorMessage error={errors.technologystack} />
         <FormTextarea
           id='lastproject'
           name='Описание последнего проекта'
           value={state.lastproject}
           onChange={handleInput} />
-        <ErrorMessage error={state.lastprojectError} />
+        <ErrorMessage error={errors.lastproject} />
         <div className={style.buttons}>
           <button type="button" name="cancel" onClick={handleReset}>Отмена</button>
           <button type="button" name="save" onClick={handleSubmit}>Сохранить</button>

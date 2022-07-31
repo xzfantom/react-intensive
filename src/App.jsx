@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import QuestionForm from './QuestionForm';
-import QuestionResult from './QuestionResult';
+import QuestionForm from './components/QuestionForm';
+import QuestionResult from './components/QuestionResult';
 
 const emptyState = {
   name: '',
