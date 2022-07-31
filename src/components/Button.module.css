@@ -1,0 +1,17 @@
+button {
+  padding: 12px 24px;
+  border: 1px solid #d4ab57;
+  border-radius: 16px;
+  margin: 8px 16px;
+  background-color: #fecb63;
+}
+button:hover,
+button:active {
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+}
+.save {
+  background-color: #75ce9d;
+}
+.cancel {
+  background-color: #fecb63;
+}
