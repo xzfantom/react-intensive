@@ -1,18 +1,26 @@
 import React from 'react';
 import style from '../styles/QuestionResult.module.css';
 
+const captions = {
+  birthday: 'Дата рождения',
+  phone: 'Телефон',
+  website: 'Сайт',
+  about: 'О себе',
+  technologystack: 'Стек технологий',
+  lastproject: 'Описание последнего проекта'
+}
+
 export default function QuestionResult(props) {
   let { name,
     secondname,
-    birthday,
-    phone,
-    website,
-    about,
-    technologystack,
-    lastproject } = props.data;
+    ...data } = props.data;
 
-  const dateBirthday = new Date(birthday);
-  const formattedBirthday = dateBirthday.toLocaleDateString('ru-RU');
+  const dateBirthday = new Date(data.birthday);
+  data.birthday = dateBirthday.toLocaleDateString('ru-RU');
+  const children = [];
+  for (const [key, value] of Object.entries(data)) {
+    children.push(<tr><td>{captions[key]}</td><td>{value}</td></tr>)
+  }
 
   return (
     <div>
@@ -22,30 +30,7 @@ export default function QuestionResult(props) {
       <div className={style.wrapper}>
         <table>
           <tbody>
-            <tr>
-              <td>Дата рождения</td>
-              <td>{formattedBirthday}</td>
-            </tr>
-            <tr>
-              <td>Телефон</td>
-              <td>{phone}</td>
-            </tr>
-            <tr>
-              <td>Сайт</td>
-              <td>{website}</td>
-            </tr>
-            <tr>
-              <td>О себе</td>
-              <td>{about}</td>
-            </tr>
-            <tr>
-              <td>Стек технологий</td>
-              <td>{technologystack}</td>
-            </tr>
-            <tr>
-              <td>Описание последнего проекта</td>
-              <td>{lastproject}</td>
-            </tr>
+            {children}
           </tbody>
         </table>
       </div>
