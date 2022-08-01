@@ -19,9 +19,7 @@ class Form extends Component {
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  onChange1 = (e) => {
-    this.setState({ projectDescrip: e.target.value });
-  };
+
   onSubmit = (e) => {
     e.preventDefault();
     this.setState({
@@ -37,6 +35,7 @@ class Form extends Component {
     const { userName, userSurname, berthDate, userPhone, userWeb } = this.state;
     return (
       <div>
+        <h1 className={s.center}>Создание анкеты:</h1>
         <form className={s.form} onSubmit={this.onSubmit}>
           <label>Имя: </label>
           <CustomInput
@@ -108,8 +107,8 @@ class Form extends Component {
           <CustomTextarea
             rows="7"
             placeholder="Описание последнего проекта"
-            onChange={this.onChange1}
-            name="userDesr"
+            onChange={this.onChange}
+            name="projectDescrip"
             state={this.state}
             value={this.state.projectDescrip}
           ></CustomTextarea>
