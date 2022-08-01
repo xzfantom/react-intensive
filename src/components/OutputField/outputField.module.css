@@ -6,7 +6,7 @@
 .outputFieldTitle{
     font-size: 14px;
     color:rgba(22, 3, 30, 0.75);
-    margin:  0;
+    margin: 0;
     text-decoration: underline;
 }
 .outputField{
@@ -17,8 +17,3 @@
     border: 0;
     background-color: #fdfcff;
 }
-.titleForm{
-    font-size: x-large;
-    text-align: center;
-}
-  
