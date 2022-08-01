@@ -1,12 +1,9 @@
 import React from 'react';
 
-class CustomButton extends React.Component {
-    
-    render() {
-        return (
-            <button className={this.props.className} type={this.props.type} name={this.props.name} onClick={this.props.onClick}>{this.props.value}</button>
-        )
-    }
+function CustomButton(props) {
+    return (
+        <button className={props.className} type={props.type} name={props.name} onClick={props.onClick}>{props.value}</button>
+    )
 }
 
 export default CustomButton;
