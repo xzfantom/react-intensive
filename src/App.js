@@ -48,9 +48,7 @@ const App = (props) => {
     }
 
     return (
-        <Routes >
-            <Route path="/" element={<CustomForm changeState={changeState}/>}/>
-        </Routes>
+           <CustomForm changeState={changeState}/>
     );
 };
 
