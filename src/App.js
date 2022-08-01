@@ -27,15 +27,11 @@ const App = (props) => {
             phone,
             link,
             userAbout,
-            userSteak,
+            userStack,
             projectDescrip,
             showModal,
         } = state;
         return (
-            <Routes basename={process.env.PUBLIC_URL}>
-                <Route
-                    path="/"
-                    element={
                         <CustomTemplate
                             firstName={firstName}
                             lastName={lastName}
@@ -43,19 +39,16 @@ const App = (props) => {
                             phone={phone}
                             link={link}
                             about={userAbout}
-                            stack={userSteak}
+                            stack={userStack}
                             project={projectDescrip}
                             backToForm={backToForm}
                             showModal={showModal}
                         />
-                    }
-                />
-            </Routes>
         );
     }
 
     return (
-        <Routes basename={process.env.PUBLIC_URL}>
+        <Routes >
             <Route path="/" element={<CustomForm changeState={changeState}/>}/>
         </Routes>
     );

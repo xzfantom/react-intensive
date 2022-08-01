@@ -11,11 +11,7 @@ const CustomTextarea = (props) => {
         maxLength,
         onBlur,
         length,
-        length2,
-        length3,
         error,
-        error2,
-        error3,
     } = props;
 
     return (
@@ -31,13 +27,11 @@ const CustomTextarea = (props) => {
             ></textarea>
             <span className="counter">
         {length}
-                {length2}
-                {length3}/{maxLength}
+
+                /{maxLength}
       </span>
             <span className={s.errorMax}>
                  {error}
-                {error2}
-                {error3}
       </span>
         </>
     );

@@ -14,7 +14,7 @@ const CustomForm = (props) => {
         link: "",
         header: "",
         userAbout: "",
-        userSteak: "",
+        userStack: "",
         projectDescrip: "",
         errors: {},
         submitted: false,
@@ -56,7 +56,7 @@ const CustomForm = (props) => {
             }
         }
 
-        if (name === "userSteak") {
+        if (name === "userStack") {
             setState({
                 ...state,
                 length2: (state.length2 = value.length),
@@ -161,10 +161,10 @@ const CustomForm = (props) => {
             delete errors.userAbout;
         }
 
-        if (state.userSteak.length === 0) {
-            errors.userSteak = "Поле пустое. Заполните пожалуйста";
+        if (state.userStack.length === 0) {
+            errors.userStack = "Поле пустое. Заполните пожалуйста";
         } else if (state.projectDescrip.length > 0) {
-            delete errors.userSteak;
+            delete errors.userStack;
         }
         if (state.projectDescrip.length === 0) {
             errors.projectDescrip = "Поле пустое. Заполните пожалуйста";
@@ -202,7 +202,7 @@ const CustomForm = (props) => {
             link: "",
             header: "",
             userAbout: "",
-            userSteak: "",
+            userStack: "",
             projectDescrip: "",
             errors: {},
             submitted: false,
@@ -305,7 +305,7 @@ const CustomForm = (props) => {
 
                 <CustomTextarea
                     rows="7"
-                    name="userSteak"
+                    name="userStack"
                     maxLength={maxLength}
                     first={state.first}
                     state={state}
@@ -313,13 +313,13 @@ const CustomForm = (props) => {
                     label="Стек технологий:"
                     placeholder="Напишите технологии..."
                     isSubmited={state.submitted}
-                    value={state.userSteak}
+                    value={state.userStack}
                     error={state.error2}
                     onSubmit={handleSubmit}
                     onChange={calculateChar}
                     onBlur={onBlur}
                 />
-                <div className={s.colorDiv}>{state.errors.userSteak}</div>
+                <div className={s.colorDiv}>{state.errors.userStack}</div>
 
                 <CustomTextarea
                     rows="7"

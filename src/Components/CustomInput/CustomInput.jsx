@@ -9,7 +9,6 @@ const CustomInput = (props) => {
         <>
             <label>{label}</label>
             <input
-                {...props}
                 type={type}
                 name={name}
                 onChange={onChange}

@@ -1,5 +1,6 @@
 import React from "react";
 import s from "./CustomTemplate.module.css";
+import {Link, NavLink} from "react-router-dom";
 
 const CustomTemplate = (props) => {
     const {
@@ -15,6 +16,7 @@ const CustomTemplate = (props) => {
     } = props;
 
     return (
+
         <div className="wrapper">
             <div className={s.template}>
                 <header className={s.header}>
@@ -33,6 +35,7 @@ const CustomTemplate = (props) => {
                 </button>
             </div>
         </div>
+
     );
 };
 export default CustomTemplate;
