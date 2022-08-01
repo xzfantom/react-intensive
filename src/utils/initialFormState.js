@@ -9,7 +9,7 @@ export const formDefault = {
   lastProject: "",
 };
 
-export const formDefaultFalseProp = {
+export const defaultFalseValues = {
   name: false,
   surname: false,
   birthDate: false,
