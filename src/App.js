@@ -1,31 +1,29 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Form from "./containers/Form/Form";
 import Profile from "./containers/Profile/Profile";
 
-class App extends Component {
-  state = {
+const App = () => {
+  const [formStatus, setFormStatus] = useState({
     formReady: false,
     formData: {},
-  };
+  });
 
-  toggleReadiness = (data) => {
-    this.setState({
+  const toggleFormReadiness = (data) => {
+    setFormStatus({
       formReady: true,
       formData: data,
     });
   };
 
-  render() {
-    return (
-      <>
-        {this.state.formReady ? (
-          <Profile data={this.state.formData} />
-        ) : (
-          <Form readyForm={this.toggleReadiness} />
-        )}
-      </>
-    );
-  }
-}
+  return (
+    <>
+      {formStatus.formReady ? (
+        <Profile data={formStatus.formData} />
+      ) : (
+        <Form readyForm={toggleFormReadiness} />
+      )}
+    </>
+  );
+};
 
 export default App;
