@@ -12,3 +12,12 @@
     margin-bottom: 30px;
     word-wrap: break-word
 }
+ul{
+    padding: 0;
+    margin: 0;
+}
+li{
+list-style: none;
+    width: 100%;
+    margin-bottom: 20px;
+}
