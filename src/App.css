@@ -1,0 +1,33 @@
+:root {
+    --color-primary: #f4f4f4;
+    --color-secondary: #495057;
+    --color-green: #37af65;
+    --bg-primary: #1b1b32;
+    --bg-form: rgba(27, 27, 50, 0.8);
+}
+body{
+    color: var(--color-primary);
+    background-color: var(--bg-primary);
+
+}
+#root{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+}
+
+.App{
+    width: 50vw;
+    height: 50vh;
+
+
+}
+
+
+
+
+
+
