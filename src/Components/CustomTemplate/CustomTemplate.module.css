@@ -1,0 +1,32 @@
+.header {
+    text-align: center;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.btnWrap {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    width: 83%;
+}
+
+.template {
+    margin: 0 auto;
+    width: 60%;
+    border: 2px solid var(--color-green);
+    padding: 20px 20px;
+    margin-bottom: 30px;
+    word-wrap: break-word
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+    width: 100%;
+    margin-bottom: 20px;
+}
