@@ -1,0 +1,31 @@
+.formTextarea{
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+    
+}
+
+textarea{
+    padding: 15px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    height: 70px;
+    border: 1px solid gray;
+    resize: none;   
+    
+}
+
+span{
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+    display: none;
+}
+
+textarea:invalid[focused="true"]{
+    border: 1px solid red;
+}
+
+textarea:invalid[focused="true"] ~ span{
+    display: block;
+}
