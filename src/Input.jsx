@@ -5,10 +5,16 @@ class Input extends React.Component {
     super(props);
   }
   render() {
-    const { inputLabel, type, onChange, name, value, isTextArea = false } = this.props;
-
-    const validateInput = () => {};
-
+    const {
+      inputLabel,
+      type,
+      onChange,
+      name,
+      state,
+      isTextArea = false,
+      placeholder = inputLabel,
+    } = this.props;
+    const errorMessage = state.errors[name];
     if (isTextArea) {
       return (
         <div className={styles.formInput}>
@@ -18,10 +24,11 @@ class Input extends React.Component {
             name={name}
             className={styles.inputText}
             rows="7"
-            placeholder={inputLabel}
+            placeholder={placeholder}
             onChange={onChange}
-            value={value}
+            value={state[name]}
           />
+          {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
         </div>
       );
     }
@@ -34,10 +41,11 @@ class Input extends React.Component {
           name={name}
           className={styles.inputText}
           type={type}
-          placeholder={inputLabel}
+          placeholder={placeholder}
           onChange={onChange}
-          value={value}
+          value={state[name]}
         />
+        {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
       </div>
     );
   }
