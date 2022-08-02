@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './FormInput.module.css'
 
 class FormInput extends React.Component {
   constructor(props) {
@@ -13,8 +14,9 @@ class FormInput extends React.Component {
   render() {
     return (
       <>
-        <label htmlFor={this.props.id}>{this.props.name}</label>
+        <label className={style.label} htmlFor={this.props.id}>{this.props.name}</label>
         <input
+          className={style.input}
           type={this.type}
           id={this.props.id}
           placeholder={this.props.name}

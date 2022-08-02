@@ -2,7 +2,7 @@ import React from 'react';
 import QuestionForm from './QuestionForm';
 import QuestionResult from './QuestionResult';
 
-const emptyState = () => ({
+const emptyState = {
   name: '',
   secondname: '',
   birthday: '',
@@ -12,13 +12,13 @@ const emptyState = () => ({
   technologystack: '',
   lastproject: '',
   submitted: false,
-});
+};
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = emptyState();
+    this.state = { ...emptyState };
   }
 
   onSubmit = (result) => {
@@ -27,14 +27,7 @@ class App extends React.Component {
 
   render() {
     const { submitted, ...data } = this.state;
-    if (submitted) {
-      return (
-        <QuestionResult data={data} />
-      )
-    }
-    return (
-      <QuestionForm onSubmit={this.onSubmit} />
-    );
+    return submitted ? <QuestionResult data={data} /> : <QuestionForm onSubmit={this.onSubmit} />;
   }
 }
 

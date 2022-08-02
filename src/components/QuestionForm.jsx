@@ -160,10 +160,10 @@ class QuestionForm extends React.Component {
   render() {
     return (
       <div>
-        <header className={style.AppHeader}>
+        <header className={style.appHeader}>
           <h1>Создание анкеты</h1>
         </header>
-        <form className={style.QuestionForm}>
+        <form className={style.questionForm}>
           <FormInput id='name' name='Имя' value={this.state.name} onChange={this.handleInput} />
           <ErrorMessage error={this.state.nameError} />
           <FormInput id='secondname' name='Фамилия' value={this.state.secondname} onChange={this.handleInput} />
