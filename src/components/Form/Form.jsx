@@ -1,6 +1,4 @@
 import { Component } from "react";
-import styles from "./Form.module.css";
-
 import Buttons from "../Buttons/Buttons";
 import TextAreas from "../TextAreas/TextAreas";
 import Inputs from "../Inputs/Inputs";
@@ -58,11 +56,7 @@ class Form extends Component {
 
   render() {
     return (
-      <form
-        className={styles.form}
-        onSubmit={this.handleSubmit}
-        onReset={this.resetForm}
-      >
+      <form onSubmit={this.handleSubmit} onReset={this.resetForm}>
         <Inputs
           onInputChange={this.handleChange}
           textValue={this.state}

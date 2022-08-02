@@ -1,6 +1,6 @@
 import { Component } from "react";
 import FormError from "../FormError/FormError";
-import styles from "../Form/Form.module.css";
+import styles from "./Inputs.module.css";
 
 class Inputs extends Component {
   render() {
@@ -47,12 +47,9 @@ class Inputs extends Component {
             Birth Date
             <input
               type="date"
-              min="1900-01-01"
-              max="2022-12-31"
               name="birthDate"
               value={this.props.textValue.birthDate}
               onChange={this.props.onInputChange}
-              //required
             />
           </label>
           <FormError
