@@ -7,6 +7,8 @@ class Input extends React.Component {
   render() {
     const { inputLabel, type, onChange, name, value, isTextArea = false } = this.props;
 
+    const validateInput = () => {};
+
     if (isTextArea) {
       return (
         <div className={styles.formInput}>

@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/andersen-react-intensive/static/css/main.b4b2744c.css",
+    "main.js": "/andersen-react-intensive/static/js/main.7907a1d3.js",
+    "index.html": "/andersen-react-intensive/index.html",
+    "main.b4b2744c.css.map": "/andersen-react-intensive/static/css/main.b4b2744c.css.map",
+    "main.7907a1d3.js.map": "/andersen-react-intensive/static/js/main.7907a1d3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b4b2744c.css",
+    "static/js/main.7907a1d3.js"
+  ]
+}
