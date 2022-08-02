@@ -1,0 +1,143 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #0000ff4f;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 10vh 0vh;
+  padding: 0 15px;
+}
+
+.form {
+  padding: 20px;
+  background: rgba(233, 237, 255, 0.6);
+  border-radius: 8px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  text-align: center;
+  position: relative;
+  letter-spacing: 2px;
+}
+
+.title::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  position: absolute;
+  top: 25%;
+  right: 25%;
+  transform: rotate(45deg);
+}
+
+.title::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  transform: rotate(45deg);
+}
+
+.element {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.element:hover {
+  transform: scale(1.03);
+}
+
+.error {
+  position: absolute;
+  color: red;
+  font-size: 12px;
+  bottom: -3px;
+}
+
+.emptyError {
+  position: absolute;
+  color: red;
+  font-size: 12px;
+  right: 0;
+  top: 11px;
+  border: 2px solid red;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.input {
+  padding: 10px 10px;
+  border: transparent;
+  border-radius: 8px;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+.textAreaCounter {
+  position: absolute;
+  font-size: 14px;
+  bottom: -6px;
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: 0px 0px 15px 3px #5e6b9e;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.button {
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 45px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #524f4e;
+  background: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: #2ee59d;
+  color: white;
+  transform: translateY(-7px);
+}
+
+.cancel:hover {
+  background-color: rgba(255, 42, 42, 0.589);
+  box-shadow: 0 15px 20px rgba(255, 42, 42, 0.589);
+}
+
+.submit:hover {
+  background-color: rgba(42, 156, 255, 0.589);
+  box-shadow: 0 15px 20px rgba(42, 156, 255, 0.589);
+}
