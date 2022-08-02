@@ -1,0 +1,21 @@
+.questionForm {
+  width: 500px;
+  margin: 0 auto;
+  padding: 0 10px 10px 10px;
+  background-color: #3D5A80;
+  border-radius: 10px;
+}
+
+.buttons {
+  margin-top: 10px;
+  
+}
+
+.appHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 29px;
+  color: #3D5A80;
+}

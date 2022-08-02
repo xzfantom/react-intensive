@@ -1,0 +1,16 @@
+.formTextArea {
+  width: 100%;
+  background-color: #DCD6F7;
+  border-radius: 5px;
+}
+
+.symbolsLeft {
+  text-align: right;
+  font-size: 0.8em;
+}
+
+.label {
+  display: block;
+  text-align: left;
+  padding-top: 10px;
+}

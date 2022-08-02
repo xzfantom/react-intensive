@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import QuestionForm from './components/QuestionForm';
-import QuestionResult from './components/QuestionResult';
+import QuestionForm from './components/QuestionForm/QuestionForm';
+import QuestionResult from './components/QuestionResult/QuestionResult';
 
 const emptyState = {
   name: '',
@@ -23,12 +23,5 @@ export default function App() {
     setState({ ...result, submitted: true });
   }
 
-  if (submitted) {
-    return (
-      <QuestionResult data={data} />
-    )
-  }
-  return (
-    <QuestionForm onSubmit={onSubmit} />
-  );
+  return submitted ? <QuestionResult data={data} /> : <QuestionForm onSubmit={onSubmit} />;
 }

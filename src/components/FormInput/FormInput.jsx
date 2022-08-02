@@ -1,4 +1,5 @@
 import React from 'react'
+import style from './FormInput.module.css'
 
 export default function FormInput(props) {
   const type = props.type || 'text';
@@ -9,8 +10,9 @@ export default function FormInput(props) {
 
   return (
     <>
-      <label htmlFor={props.id}>{props.name}</label>
+      <label className={style.label} htmlFor={props.id}>{props.name}</label>
       <input
+        className={style.input}
         type={type}
         id={props.id}
         placeholder={props.name}

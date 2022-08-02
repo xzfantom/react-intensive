@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../styles/QuestionResult.module.css';
+import style from './QuestionResult.module.css';
 
 const captions = {
   birthday: 'Дата рождения',
@@ -24,7 +24,7 @@ export default function QuestionResult(props) {
 
   return (
     <div>
-      <header className={style.AppHeader}>
+      <header className={style.appHeader}>
         <h1>{name} {secondname}</h1>
       </header>
       <div className={style.wrapper}>

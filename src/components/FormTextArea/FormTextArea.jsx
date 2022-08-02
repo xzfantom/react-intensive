@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../styles/FormTextArea.module.css';
+import style from './FormTextArea.module.css';
 
 export default function FormTextArea(props) {
   const count = 600 - props.value.length;
@@ -11,8 +11,9 @@ export default function FormTextArea(props) {
 
   return (
     <>
-      <label htmlFor={props.id}>{props.name}</label>
+      <label className={style.label} htmlFor={props.id}>{props.name}</label>
       <textarea
+        className={style.formTextArea}
         id={props.id}
         placeholder={props.name}
         value={props.value}
