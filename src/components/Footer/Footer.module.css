@@ -1,0 +1,14 @@
+footer {
+  padding: 5rem 0;
+  background-color: #9c36b5;
+  color: #eee;
+  text-align: center;
+}
+
+.footer__icon-author:link,
+.footer__icon-author:visited {
+  text-decoration: none;
+  color: #eee;
+  display: block;
+  margin-top: 4rem;
+}
