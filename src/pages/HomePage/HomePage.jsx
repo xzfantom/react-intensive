@@ -1,11 +1,7 @@
 import ToDoList from '../../components/ToDoList/ToDoList'
 
 const HomePage = () => {
-  return (
-    <div>
-      <ToDoList />
-    </div>
-  )
+  return <ToDoList />
 }
 
 export default HomePage

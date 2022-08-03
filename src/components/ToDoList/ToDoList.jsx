@@ -4,6 +4,7 @@ import TodoForm from './ToDoForm/ToDoForm'
 import Todo from './ToDo/Todo'
 import * as storage from '../../services/localStorage'
 import image from '../images/man.png'
+import Tab from '../Tab/Tab'
 
 const STORAGE_KEY = 'todos'
 
@@ -62,6 +63,7 @@ function TodoList() {
       <div className={s.wrap}>
         <h1 className={s.title}>What's the Plan for Today?</h1>
         <TodoForm onSubmit={addTodo} />
+        <Tab />
       </div>
       <Todo
         todos={todos}

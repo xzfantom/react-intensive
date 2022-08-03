@@ -1,0 +1,27 @@
+.wrap {
+  margin: 0 0 30px;
+  width: 61%;
+}
+
+.button {
+  width: 50%;
+  padding: 12px 0;
+  box-sizing: border-box;
+  border: 2px solid var(--accent-color);
+  background-color: transparent;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.button:last-child {
+  border-left: transparent;
+}
+
+.button:hover {
+  background-color: var(--accent-color);
+  color: #000;
+}
