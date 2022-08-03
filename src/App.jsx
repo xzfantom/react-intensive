@@ -24,23 +24,19 @@ class App extends React.Component {
     last_project_description: '',
   };
 
-  validate(value, inputName) {
-    console.log('TELE value');
-    console.log(value);
-    const regExp = new RegExp(validationRegExps[inputName]);
-
+  validateIsNotEmpty(value) {
     if (validationIsNotEmpty.test(value)) {
-      console.log('NOT EMPTY');
-
-      if (regExp.test(value)) {
-        console.log('regexps TRUE');
-        return 'regexpsTrue';
-      }
-      console.log('regexps FALSE');
-      return 'regexpsFalse';
+      return true;
     }
-    console.log('!! EMPTY');
-    return 'touchedEmpty';
+    return false;
+  }
+
+  validateIsValid(value, inputName) {
+    const regExp = new RegExp(validationRegExps[inputName]);
+    if (regExp.test(value)) {
+      return true;
+    }
+    return false;
   }
 
   applyMask(value, mask) {
@@ -50,8 +46,6 @@ class App extends React.Component {
       result[i] = (typeof mask[i] === 'string' ? mask[i] : '') + value[i].replace(mask[i], '');
     }
     let maskedValue = result.join('');
-    console.log('maskedValue');
-    console.log(maskedValue);
     return maskedValue;
   }
 
@@ -59,7 +53,7 @@ class App extends React.Component {
     const inputName = event.target.name;
     let value = event.target.value;
 
-    if (this.validate(value, inputName) === 'touchedEmpty') {
+    if (this.validateIsNotEmpty(value) === false) {
       this.setState((prevState) => ({
         ...prevState,
         inputs: {
@@ -68,12 +62,13 @@ class App extends React.Component {
         },
         errors: {
           ...prevState.errors,
-          [inputName]: emptyErrorText,
+          [inputName]: '',
         },
       }));
+      return;
     }
 
-    if (this.validate(value, inputName) === 'regexpsTrue') {
+    if (this.validateIsValid(value, inputName)) {
       this.setState((prevState) => ({
         ...prevState,
         inputs: {
@@ -86,7 +81,7 @@ class App extends React.Component {
         },
       }));
     }
-    if (this.validate(value, inputName) === 'regexpsFalse') {
+    if (this.validateIsValid(value, inputName) === false) {
       this.setState((prevState) => ({
         ...prevState,
         inputs: {
@@ -126,26 +121,7 @@ class App extends React.Component {
       }));
     }
 
-    if (this.validate(value, inputName) === 'touchedEmpty') {
-      this.setState((prevState) => ({
-        ...prevState,
-        inputs: {
-          ...prevState.inputs,
-          [inputName]: value,
-        },
-        errors: {
-          ...prevState.errors,
-          [inputName]: emptyErrorText,
-        },
-      }));
-    }
-
-    if (this.validate(value, inputName) === 'regexpsTrue') {
-      // console.log('value');
-      // console.log(value);
-      // console.log('state value');
-      // console.log(this.state.inputs[inputName]);
-
+    if (this.validateIsValid(value, inputName)) {
       this.setState((prevState) => ({
         ...prevState,
         inputs: {
@@ -158,7 +134,8 @@ class App extends React.Component {
         },
       }));
     }
-    if (this.validate(value, inputName) === 'regexpsFalse') {
+
+    if (this.validateIsValid(value, inputName) === false) {
       this.setState((prevState) => ({
         ...prevState,
         inputs: {
@@ -170,18 +147,39 @@ class App extends React.Component {
           [inputName]: errorsTextTemplate[inputName],
         },
       }));
-      // console.log(this.state.errors);
     }
-    return;
   };
 
   handleFormReset = () => {
     this.setState(this.initialState);
   };
+
   handleSubmit = (event) => {
     event.preventDefault();
-    event.target.reset();
-    alert('submitted');
+    let noValidationErrors = true;
+    for (const fieldName in this.state.inputs) {
+      if (this.state.inputs[fieldName] === '') {
+        this.setState((prevState) => ({
+          ...prevState,
+          errors: {
+            ...prevState.errors,
+            [fieldName]: emptyErrorText,
+          },
+        }));
+        noValidationErrors = false;
+      }
+    }
+    if (noValidationErrors) {
+      if (
+        Object.values(this.state.errors).every((el) => {
+          return el === '';
+        })
+      ) {
+        alert('the form is validated and submitted');
+        return;
+      }
+    }
+    alert('the form CANNOT be validated');
   };
 
   render() {

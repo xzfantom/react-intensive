@@ -50,9 +50,9 @@ class Input extends React.Component {
             onChange={onChange}
             value={value}
           />
-          {/* <div className={errorMessage ? styles.errorMessage : styles.invisible}>
+          <div className={errorMessage ? styles.errorMessage : styles.invisible}>
             {errorMessage}
-          </div> */}
+          </div>
         </div>
       );
     }
@@ -69,7 +69,7 @@ class Input extends React.Component {
           onChange={onChange}
           value={value}
         />
-        {/* <div className={errorMessage ? styles.errorMessage : styles.invisible}>{errorMessage}</div> */}
+        <div className={errorMessage ? styles.errorMessage : styles.invisible}>{errorMessage}</div>
       </div>
     );
   }

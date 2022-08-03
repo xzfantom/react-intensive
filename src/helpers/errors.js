@@ -9,5 +9,5 @@ const errorsTextTemplate = {
   last_project_description: 'Текст не может содержать более 600 символов',
 };
 
-const emptyErrorText = 'Поле обязательно к заполнению';
+const emptyErrorText = 'Поле пустое. Заполните, пожалуйста';
 export { errorsTextTemplate, emptyErrorText };
