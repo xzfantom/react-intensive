@@ -1,0 +1,33 @@
+.wrap {
+  padding: 100px 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.contentWrap {
+  width: 50%;
+  margin: auto;
+}
+
+.heading {
+  font-family: var(--accent-font);
+  font-size: 55px;
+  margin-bottom: 50px;
+}
+
+.description {
+  font-size: 25px;
+  line-height: 1.2;
+  font-weight: 300;
+}
+.description:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+ul {
+  padding-left: 30px;
+}
+.image {
+  width: 45%;
+}
