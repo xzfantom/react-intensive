@@ -1,0 +1,78 @@
+.result-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.6;
+}
+.result-form__heading {
+  font-size: 2.4rem;
+  margin-bottom: 5rem;
+}
+
+.result-form__text {
+  font-size: 1.4rem;
+}
+.zebra-tbl {
+  max-width: 80rem;
+  margin: 3rem 0 10rem;
+  border-collapse: collapse;
+  font-size: 1.8rem;
+}
+
+.zebra-tbl td,
+.zebra-tbl th {
+  padding: 1.6rem 2.4rem;
+  text-align: left;
+}
+.zebra-tbl th {
+  width: 23%;
+}
+
+tbody .zebra-tbl-row:nth-child(even) {
+  background-color: #e9ecef;
+}
+
+tbody .zebra-tbl-row:nth-child(odd) {
+  background-color: #f8f9fa;
+}
+
+.result-form_btn {
+  margin-bottom: 14rem;
+}
+
+.btn {
+  width: 25rem;
+  height: 4rem;
+  border-radius: 10rem;
+  text-transform: capitalize;
+  font-size: 2rem;
+  font-weight: 400;
+  border: 3px solid #9c36b5;
+  letter-spacing: 1.3px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #9c36b5;
+}
+
+.btn-outline:hover,
+.btn-outline:focus {
+  background-color: #9c36b5;
+  color: #f8f0fc;
+}
+
+@media (max-width: 42.5rem) {
+  .result-form__heading {
+    font-size: 1.8rem;
+  }
+
+  .zebra-tbl {
+    max-width: 40rem;
+    margin: 2rem 0 5rem;
+    font-size: 1.4rem;
+  }
+}

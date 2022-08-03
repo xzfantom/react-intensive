@@ -1,0 +1,29 @@
+.form__text-areas {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.form__text-areas textarea {
+  font-size: 1.6rem;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.input-field label {
+  font-weight: bold;
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.input-field input {
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  color: #555;
+  max-width: 100%;
+}
