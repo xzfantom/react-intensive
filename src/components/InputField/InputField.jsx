@@ -1,5 +1,5 @@
-import React    from 'react';
-import styles   from './inputField.module.css'
+import React from 'react';
+import styles from './inputField.module.css'
 
 function InputField ( props ) {
     
@@ -10,14 +10,14 @@ function InputField ( props ) {
         <>
             <label className = { styles.label }>{ label }</label>
             <input 
-                type        = { type || styles.text } 
+                type = { type }
                 placeholder = { placeholder }
-                name        = { name }
-                onChange    = { onChange }
-                onClick     = { onClick }
-                value       = { valueButton }
-                className   = { ( name === DATE_NAME && value ) ? styles.hasDateValue : styles.inputField }
-                maxLength   = { maxLength }
+                name = { name }
+                onChange = { onChange }
+                onClick = { onClick }
+                value = { valueButton }
+                className = { ( name === DATE_NAME && value ) ? styles.hasDateValue : styles.inputField }
+                maxLength = { maxLength }
             />
             <span className = { styles.error }>{ error }</span>
         </>   

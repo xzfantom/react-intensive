@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import styles       from './App.module.css';
-import Form         from './components/Form/Form';
+import styles from './App.module.css';
+import Form from './components/Form/Form';
 import UserProfile  from './components/UserProfile/UserProfile';
 
 function App (){
@@ -17,13 +17,13 @@ function App (){
     <div>
       <div className = { styles.background }>
           <Form 
-            person      = { person } 
-            isData      = { isData }
-            className   = { (isData === true) ? styles.disable : styles.container }
-            changeData  = { onChange }
+            person = { person }
+            isData = { isData }
+            className = { (isData === true) ? styles.disable : styles.container }
+            changeData = { onChange }
           /> 
           <UserProfile 
-            person    = { person } 
+            person = { person }
             className = { (isData === true) ? styles.container : styles.disable }
           />
       </div>

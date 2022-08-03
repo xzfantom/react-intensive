@@ -1,35 +1,34 @@
-import React, { useState }  from 'react';
-import Input                from '../InputField/InputField';
-import TextArea             from '../TextArea/TextArea';
-import styles               from './form.module.css';
+import React, { useState } from 'react';
+import Input from '../InputField/InputField';
+import TextArea from '../TextArea/TextArea';
+import styles from './form.module.css';
 
 
 function Form ( props ) {
 
-    let   isData        = props.isData;
-    const FORM_TITLE    = "Создание анкеты";
+    let isData = props.isData;
+    const FORM_TITLE = "Создание анкеты";
     const initialPerson = {
-        firstName:   "", 
-        lastName:    "", 
-        birthday:    "", 
-        phone:       "", 
-        url:         "", 
-        aboutUser:   "", 
-        stack:       "", 
+        firstName: "",
+        lastName: "",
+        birthday: "",
+        phone: "",
+        url: "",
+        aboutUser: "",
+        stack: "",
         lastProject: "",
     }
     const initialCounter = {
-        aboutUser:      600,
-        stack:          600,
-        lastProject:    600,
+        aboutUser: 600,
+        stack: 600,
+        lastProject: 600,
     }
-    const [ person,   setPerson ]   = useState( initialPerson );
-    const [ errors,   setErrors ]   = useState( {} );
+    const [ person, setPerson ] = useState( initialPerson );
+    const [ errors, setErrors ] = useState({} );
     const [ counters, setCounters ] = useState( initialCounter );
 
-    
     const onChange = ( e ) => {
-        const fieldName     = e.target.name;
+        const fieldName = e.target.name;
         errors[ fieldName ] = ""; 
 
         if ( e.target.type === "tel" ) {
@@ -86,84 +85,84 @@ function Form ( props ) {
 
     return (
         <form 
-            className   = { props.className }
-            onSubmit    = { onSubmit } 
+            className = { props.className }
+            onSubmit = { onSubmit }
         >
             <legend className = { styles.titleForm }>{ FORM_TITLE }</legend>
             <Input 
-                label       = "Имя"
+                label = "Имя"
                 placeholder = "Введите свое имя"
-                name        = "firstName"
-                value       = { firstName }
-                onChange    = { onChange }
-                error       = { errors.firstName }
+                name = "firstName"
+                value = { firstName }
+                onChange = { onChange }
+                error = { errors.firstName }
             />
             <Input 
-                label       = "Фамилия"
+                label = "Фамилия"
                 placeholder = "Введите свою фамилию"
-                name        = "lastName"
-                value       = { lastName }
-                onChange    = { onChange }
-                error       = { errors.lastName }
+                name = "lastName"
+                value = { lastName }
+                onChange = { onChange }
+                error = { errors.lastName }
             />
             <Input 
-                type        = "date" 
-                label       = "Дата рождения"
-                name        = "birthday"
-                value       = { birthday }
-                onChange    = { onChange }
-                error       = { errors.birthday }
+                type = "date"
+                label = "Дата рождения"
+                name = "birthday"
+                value = { birthday }
+                onChange = { onChange }
+                error = { errors.birthday }
             />
             <Input 
-                type        = "tel" 
-                label       = "Телефон"
+                type = "tel"
+                label = "Телефон"
                 placeholder = "Введите свой номер телефона"
-                name        = "phone"
-                value       = { phone }
-                onChange    = { onChange }
-                maxLength   = "12"
-                error       = { errors.phone }
+                name = "phone"
+                value = { phone }
+                onChange = { onChange }
+                maxLength = "12"
+                error = { errors.phone }
             />
             <Input 
-                type        = "url" 
-                label       = "Сайт"
+                type = "url"
+                label = "Сайт"
                 placeholder = "Введите ссылку на сайт"
-                name        = "url"
-                value       = { url }
-                onChange    = { onChange }
-                error       = { errors.url }
+                name = "url"
+                value = { url }
+                onChange = { onChange }
+                error = { errors.url }
             />
             <TextArea 
-                label       = "О себе" 
+                label = "О себе"
                 placeholder = "Введите информацию о себе"
-                name        = "aboutUser"
-                value       = { aboutUser }
-                onChange    = { onChange }
-                error       = { errors.aboutUser }
-                counter     = { counters.aboutUser }
+                name = "aboutUser"
+                value = { aboutUser }
+                onChange = { onChange }
+                error = { errors.aboutUser }
+                counter = { counters.aboutUser }
             />
             <TextArea 
-                label       = "Стек технологий"
+                label = "Стек технологий"
                 placeholder = "Введите используемый стек технологий"
-                name        = "stack"
-                value       = { stack }
-                onChange    = { onChange }
-                error       = { errors.stack }
-                counter     = { counters.stack }
+                name = "stack"
+                value = { stack }
+                onChange = { onChange }
+                error = { errors.stack }
+                counter = { counters.stack }
             />
             <TextArea 
-                label       = "Описание последнего проекта"
+                label = "Описание последнего проекта"
                 placeholder = "Введите описание последнего проекта"
-                name        = "lastProject"
-                value       = { lastProject }
-                onChange    = { onChange }
-                error       = { errors.lastProject }
-                counter     = { counters.lastProject }
+                name = "lastProject"
+                value = { lastProject }
+                onChange = { onChange }
+                error = { errors.lastProject }
+                counter = { counters.lastProject }
             />
             <Input 
-                type        = "reset"  
+                type = "reset"
                 valueButton = "Отмена" 
-                onClick     = { resetForm }
+                onClick = { resetForm }
             />
             <Input type = "submit" valueButton = "Сохранить"/>                
         </form>
