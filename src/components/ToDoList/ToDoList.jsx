@@ -58,12 +58,33 @@ function TodoList() {
     setTodos(updatedTodos)
   }
 
+  const getActiveTodos = () => {
+    const activeTodos = todos.filter((el) => !el.isComplete)
+    return activeTodos.length
+  }
+  console.log('🍒 activeTodos', getActiveTodos())
+
   return (
     <>
       <div className={s.wrap}>
         <h1 className={s.title}>What's the Plan for Today?</h1>
         <TodoForm onSubmit={addTodo} />
-        <Tab />
+        <div className={s.container}>
+          <button
+            className={s.button}
+            type='button'
+            // onClick={}
+          >
+            active
+          </button>
+          <button
+            className={s.button}
+            type='button'
+            // onClick={}
+          >
+            completed
+          </button>
+        </div>
       </div>
       <Todo
         todos={todos}
@@ -71,7 +92,7 @@ function TodoList() {
         removeTodo={removeTodo}
         updateTodo={updateTodo}
       />
-      <img className={s.image} src={image} alt='' />
+      <img className={s.image} src={image} alt='running man' />
     </>
   )
 }

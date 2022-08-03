@@ -23,6 +23,7 @@ const TodoForm = (props) => {
     })
     setInput('')
   }
+
   return (
     <form onSubmit={handleSubmit} className={s.todoForm}>
       {props.edit ? (
