@@ -19,10 +19,10 @@ class Form extends React.Component {
         onChange={onChange}
       >
         <div className={styles.groupedInputsWrapper}>
-          <Input inputLabel="Имя" name="name" type="text" onChange={onChange} state={state} />
+          <Input inputLabel="Имя" name="firstName" type="text" onChange={onChange} state={state} />
           <Input
             inputLabel="Фамилия"
-            name="family_name"
+            name="lastName"
             type="text"
             onChange={onChange}
             state={state}
@@ -36,7 +36,7 @@ class Form extends React.Component {
           />
           <Input
             inputLabel="Телефон"
-            name="tel"
+            name="telephone"
             type="tel"
             placeholder="9-9999-99-99"
             onChange={onChange}
@@ -68,7 +68,7 @@ class Form extends React.Component {
           />
           <Input
             inputLabel="Описание последнего проекта"
-            name="last_proj_description"
+            name="last_project_description"
             type="text"
             isTextArea={true}
             onChange={onChange}

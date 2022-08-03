@@ -16,14 +16,30 @@ class Input extends React.Component {
     } = this.props;
     const errorMessage = state.errors[name];
     const value = state.inputs[name];
-    const numOfSymbols = value ? value.length : 0;
+    const textareaLimit = 600;
+
+    const numOfSymbolsLeft = textareaLimit - value.length < 0 ? 0 : textareaLimit - value.length;
+    const isnumOfSymbolsLeft = () => {
+      if (textareaLimit - value.length < 0) {
+        return false;
+      } else {
+        return true;
+      }
+    };
 
     if (isTextArea) {
       return (
         <div className={styles.formInput}>
           <label htmlFor={name}>
             <div>{inputLabel}</div>
-            <div className={styles.symbolsLimit}>{`${numOfSymbols}/600`}</div>
+            {isnumOfSymbolsLeft() && (
+              <div
+                className={styles.symbolsLimit}
+              >{`Осталось ${numOfSymbolsLeft}/${textareaLimit} символов`}</div>
+            )}
+            {!isnumOfSymbolsLeft() && (
+              <div className={styles.errorInLabel}>Превышен лимит символов в поле</div>
+            )}
           </label>
           <textarea
             id={name}
@@ -34,9 +50,9 @@ class Input extends React.Component {
             onChange={onChange}
             value={value}
           />
-          <div className={errorMessage ? styles.errorMessage : styles.invisible}>
+          {/* <div className={errorMessage ? styles.errorMessage : styles.invisible}>
             {errorMessage}
-          </div>
+          </div> */}
         </div>
       );
     }
@@ -53,7 +69,7 @@ class Input extends React.Component {
           onChange={onChange}
           value={value}
         />
-        <div className={errorMessage ? styles.errorMessage : styles.invisible}>{errorMessage}</div>
+        {/* <div className={errorMessage ? styles.errorMessage : styles.invisible}>{errorMessage}</div> */}
       </div>
     );
   }

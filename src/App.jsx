@@ -14,14 +14,14 @@ class App extends React.Component {
   }
 
   initialState = {
-    name: '',
-    family_name: '',
+    firstName: '',
+    lastName: '',
     date_of_birth: '',
-    tel: '',
+    telephone: '',
     web_site: '',
     about: '',
     skills: '',
-    last_proj_description: '',
+    last_project_description: '',
   };
 
   validate(value, inputName) {
@@ -100,7 +100,7 @@ class App extends React.Component {
       }));
     }
 
-    if (inputName === 'tel') {
+    if (inputName === 'telephone') {
       const telephoneNumberMask = [
         /\D/,
         '-',

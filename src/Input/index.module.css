@@ -66,6 +66,13 @@ label {
   align-self: center;
 }
 
+.errorInLabel {
+  font-size: 14px;
+  padding-top: 4px;
+  color: #ef4147;
+  font-weight: 400;
+  align-self: center;
+}
 .errorMessage {
   font-size: 14px;
   color: #ef4147;
