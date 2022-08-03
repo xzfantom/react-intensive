@@ -31,3 +31,18 @@ ul {
 .image {
   width: 45%;
 }
+.message {
+  width: 100%;
+  margin-top: 50px;
+  padding: 20px 0 20px;
+  box-sizing: border-box;
+  text-align: center;
+  border: 2px solid var(--text-color);
+  font-family: var(--accent-font);
+}
+
+.login {
+  display: inline-block;
+  margin-left: 15px;
+  color: var(--accent-color);
+}
