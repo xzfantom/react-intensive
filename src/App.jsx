@@ -25,7 +25,10 @@ class App extends React.Component {
   };
 
   validate(value, inputName) {
+    console.log('TELE value');
+    console.log(value);
     const regExp = new RegExp(validationRegExps[inputName]);
+
     if (validationIsNotEmpty.test(value)) {
       console.log('NOT EMPTY');
 
@@ -39,12 +42,73 @@ class App extends React.Component {
     console.log('!! EMPTY');
     return 'touchedEmpty';
   }
+
+  applyMask(value, mask) {
+    const result = [];
+    for (let i = 0; i < value.length; i++) {
+      if (i >= mask.length) break;
+      result[i] = (typeof mask[i] === 'string' ? mask[i] : '') + value[i].replace(mask[i], '');
+    }
+    let maskedValue = result.join('');
+    console.log('maskedValue');
+    console.log(maskedValue);
+    return maskedValue;
+  }
+
   onChange = (event) => {
     const inputName = event.target.name;
-    const value = event.target.value;
+    let value = event.target.value;
+
+    if (inputName === 'tel') {
+      if (this.validate(value, inputName) === 'regexpsTrue') {
+        this.setState((prevState) => ({
+          ...prevState,
+          inputs: {
+            ...prevState.inputs,
+            [inputName]: value,
+          },
+          errors: {
+            ...prevState.errors,
+            [inputName]: '',
+          },
+        }));
+      }
+      const telephoneNumberMask = [
+        /\D/,
+        '-',
+        /\D/,
+        /\D/,
+        /\D/,
+        /\D/,
+        '-',
+        /\D/,
+        /\D/,
+        '-',
+        /\D/,
+        /\D/,
+      ];
+      value = this.applyMask(value, telephoneNumberMask);
+      // console.log('valueTEL');
+      // console.log(value);
+      this.setState((prevState) => ({
+        ...prevState,
+        inputs: {
+          ...prevState.inputs,
+          [inputName]: value,
+        },
+      }));
+    }
+
+    // console.log('value');
+    // console.log(value);
 
     if (this.validate(value, inputName) === 'touchedEmpty') {
       this.setState((prevState) => ({
+        ...prevState,
+        inputs: {
+          ...prevState.inputs,
+          [inputName]: value,
+        },
         errors: {
           ...prevState.errors,
           [inputName]: emptyErrorText,
@@ -53,6 +117,11 @@ class App extends React.Component {
     }
 
     if (this.validate(value, inputName) === 'regexpsTrue') {
+      // console.log('value');
+      // console.log(value);
+      // console.log('state value');
+      // console.log(this.state.inputs[inputName]);
+
       this.setState((prevState) => ({
         ...prevState,
         inputs: {
@@ -60,18 +129,24 @@ class App extends React.Component {
           [inputName]: value,
         },
         errors: {
-          ...this.initialState,
+          ...prevState.errors,
+          [inputName]: '',
         },
       }));
     }
     if (this.validate(value, inputName) === 'regexpsFalse') {
       this.setState((prevState) => ({
+        ...prevState,
+        inputs: {
+          ...prevState.inputs,
+          [inputName]: value,
+        },
         errors: {
           ...prevState.errors,
           [inputName]: errorsTextTemplate[inputName],
         },
       }));
-      console.log(this.state.errors);
+      // console.log(this.state.errors);
     }
     return;
   };

@@ -15,10 +15,8 @@ class Input extends React.Component {
       placeholder = inputLabel,
     } = this.props;
     const errorMessage = state.errors[name];
-    const value = state[name];
+    const value = state.inputs[name];
     const numOfSymbols = value ? value.length : 0;
-    console.log(value);
-    console.log(numOfSymbols);
 
     if (isTextArea) {
       return (
@@ -30,7 +28,7 @@ class Input extends React.Component {
           <textarea
             id={name}
             name={name}
-            className={styles.inputText}
+            className={errorMessage ? styles.inputTextError : styles.inputText}
             rows="7"
             placeholder={placeholder}
             onChange={onChange}
@@ -49,11 +47,11 @@ class Input extends React.Component {
         <input
           id={name}
           name={name}
-          className={styles.inputText}
+          className={errorMessage ? styles.inputTextError : styles.inputText}
           type={type}
           placeholder={placeholder}
           onChange={onChange}
-          value={state[name]}
+          value={value}
         />
         <div className={errorMessage ? styles.errorMessage : styles.invisible}>{errorMessage}</div>
       </div>

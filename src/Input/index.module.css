@@ -30,9 +30,24 @@ label {
   font-family: 'Poppins', sans-serif;
   width: 100%;
 }
+.inputTextError {
+  color: rgb(96, 94, 94);
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  border: 1px solid transparent;
+  outline: 1px solid #ff9094;
+}
+
+.inputTextError:focus {
+  border: 1px solid transparent;
+  outline: 1px solid #ff9094;
+}
 
 .inputText:focus {
-  outline: 3px solid #dcc3ec;
+  border: 1px solid transparent;
+  outline: 1px solid #dcc3ec;
 }
 
 .formInput {
