@@ -1,0 +1,13 @@
+.navWrap {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+}
+
+.navLink {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 1.5px;
+}

@@ -1,13 +1,71 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import-normalize;
+
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap');
+
+:root {
+  --accent-font: 'Paytone One', sans-serif;
+  --font: 'Source Sans Pro', sans-serif;
+
+  --accent-color: #d400b3;
+  --text-color: #e5e5e5;
+  --head-color: #fff;
+
+  --background-color: #0d0d0e;
+  --accent-background-color: #262627;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--text-color);
+  background: linear-gradient(
+    to right,
+    var(--background-color),
+    var(--accent-background-color)
+  );
+  font-size: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4 {
+  color: var(--head-color);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+a {
+  outline: none;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
