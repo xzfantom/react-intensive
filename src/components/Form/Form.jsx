@@ -1,9 +1,9 @@
-import { Component } from "react";
-import Buttons from "../Buttons/Buttons";
-import TextAreas from "../TextAreas/TextAreas";
-import Inputs from "../Inputs/Inputs";
-import formValidation from "../../services/formValidation";
+import { useState, useEffect } from "react";
+import Buttons from "../Buttons";
+import TextAreas from "../TextAreas";
+import Inputs from "../Inputs";
 import { validatePhoneNumber } from "../../services/validatePhoneNumber";
+import { formValidation } from "../../services/formValidation";
 
 const INITIAL_STATE = {
   firstName: "",
@@ -16,62 +16,58 @@ const INITIAL_STATE = {
   project: "",
 };
 
-class Form extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { ...INITIAL_STATE, errors: {} };
-    this.formValidation = formValidation.bind(this);
-  }
+export default function Form({ onFormSubmit }) {
+  const [formValues, setFormValues] = useState(INITIAL_STATE);
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
 
-  handleChange = (e) => {
+  const onBlur = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value.trim() });
+  };
+
+  useEffect(() => {
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      onFormSubmit(formValues);
+    }
+  }, [formErrors, isSubmit, onFormSubmit, formValues]);
+
+  const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "phone") {
-      this.setState({
-        [name]: validatePhoneNumber(value),
-      });
+      setFormValues({ ...formValues, [name]: validatePhoneNumber(value) });
       return;
     }
-    this.setState({
-      [name]: value,
-    });
+    setFormValues({ ...formValues, [name]: value });
   };
 
-  onBlur = (e) => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value.trim() });
-  };
-
-  resetForm = () => {
-    this.setState({ ...INITIAL_STATE, errors: {} });
-  };
-
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const isValid = this.formValidation();
-    if (isValid) {
-      this.props.onFormSubmit(this.state);
-      this.resetForm();
-    }
+    setFormErrors(formValidation(formValues));
+    setIsSubmit(true);
   };
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit} onReset={this.resetForm}>
-        <Inputs
-          onInputChange={this.handleChange}
-          textValue={this.state}
-          onBlur={this.onBlur}
-        />
-        <TextAreas
-          onTextAreaChange={this.handleChange}
-          textValue={this.state}
-          onBlur={this.onBlur}
-        />
+  const resetForm = () => {
+    setFormValues(INITIAL_STATE);
+    setFormErrors({});
+    setIsSubmit(false);
+  };
 
-        <Buttons />
-      </form>
-    );
-  }
+  return (
+    <form onSubmit={handleSubmit} onReset={resetForm}>
+      <Inputs
+        onInputChange={handleChange}
+        textValue={formValues}
+        onBlur={onBlur}
+        formErrors={formErrors}
+      />
+      <TextAreas
+        onTextAreaChange={handleChange}
+        textValue={formValues}
+        onBlur={onBlur}
+        formErrors={formErrors}
+      />
+      <Buttons />
+    </form>
+  );
 }
-
-export default Form;

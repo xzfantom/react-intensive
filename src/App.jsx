@@ -1,42 +1,31 @@
-import { Component } from "react";
-import Container from "./components/Container/Container";
-import Footer from "./components/Footer/Footer";
-import Form from "./components/Form/Form";
-import Header from "./components/Header/Header";
-import ResultForm from "./components/ResultForm/ResultForm";
+import { useState } from "react";
+import Container from "./components/Container";
+import Footer from "./components/Footer";
+import Form from "./components/Form";
+import Header from "./components/Header";
+import ResultForm from "./components/ResultForm";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.dataRecieved = false;
-  }
+export default function App() {
+  const [answers, setAnswers] = useState({});
+  const [dataRecieved, setDataRecieved] = useState(false);
 
-  formSubmitHandler = (data) => {
-    this.setState({ answers: data, dataRecieved: true }, () => {});
+  const formSubmitHandler = (data) => {
+    console.log(data);
+    setAnswers(data);
+    setDataRecieved(true);
   };
 
-  componentDidMount() {
-    window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
-    };
-  }
-
-  render() {
-    return (
-      <>
-        <Container>
-          <Header />
-          {this.state.dataRecieved ? (
-            <ResultForm formData={this.state} />
-          ) : (
-            <Form onFormSubmit={this.formSubmitHandler} />
-          )}
-        </Container>
-        <Footer />
-      </>
-    );
-  }
+  return (
+    <>
+      <Header />
+      <Container>
+        {dataRecieved ? (
+          <ResultForm formData={answers} />
+        ) : (
+          <Form onFormSubmit={formSubmitHandler} />
+        )}
+      </Container>
+      <Footer />
+    </>
+  );
 }
-
-export default App;
