@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from './Form/Form';
+import Form from './Form';
 import styles from './App.module.css';
 import { validationRegExps, validationIsNotEmpty } from './helpers/validation';
 import { errorsTextTemplate, emptyErrorText } from './helpers/errors';

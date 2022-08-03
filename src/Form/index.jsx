@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './Form.module.css';
-import Input from './Input';
-import Button from './Button';
+import styles from './index.module.css';
+import Input from '../Input';
+import Button from '../Button';
 
 class Form extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class Form extends React.Component {
             inputLabel="Телефон"
             name="tel"
             type="tel"
-            placeholder="7-7777-77-77"
+            placeholder="9-9999-99-99"
             onChange={onChange}
             state={state}
           />
