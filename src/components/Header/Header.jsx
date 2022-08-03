@@ -10,7 +10,7 @@ const Header = () => {
     <div className={s.headerWrap}>
       <div className={s.logoLink}>
         <img className={s.logo} src={logo} alt='logo' />
-        <div className={s.logoName}>ToDo List</div>
+        <div className={s.logoName}>Todo List</div>
       </div>
       <Navigation />
       <BigButton text='Log In' />

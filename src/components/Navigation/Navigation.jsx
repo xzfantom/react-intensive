@@ -10,16 +10,16 @@ const Navigation = () => {
         className={s.navLink}
         //  activeClassName={s.activeLink}
       >
-        about
+        home
       </div>
 
       <div
         // exact
-        // to='/contacts'
+        // to='/about'
         className={s.navLink}
         // activeClassName={s.activeLink}
       >
-        to do list
+        about
       </div>
     </nav>
   )

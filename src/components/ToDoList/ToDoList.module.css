@@ -1,0 +1,19 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.title {
+  margin-bottom: 30px;
+}
+
+.image {
+  width: 700px;
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  z-index: 1;
+}
