@@ -59,20 +59,48 @@ class App extends React.Component {
     const inputName = event.target.name;
     let value = event.target.value;
 
+    if (this.validate(value, inputName) === 'touchedEmpty') {
+      this.setState((prevState) => ({
+        ...prevState,
+        inputs: {
+          ...prevState.inputs,
+          [inputName]: value,
+        },
+        errors: {
+          ...prevState.errors,
+          [inputName]: emptyErrorText,
+        },
+      }));
+    }
+
+    if (this.validate(value, inputName) === 'regexpsTrue') {
+      this.setState((prevState) => ({
+        ...prevState,
+        inputs: {
+          ...prevState.inputs,
+          [inputName]: value,
+        },
+        errors: {
+          ...prevState.errors,
+          [inputName]: '',
+        },
+      }));
+    }
+    if (this.validate(value, inputName) === 'regexpsFalse') {
+      this.setState((prevState) => ({
+        ...prevState,
+        inputs: {
+          ...prevState.inputs,
+          [inputName]: value,
+        },
+        errors: {
+          ...prevState.errors,
+          [inputName]: errorsTextTemplate[inputName],
+        },
+      }));
+    }
+
     if (inputName === 'tel') {
-      if (this.validate(value, inputName) === 'regexpsTrue') {
-        this.setState((prevState) => ({
-          ...prevState,
-          inputs: {
-            ...prevState.inputs,
-            [inputName]: value,
-          },
-          errors: {
-            ...prevState.errors,
-            [inputName]: '',
-          },
-        }));
-      }
       const telephoneNumberMask = [
         /\D/,
         '-',
@@ -87,9 +115,8 @@ class App extends React.Component {
         /\D/,
         /\D/,
       ];
+
       value = this.applyMask(value, telephoneNumberMask);
-      // console.log('valueTEL');
-      // console.log(value);
       this.setState((prevState) => ({
         ...prevState,
         inputs: {
@@ -98,9 +125,6 @@ class App extends React.Component {
         },
       }));
     }
-
-    // console.log('value');
-    // console.log(value);
 
     if (this.validate(value, inputName) === 'touchedEmpty') {
       this.setState((prevState) => ({
