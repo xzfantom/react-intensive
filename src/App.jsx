@@ -1,8 +1,8 @@
 import React from 'react';
-import Form from './Form';
+import Form from './Form/Form';
 import styles from './App.module.css';
-import validation from './validation';
-import errorsTextTemplate from './errors';
+import { validationRegExps, validationIsNotEmpty } from './helpers/validation';
+import { errorsTextTemplate, emptyErrorText } from './helpers/errors';
 
 class App extends React.Component {
   constructor(props) {
@@ -25,19 +25,34 @@ class App extends React.Component {
   };
 
   validate(value, inputName) {
-    const regExp = new RegExp(validation[inputName]);
+    const regExp = new RegExp(validationRegExps[inputName]);
+    if (validationIsNotEmpty.test(value)) {
+      console.log('NOT EMPTY');
 
-    if (regExp.test(value)) {
-      console.log(true);
-      return true;
+      if (regExp.test(value)) {
+        console.log('regexps TRUE');
+        return 'regexpsTrue';
+      }
+      console.log('regexps FALSE');
+      return 'regexpsFalse';
     }
-    return false;
+    console.log('!! EMPTY');
+    return 'touchedEmpty';
   }
   onChange = (event) => {
     const inputName = event.target.name;
     const value = event.target.value;
 
-    if (this.validate(value, inputName)) {
+    if (this.validate(value, inputName) === 'touchedEmpty') {
+      this.setState((prevState) => ({
+        errors: {
+          ...prevState.errors,
+          [inputName]: emptyErrorText,
+        },
+      }));
+    }
+
+    if (this.validate(value, inputName) === 'regexpsTrue') {
       this.setState((prevState) => ({
         ...prevState,
         inputs: {
@@ -48,13 +63,9 @@ class App extends React.Component {
           ...this.initialState,
         },
       }));
-    } else {
+    }
+    if (this.validate(value, inputName) === 'regexpsFalse') {
       this.setState((prevState) => ({
-        ...prevState,
-        inputs: {
-          ...prevState.inputs,
-          [inputName]: value,
-        },
         errors: {
           ...prevState.errors,
           [inputName]: errorsTextTemplate[inputName],
@@ -62,7 +73,7 @@ class App extends React.Component {
       }));
       console.log(this.state.errors);
     }
-    console.log('from state>>' + this.state.inputs[inputName]);
+    return;
   };
 
   handleFormReset = () => {

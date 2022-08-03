@@ -9,7 +9,7 @@ class Button extends React.Component {
     const { type = 'button', buttonName } = this.props;
     return (
       <button type={type} className={styles.myButton}>
-        {buttonName} {type}
+        {buttonName}
       </button>
     );
   }

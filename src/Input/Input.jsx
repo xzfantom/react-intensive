@@ -28,7 +28,9 @@ class Input extends React.Component {
             onChange={onChange}
             value={state[name]}
           />
-          {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
+          <div className={errorMessage ? styles.errorMessage : styles.invisible}>
+            {errorMessage}
+          </div>
         </div>
       );
     }
@@ -45,7 +47,7 @@ class Input extends React.Component {
           onChange={onChange}
           value={state[name]}
         />
-        {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
+        <div className={errorMessage ? styles.errorMessage : styles.invisible}>{errorMessage}</div>
       </div>
     );
   }
