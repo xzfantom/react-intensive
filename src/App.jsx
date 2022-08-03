@@ -7,26 +7,26 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      family_name: '',
+      firstName: '',
+      lastName: '',
       date_of_birth: '',
-      tel: '',
+      telephone: '',
       web_site: '',
       about: '',
       skills: '',
-      last_proj_description: '',
+      last_project_description: '',
     };
   }
 
   initialState = {
-    name: '',
-    family_name: '',
+    firstName: '',
+    lastName: '',
     date_of_birth: '',
-    tel: '',
+    telephone: '',
     web_site: '',
     about: '',
     skills: '',
-    last_proj_description: '',
+    last_project_description: '',
   };
 
   onChange = (event) => {
@@ -56,14 +56,14 @@ class App extends React.Component {
             <div className={styles.groupedInputsWrapper}>
               <Input
                 inputLabel="Имя"
-                name="name"
+                name="firstName"
                 type="text"
                 onChange={this.onChange}
                 value={this.state.name}
               />
               <Input
                 inputLabel="Фамилия"
-                name="family_name"
+                name="lastName"
                 type="text"
                 onChange={this.onChange}
                 value={this.state.family_name}
@@ -77,7 +77,7 @@ class App extends React.Component {
               />
               <Input
                 inputLabel="Телефон"
-                name="tel"
+                name="telephone"
                 type="tel"
                 onChange={this.onChange}
                 value={this.state.tel}
@@ -107,7 +107,7 @@ class App extends React.Component {
               />
               <Input
                 inputLabel="Описание последнего проекта"
-                name="last_proj_description"
+                name="last_project_description"
                 type="text"
                 isTextArea={true}
                 onChange={this.onChange}
