@@ -35,8 +35,6 @@
 
 .todoInput.edit {
   border: 2px solid #149fff;
-  z-index: 3;
-  position: relative;
 }
 
 .todoButton.edit {
@@ -46,6 +44,4 @@
     rgba(17, 122, 255, 1) 100%
   );
   padding: 16px 22px;
-  z-index: 3;
-  position: relative;
 }

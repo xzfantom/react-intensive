@@ -6,7 +6,7 @@ const NotFoundPage = () => {
   return (
     <>
       <img src={image} className={s.image} alt='Not found page' />
-      <h1 className={s.message}>Not Found Page</h1>
+      <h1 className={s.message}>404 - Not Found Page</h1>
       <BigButton text='go home' />
     </>
   )
