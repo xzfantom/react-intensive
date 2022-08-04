@@ -1,6 +1,6 @@
 import React from 'react';
 import Form from './Form';
-import { validationRegExps, validationIsNotEmpty } from './helpers/validation';
+import { validationRegExps, validationIsNotEmpty } from './helpers/validations';
 import { errorsTextTemplate, emptyErrorText } from './helpers/errors';
 
 class App extends React.Component {
