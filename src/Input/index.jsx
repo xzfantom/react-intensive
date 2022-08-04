@@ -18,7 +18,8 @@ class Input extends React.Component {
     const value = state.inputs[name];
     const textareaLimit = 600;
 
-    const numOfSymbolsLeft = textareaLimit - value.length < 0 ? 0 : textareaLimit - value.length;
+    const numOfSymbolsLeft =
+      textareaLimit - value.trim().length < 0 ? 0 : textareaLimit - value.trim().length;
     const isnumOfSymbolsLeft = () => {
       if (textareaLimit - value.length < 0) {
         return false;

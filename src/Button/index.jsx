@@ -6,9 +6,9 @@ class Button extends React.Component {
     super(props);
   }
   render() {
-    const { type = 'button', buttonName } = this.props;
+    const { type = 'button', buttonName, onClick } = this.props;
     return (
-      <button type={type} className={styles.myButton}>
+      <button type={type} className={styles.myButton} onClick={onClick}>
         {buttonName}
       </button>
     );

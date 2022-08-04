@@ -4,9 +4,9 @@ const errorsTextTemplate = {
   date_of_birth: 'Год рождения должен быть в диапазоне 1900-2010',
   telephone: 'Номер телефона должен состоять из 9 цифр',
   web_site: 'Адрес веб-сайта должен начинаться с https://',
-  about: 'Текст не может содержать более 600 символов',
-  skills: 'Текст не может содержать более 600 символов',
-  last_project_description: 'Текст не может содержать более 600 символов',
+  about: '',
+  skills: '',
+  last_project_description: '',
 };
 
 const emptyErrorText = 'Поле пустое. Заполните, пожалуйста';

@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from './Form';
+import Profile from './Profile';
 import styles from './App.module.css';
 import { validationRegExps, validationIsNotEmpty } from './helpers/validation';
 import { errorsTextTemplate, emptyErrorText } from './helpers/errors';
@@ -10,6 +11,7 @@ class App extends React.Component {
     this.state = {
       inputs: { ...this.initialState },
       errors: { ...this.initialState },
+      isProfileShown: false,
     };
   }
 
@@ -53,7 +55,7 @@ class App extends React.Component {
     const inputName = event.target.name;
     let value = event.target.value;
 
-    if (this.validateIsNotEmpty(value) === false) {
+    if (this.validateIsNotEmpty(value.trim()) === false) {
       this.setState((prevState) => ({
         ...prevState,
         inputs: {
@@ -68,7 +70,7 @@ class App extends React.Component {
       return;
     }
 
-    if (this.validateIsValid(value, inputName)) {
+    if (this.validateIsValid(value.trim(), inputName)) {
       this.setState((prevState) => ({
         ...prevState,
         inputs: {
@@ -81,7 +83,7 @@ class App extends React.Component {
         },
       }));
     }
-    if (this.validateIsValid(value, inputName) === false) {
+    if (this.validateIsValid(value.trim(), inputName) === false) {
       this.setState((prevState) => ({
         ...prevState,
         inputs: {
@@ -121,7 +123,7 @@ class App extends React.Component {
       }));
     }
 
-    if (this.validateIsValid(value, inputName)) {
+    if (this.validateIsValid(value.trim(), inputName)) {
       this.setState((prevState) => ({
         ...prevState,
         inputs: {
@@ -135,7 +137,7 @@ class App extends React.Component {
       }));
     }
 
-    if (this.validateIsValid(value, inputName) === false) {
+    if (this.validateIsValid(value.trim(), inputName) === false) {
       this.setState((prevState) => ({
         ...prevState,
         inputs: {
@@ -151,12 +153,16 @@ class App extends React.Component {
   };
 
   handleFormReset = () => {
-    this.setState(this.initialState);
+    this.setState({
+      inputs: { ...this.initialState },
+      errors: { ...this.initialState },
+      isProfileShown: false,
+    });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-    let noValidationErrors = true;
+    let needsRerender = false;
     for (const fieldName in this.state.inputs) {
       if (this.state.inputs[fieldName] === '') {
         this.setState((prevState) => ({
@@ -166,36 +172,48 @@ class App extends React.Component {
             [fieldName]: emptyErrorText,
           },
         }));
-        noValidationErrors = false;
+        needsRerender = true;
       }
     }
-    if (noValidationErrors) {
-      if (
-        Object.values(this.state.errors).every((el) => {
-          return el === '';
-        })
-      ) {
-        alert('the form is validated and submitted');
-        return;
-      }
+
+    if (needsRerender) {
+      return;
     }
-    alert('the form CANNOT be validated');
+
+    if (
+      Object.values(this.state.errors).every((el) => {
+        return el === '';
+      })
+    ) {
+      alert('the form is validated and submitted');
+      this.setState({
+        inputs: { ...this.initialState },
+        errors: { ...this.initialState },
+        isProfileShown: true,
+      });
+      console.log('this.state.isProfileShown');
+      console.log(this.state.isProfileShown);
+      return;
+    } else {
+      alert('the form CANNOT be validated');
+    }
   };
 
   render() {
+    console.log('this.state.isProfileShown SFTER RENDER');
+    console.log(this.state.isProfileShown);
     return (
       <div>
-        <div className={styles.headingWrapper}>
-          <h1>Создание анкеты</h1>
-        </div>
-        <section>
+        <Profile />
+        {/* {this.state.isProfileShown && <Profile />}
+        {!this.state.isProfileShown && (
           <Form
             handleSubmit={this.handleSubmit}
             handleFormReset={this.handleFormReset}
             onChange={this.onChange}
             state={this.state}
           />
-        </section>
+        )} */}
       </div>
     );
   }
