@@ -1,8 +1,7 @@
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Navigation from '../Navigation/Navigation'
 import s from './Header.module.css'
-import logo from '../images/logo.png'
-// import cart from '../images/icons/cart.svg'
+import logo from '../../images/logo.png'
 import BigButton from '../common/BigButton/BigButton'
 
 const Header = () => {
@@ -13,7 +12,9 @@ const Header = () => {
         <div className={s.logoName}>Todo List</div>
       </div>
       <Navigation />
-      <BigButton text='Log In' />
+      <Link to='/login'>
+        <BigButton text='Log In' />
+      </Link>
     </div>
   )
 }

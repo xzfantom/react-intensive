@@ -1,5 +1,5 @@
 import s from './AboutUsPage.module.css'
-import image from '../../components/images/hand.png'
+import image from '../../images/hand.png'
 
 const AboutUsPage = () => {
   return (

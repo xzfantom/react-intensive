@@ -1,7 +1,7 @@
 import BigButton from '../../components/common/BigButton/BigButton'
 import { useHistory, useLocation } from 'react-router-dom'
 import s from './NotFoundPage.module.css'
-import image from '../../components/images/frame.png'
+import image from '../../images/frame.png'
 
 const NotFoundPage = () => {
   const history = useHistory()

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import TodoForm from '../ToDoForm/ToDoForm'
 import s from './ToDo.module.css'
-import editIcon from '../../images/icons/edit-icon.svg'
-import deleteIcon from '../../images/icons/delete-icon.svg'
+import editIcon from '../../../images/icons/edit-icon.svg'
+import deleteIcon from '../../../images/icons/delete-icon.svg'
 
 const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
   const [edit, setEdit] = useState({

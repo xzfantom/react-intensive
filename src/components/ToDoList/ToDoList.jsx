@@ -3,7 +3,6 @@ import s from './ToDoList.module.css'
 import TodoForm from './ToDoForm/ToDoForm'
 import Todo from './ToDo/Todo'
 import * as storage from '../../services/localStorage'
-import image from '../images/man.png'
 import Tab from '../Tab/Tab'
 
 const STORAGE_KEY = 'todos'

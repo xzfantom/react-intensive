@@ -6,10 +6,12 @@
   box-sizing: border-box;
   background-color: transparent;
   border: 2px solid var(--accent-color);
-  cursor: pointer;
   transition: all 200ms;
   width: 200px;
   height: 40px;
+}
+.button:hover {
+  cursor: pointer;
 }
 
 .heading {
