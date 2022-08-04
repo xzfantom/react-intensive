@@ -2,9 +2,7 @@ import React from 'react';
 import styles from './outputField.module.css';
 
 
-function OutputField ( props ) {
-    let { value } = props;
-    const { className, title = "" } = props;
+function OutputField ({ value, className, title = "" }) {
     const DATE_TITLE = "Дата рождения: ";
 
     if ( title === DATE_TITLE && value ) {

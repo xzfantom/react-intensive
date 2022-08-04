@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './textArea.module.css';
 
-function TextArea ( props ) {
-    const { label, rows, placeholder, name, onChange, error, counter } = props;
+function TextArea ({ label, rows, placeholder, name, onChange, error, counter }) {
     const TEXT_COUNTER = `Осталось ${counter}/600 символов`;
     const TEXT_ERROR = "Превышен лимит символов в поле";
     const DEFAULT_FIELD_ROWS = 7;

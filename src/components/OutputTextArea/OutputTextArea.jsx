@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './outputTextArea.module.css';
 
-function OutputTextArea ( props ) {
-    const { title, value } = props;
+function OutputTextArea ({ title, value }) {
     const DEFAULT_FIELD_ROWS = 7;
     
     return (

@@ -4,10 +4,20 @@ import TextArea from '../TextArea/TextArea';
 import styles from './form.module.css';
 
 
-function Form ( props ) {
-
-    let isData = props.isData;
+function Form ({ isData, changeData, className }) {
     const FORM_TITLE = "Создание анкеты";
+    const TEXT_ERROR = {
+        emptyValue: "Поле пустое. Заполните пожалуйста",
+        firstLetter: "Используйте заглавную букву для написания первого символа",
+        phonePattern: 'Введите номер согласно шаблону "7-7777-77-77"',
+        emailPattern: 'Введите url согласно шаблону "https://..."',
+        dateValue: "Ваш возраст должен быть более 1 года и менее 122 лет"
+    };
+    const REG_EXP = {
+        phoneReplacePattern: /(\d{0,1})(\d{0,4})(\d{0,2})(\d{0,2})/,
+        phoneCheckPattern: /^[0-9]{1}-[0-9]{4}-[0-9]{2}-[0-9]{2}$/,
+        emailCheckPattern: /^https:\/\//,
+    };
     const initialPerson = {
         firstName: "",
         lastName: "",
@@ -29,17 +39,26 @@ function Form ( props ) {
 
     const onChange = ( e ) => {
         const fieldName = e.target.name;
-        errors[ fieldName ] = ""; 
+        setErrors({...errors, [ fieldName ] : "" })
 
         if ( e.target.type === "tel" ) {
-            const matchedString = e.target.value.replace(/\D/g, "").match(/(\d{0,1})(\d{0,4})(\d{0,2})(\d{0,2})/);
+            const matchedString = e.target.value.replace(/\D/g, "").match(REG_EXP.phoneReplacePattern);
             e.target.value = !matchedString[2] ? matchedString[1] 
                 : matchedString[1] + "-" + matchedString[2] 
                 + (matchedString[3] ? "-" + matchedString[3] : "") 
                 + (matchedString[4] ? "-" + matchedString[4] : "");
         }
         if ( e.target.type === "textarea" ) counters[ fieldName ] = 600 - e.target.value.length;
-
+        if ( e.target.type === "text"
+            && e.target.value.trim().charAt(0) !== e.target.value.charAt(0).toUpperCase()) {
+            setErrors({...errors, [ fieldName ] : TEXT_ERROR.firstLetter })
+        }
+        if ( e.target.type === "date" ){
+            const selectDate = new Date(e.target.value)
+            if (selectDate.getFullYear() >= 2022 || selectDate.getFullYear() < 1900) {
+                setErrors({...errors, [ fieldName ] : TEXT_ERROR.dateValue })
+            }
+        }
         setPerson({...person, [ fieldName ] : e.target.value })
     }
 
@@ -49,15 +68,18 @@ function Form ( props ) {
 
         for( let i in person ) {
             if ( !person[i] ) {
-                errorsArray[i] = "Поле пустое. Заполните пожалуйста" 
-            } else if (( i === "firstName" || i === "lastName" ) 
+                errorsArray[i] = TEXT_ERROR.emptyValue;
+            } else if (( i === "firstName" || i === "lastName" )
                 && person[i].trim().charAt(0) !== person[i].charAt(0).toUpperCase() ){
-                errorsArray[i] = "Используйте заглавную букву для написания первого символа"
-            } else if ( i === "phone" && person[i].trim() === person[i].trim().replace(/^[0-9]{1}-[0-9]{4}-[0-9]{2}-[0-9]{2}$/,'')){
-                errorsArray[i] = 'Введите номер согласно шаблону "7-7777-77-77"';
-            } else if ( i === "url" && person[i].trim() === person[i].trim().replace(/^https:\/\//,'')){
-                errorsArray[i] = 'Введите url согласно шаблону "https://..."';
-            }  else if ( person[i].length > 600 ){
+                errorsArray[i] = TEXT_ERROR.firstLetter;
+            } else if ( i === "phone" && person[i].trim() === person[i].trim().replace(REG_EXP.phoneCheckPattern,'')){
+                errorsArray[i] = TEXT_ERROR.phonePattern;
+            } else if ( i === "url" && person[i].trim() === person[i].trim().replace(REG_EXP.emailCheckPattern,'')){
+                errorsArray[i] = TEXT_ERROR.emailPattern;
+            } else if ( i === "birthday") {
+                const selectDate = new Date(person[i])
+                if ((selectDate.getFullYear() >= 2022 || selectDate.getFullYear() < 1900)) errorsArray[i] = TEXT_ERROR.dateValue;
+            } else if ( person[i].length > 600 ){
                 errorsArray[i] = " ";   // this error exists to prevent submit form, when the maximum value is exceeded (checked and render by TextArea)
             } else errorsArray[i] = ""; 
         }
@@ -69,7 +91,7 @@ function Form ( props ) {
     const onSubmit = ( e ) => {
         isData = formValidation();
         if ( isData ) { 
-            props.changeData({ isData, person });
+            changeData({ isData, person });
             resetForm() 
         }
         e.preventDefault();
@@ -85,7 +107,7 @@ function Form ( props ) {
 
     return (
         <form 
-            className = { props.className }
+            className = { className }
             onSubmit = { onSubmit }
         >
             <legend className = { styles.titleForm }>{ FORM_TITLE }</legend>
