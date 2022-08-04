@@ -21,7 +21,8 @@ class Input extends React.Component {
 
     const numOfSymbolsLeft =
       textareaLimit - value.trim().length < 0 ? 0 : textareaLimit - value.trim().length;
-    const isnumOfSymbolsLeft = () => {
+
+    const checkIfNumOfSymbolsLeft = () => {
       if (textareaLimit - value.length < 0) {
         return false;
       } else {
@@ -43,12 +44,12 @@ class Input extends React.Component {
         <div className={styles.formInput}>
           <label htmlFor={name}>
             <div>{inputLabel}</div>
-            {isnumOfSymbolsLeft() && (
+            {checkIfNumOfSymbolsLeft() && (
               <div
                 className={styles.symbolsLimit}
               >{`Осталось ${numOfSymbolsLeft}/${textareaLimit} символов`}</div>
             )}
-            {!isnumOfSymbolsLeft() && (
+            {!checkIfNumOfSymbolsLeft() && (
               <div className={styles.errorInLabel}>Превышен лимит символов в поле</div>
             )}
           </label>
