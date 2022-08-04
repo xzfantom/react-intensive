@@ -1,0 +1,23 @@
+.tab {
+  display: flex;
+  width: 300px;
+  border: 1px solid black;
+  align-self: center;
+}
+
+.tab > :first-child {
+  border-right: 1px solid black;
+}
+
+.tab > div {
+  width: 150px;
+  text-align: center;
+  color: grey;
+  cursor: pointer;
+}
+
+div.selected {
+  color: black;
+  font-weight: bold;
+  background-color: lightgray;
+}

@@ -1,0 +1,19 @@
+.main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.main > button {
+  padding: 3px 10px;
+  background-color: white;
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.main > div::before {
+  content: "\200b";
+}
