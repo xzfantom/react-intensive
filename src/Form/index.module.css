@@ -1,9 +1,8 @@
-section {
+.mainContent {
   background-color: white;
 }
 .headingWrapper {
   background-color: #dcc3ec;
-  max-width: 90%;
   min-height: 100px;
   height: 10vh;
   color: white;
@@ -11,6 +10,15 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 20px;
+  flex-wrap: wrap;
+  max-width: 90%;
 }
 
 .formWrapper {

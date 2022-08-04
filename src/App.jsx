@@ -1,7 +1,5 @@
 import React from 'react';
 import Form from './Form';
-import Profile from './Profile';
-import styles from './App.module.css';
 import { validationRegExps, validationIsNotEmpty } from './helpers/validation';
 import { errorsTextTemplate, emptyErrorText } from './helpers/errors';
 
@@ -185,36 +183,24 @@ class App extends React.Component {
         return el === '';
       })
     ) {
-      alert('the form is validated and submitted');
       this.setState({
-        inputs: { ...this.initialState },
         errors: { ...this.initialState },
         isProfileShown: true,
       });
-      console.log('this.state.isProfileShown');
-      console.log(this.state.isProfileShown);
       return;
-    } else {
-      alert('the form CANNOT be validated');
     }
   };
 
   render() {
-    console.log('this.state.isProfileShown SFTER RENDER');
+    console.log('this.state.isProfileShown AFTER RENDER');
     console.log(this.state.isProfileShown);
     return (
-      <div>
-        <Profile />
-        {/* {this.state.isProfileShown && <Profile />}
-        {!this.state.isProfileShown && (
-          <Form
-            handleSubmit={this.handleSubmit}
-            handleFormReset={this.handleFormReset}
-            onChange={this.onChange}
-            state={this.state}
-          />
-        )} */}
-      </div>
+      <Form
+        handleSubmit={this.handleSubmit}
+        handleFormReset={this.handleFormReset}
+        onChange={this.onChange}
+        state={this.state}
+      />
     );
   }
 }

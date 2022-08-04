@@ -10,11 +10,17 @@ class Form extends React.Component {
 
   render() {
     const { handleSubmit, handleFormReset, onChange, state } = this.props;
-
+    const isProfileShown = state.isProfileShown;
     return (
       <div>
         <div className={styles.headingWrapper}>
-          <h1>Создание анкеты</h1>
+          {isProfileShown && (
+            <h1 className={styles.header}>
+              <div>{state.inputs.firstName}</div>
+              <div>{state.inputs.lastName}</div>
+            </h1>
+          )}
+          {!isProfileShown && <h1 className={styles.header}>Создание анкеты</h1>}
         </div>
         <section className={styles.mainContent}>
           <form onSubmit={handleSubmit} className={styles.formWrapper} onChange={onChange}>
@@ -81,10 +87,12 @@ class Form extends React.Component {
                 state={state}
               />
             </div>
-            <div className={styles.buttonWrapper}>
-              <Button buttonName="Отменить" onClick={handleFormReset} />
-              <Button type="submit" buttonName="Сохранить" />
-            </div>
+            {!isProfileShown && (
+              <div className={styles.buttonWrapper}>
+                <Button buttonName="Отменить" onClick={handleFormReset} />
+                <Button type="submit" buttonName="Сохранить" />
+              </div>
+            )}
           </form>
         </section>
       </div>

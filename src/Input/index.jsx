@@ -14,6 +14,7 @@ class Input extends React.Component {
       isTextArea = false,
       placeholder = inputLabel,
     } = this.props;
+    const isProfileShown = state.isProfileShown;
     const errorMessage = state.errors[name];
     const value = state.inputs[name];
     const textareaLimit = 600;
@@ -27,6 +28,15 @@ class Input extends React.Component {
         return true;
       }
     };
+
+    if (isProfileShown) {
+      return (
+        <div className={styles.formInput}>
+          <label>{inputLabel}</label>
+          <div className={styles.inputText}>{value}</div>
+        </div>
+      );
+    }
 
     if (isTextArea) {
       return (
