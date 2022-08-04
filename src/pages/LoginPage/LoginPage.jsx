@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import BigButton from '../../components/common/BigButton/BigButton'
 import s from './LoginPage.module.css'
-//Todo: сделать фокус в инпуте
 
 const LoginPage = () => {
   const [user, setUser] = useState('')

@@ -3,6 +3,7 @@ import Navigation from '../Navigation/Navigation'
 import s from './Header.module.css'
 import logo from '../../images/logo.png'
 import BigButton from '../common/BigButton/BigButton'
+import UserMenu from '../UserMenu/UserMenu'
 
 const Header = () => {
   return (
@@ -15,6 +16,7 @@ const Header = () => {
       <Link to='/login'>
         <BigButton text='Log In' />
       </Link>
+      <UserMenu />
     </div>
   )
 }
