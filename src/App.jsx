@@ -1,19 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Form from './Form';
 import { validationRegExps, validationIsNotEmpty } from './helpers/validations';
 import { errorsTextTemplate, emptyErrorText } from './helpers/errors';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputs: { ...this.initialState },
-      errors: { ...this.initialState },
-      isProfileShown: false,
-    };
-  }
-
-  initialState = {
+const App = () => {
+  const initialState = {
     firstName: '',
     lastName: '',
     date_of_birth: '',
@@ -24,22 +15,26 @@ class App extends React.Component {
     last_project_description: '',
   };
 
-  validateIsNotEmpty(value) {
+  const [inputs, setInputs] = useState({ ...initialState });
+  const [errors, setErrors] = useState({ ...initialState });
+  const [isProfileShown, setIsProfileShown] = useState(false);
+
+  const validateIsNotEmpty = (value) => {
     if (validationIsNotEmpty.test(value)) {
       return true;
     }
     return false;
-  }
+  };
 
-  validateIsValid(value, inputName) {
+  const validateIsValid = (value, inputName) => {
     const regExp = new RegExp(validationRegExps[inputName]);
     if (regExp.test(value)) {
       return true;
     }
     return false;
-  }
+  };
 
-  applyMask(value, mask) {
+  const applyMask = (value, mask) => {
     const result = [];
     for (let i = 0; i < value.length; i++) {
       if (i >= mask.length) break;
@@ -47,51 +42,43 @@ class App extends React.Component {
     }
     let maskedValue = result.join('');
     return maskedValue;
-  }
+  };
 
-  onChange = (event) => {
+  const onChange = (event) => {
     const inputName = event.target.name;
     let value = event.target.value;
 
-    if (this.validateIsNotEmpty(value.trim()) === false) {
-      this.setState((prevState) => ({
+    if (validateIsNotEmpty(value.trim()) === false) {
+      setInputs((prevState) => ({
         ...prevState,
-        inputs: {
-          ...prevState.inputs,
-          [inputName]: value,
-        },
-        errors: {
-          ...prevState.errors,
-          [inputName]: '',
-        },
+        [inputName]: value,
       }));
+      setErrors((prevState) => ({
+        ...prevState,
+        [inputName]: '',
+      }));
+
       return;
     }
 
-    if (this.validateIsValid(value.trim(), inputName)) {
-      this.setState((prevState) => ({
+    if (validateIsValid(value.trim(), inputName)) {
+      setInputs((prevState) => ({
         ...prevState,
-        inputs: {
-          ...prevState.inputs,
-          [inputName]: value,
-        },
-        errors: {
-          ...prevState.errors,
-          [inputName]: '',
-        },
+        [inputName]: value,
+      }));
+      setErrors((prevState) => ({
+        ...prevState,
+        [inputName]: '',
       }));
     }
-    if (this.validateIsValid(value.trim(), inputName) === false) {
-      this.setState((prevState) => ({
+    if (validateIsValid(value.trim(), inputName) === false) {
+      setInputs((prevState) => ({
         ...prevState,
-        inputs: {
-          ...prevState.inputs,
-          [inputName]: value,
-        },
-        errors: {
-          ...prevState.errors,
-          [inputName]: errorsTextTemplate[inputName],
-        },
+        [inputName]: value,
+      }));
+      setErrors((prevState) => ({
+        ...prevState,
+        [inputName]: errorsTextTemplate[inputName],
       }));
     }
 
@@ -111,64 +98,50 @@ class App extends React.Component {
         /\D/,
       ];
 
-      value = this.applyMask(value, telephoneNumberMask);
-      this.setState((prevState) => ({
+      value = applyMask(value, telephoneNumberMask);
+      setInputs((prevState) => ({
         ...prevState,
-        inputs: {
-          ...prevState.inputs,
-          [inputName]: value,
-        },
+        [inputName]: value,
       }));
     }
 
-    if (this.validateIsValid(value.trim(), inputName)) {
-      this.setState((prevState) => ({
+    if (validateIsValid(value.trim(), inputName)) {
+      setInputs((prevState) => ({
         ...prevState,
-        inputs: {
-          ...prevState.inputs,
-          [inputName]: value,
-        },
-        errors: {
-          ...prevState.errors,
-          [inputName]: '',
-        },
+        [inputName]: value,
+      }));
+      setErrors((prevState) => ({
+        ...prevState,
+        [inputName]: '',
       }));
     }
 
-    if (this.validateIsValid(value.trim(), inputName) === false) {
-      this.setState((prevState) => ({
+    if (validateIsValid(value.trim(), inputName) === false) {
+      setInputs((prevState) => ({
         ...prevState,
-        inputs: {
-          ...prevState.inputs,
-          [inputName]: value,
-        },
-        errors: {
-          ...prevState.errors,
-          [inputName]: errorsTextTemplate[inputName],
-        },
+        [inputName]: value,
+      }));
+      setErrors((prevState) => ({
+        ...prevState,
+        [inputName]: errorsTextTemplate[inputName],
       }));
     }
   };
 
-  handleFormReset = () => {
-    this.setState({
-      inputs: { ...this.initialState },
-      errors: { ...this.initialState },
-      isProfileShown: false,
-    });
+  const handleFormReset = () => {
+    setInputs({ ...initialState });
+    setErrors({ ...initialState });
+    setIsProfileShown(false);
   };
 
-  handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     let needsRerender = false;
-    for (const fieldName in this.state.inputs) {
-      if (this.state.inputs[fieldName] === '') {
-        this.setState((prevState) => ({
+    for (const fieldName in inputs) {
+      if (inputs[fieldName] === '') {
+        setErrors((prevState) => ({
           ...prevState,
-          errors: {
-            ...prevState.errors,
-            [fieldName]: emptyErrorText,
-          },
+          [fieldName]: emptyErrorText,
         }));
         needsRerender = true;
       }
@@ -179,30 +152,26 @@ class App extends React.Component {
     }
 
     if (
-      Object.values(this.state.errors).every((el) => {
+      Object.values(errors).every((el) => {
         return el === '';
       })
     ) {
-      this.setState({
-        errors: { ...this.initialState },
-        isProfileShown: true,
-      });
+      setErrors({ ...initialState });
+      setIsProfileShown(true);
       return;
     }
   };
 
-  render() {
-    console.log('this.state.isProfileShown AFTER RENDER');
-    console.log(this.state.isProfileShown);
-    return (
-      <Form
-        handleSubmit={this.handleSubmit}
-        handleFormReset={this.handleFormReset}
-        onChange={this.onChange}
-        state={this.state}
-      />
-    );
-  }
-}
+  return (
+    <Form
+      handleSubmit={handleSubmit}
+      handleFormReset={handleFormReset}
+      onChange={onChange}
+      inputs={inputs}
+      errors={errors}
+      isProfileShown={isProfileShown}
+    />
+  );
+};
 
 export default App;
