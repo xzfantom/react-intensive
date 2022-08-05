@@ -23,13 +23,24 @@ const TodoItem = (props) => {
 
   return (
     <div className={s.todoRow}>
-      <textarea
+      <input
+        className={s.input}
         ref={inputRef}
         disabled={inputRef}
         defaultValue={item.item}
         onKeyPress={(e) => update(item.id, inputRef.current.value, e)}
       />
+      {item.completed && <span className={s.completed}>done</span>}
       <div className={s.iconWrap}>
+        {item.completed === false && (
+          <img
+            className={s.icon}
+            src={completeIcon}
+            alt='complete button'
+            onClick={() => completeTodo(item.id)}
+          />
+        )}
+
         <img
           className={s.icon}
           src={editIcon}
@@ -43,18 +54,9 @@ const TodoItem = (props) => {
           alt='remove button'
           onClick={() => removeTodo(item.id)}
         />
-
-        {item.completed === false && (
-          <img
-            className={s.icon}
-            src={completeIcon}
-            alt='complete button'
-            onClick={() => completeTodo(item.id)}
-          />
-        )}
       </div>
 
-      {item.completed && <span className={s.completed}>done</span>}
+
     </div>
   )
 }
