@@ -1,10 +1,11 @@
-.wrap {
-  margin: 0 0 30px;
-  width: 61%;
+.container {
+}
+
+.btnWrap {
 }
 
 .button {
-  width: 50%;
+  width: 230px;
   padding: 12px 0;
   box-sizing: border-box;
   border: 2px solid var(--accent-color);
@@ -17,8 +18,8 @@
   cursor: pointer;
 }
 
-.button:last-child {
-  border-left: transparent;
+.button:not(:last-child) {
+  border-right: transparent;
 }
 
 .button:hover {

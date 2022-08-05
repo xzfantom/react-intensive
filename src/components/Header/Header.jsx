@@ -16,7 +16,7 @@ const Header = () => {
       <Link to='/login'>
         <BigButton text='Log In' />
       </Link>
-      <UserMenu />
+      {/* <UserMenu /> */}
     </div>
   )
 }

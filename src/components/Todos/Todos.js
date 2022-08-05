@@ -1,35 +1,38 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect, useRef } from "react";
+import { connect } from "react-redux";
+import { addTodos } from "../../redux/reducer";
 import s from './Todos.module.css'
-import { connect } from 'react-redux'
-import { addTodos } from '../../redux/reducer'
+
 
 const Todos = (props) => {
-  const [todo, setTodo] = useState('')
+  const [todo, setTodo] = useState("");
 
-  const handleChange = (e) => {
-    setTodo(e.target.value)
-  }
   const inputRef = useRef(null)
 
   useEffect(() => {
     inputRef.current.focus()
   })
 
+
+  const handleChange = (e) => {
+    setTodo(e.target.value);
+  };
+
   const add = () => {
-    if (todo === '') {
-      alert('Input is Empty')
+    if (todo === "") {
+      alert("Input is Empty");
     } else {
       props.addTodo({
         id: Math.floor(Math.random() * 1000),
         item: todo,
         completed: false,
-      })
-      setTodo('')
+      });
+      setTodo("");
     }
-  }
+  };
 
   return (
-    <form className={s.todoForm}>
+    <div className={s.todoForm}>
       <input
         className={s.todoInput}
         type='text'
@@ -41,20 +44,20 @@ const Todos = (props) => {
       <button onClick={() => add()} className={s.todoButton}>
         Add todo
       </button>
-    </form>
+    </div>
   )
-}
+};
 
 const mapStateToProps = (state) => {
   return {
     todos: state,
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     addTodo: (obj) => dispatch(addTodos(obj)),
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Todos)
+export default connect(mapStateToProps, mapDispatchToProps)(Todos);
