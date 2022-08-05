@@ -1,29 +1,27 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import s from './ToDoList.module.css'
 import TodoForm from './ToDoForm/ToDoForm'
 import Todo from './ToDo/Todo'
 import * as storage from '../../services/localStorage'
-import Tab from '../Tab/Tab'
+// import Tab from '../Tab/Tab'
+import * as actions from '../../redux/todos/todosActions'
+import { useSelector, useDispatch } from 'react-redux'
 
 const STORAGE_KEY = 'todos'
 
 function TodoList() {
-  const [todos, setTodos] = useState(() => storage.get(STORAGE_KEY) ?? [])
+  const todos = useSelector((state) => state.todos.items)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     storage.save(STORAGE_KEY, todos)
   }, [todos])
 
-  // ***************  ADD  *************** //
-
-  const addTodo = (todo) => {
-    if (!todo.text || /^\s*$/.test(todo.text)) {
+  const addTodo = (newTodo) => {
+    if (!newTodo.text || /^\s*$/.test(newTodo.text)) {
       return
     }
-
-    const newTodos = [todo, ...todos]
-
-    setTodos(newTodos)
+    dispatch(actions.addTodo(newTodo))
   }
 
   // ***************  UPDATE  *************** //
@@ -31,35 +29,31 @@ function TodoList() {
     if (!newValue.text || /^\s*$/.test(newValue.text)) {
       return
     }
-
-    setTodos((prev) =>
-      prev.map((item) => (item.id === todoId ? newValue : item))
-    )
+    dispatch(actions.editTodo(todoId, newValue))
+    //   setTodos((prev) =>
+    //     prev.map((item) => (item.id === todoId ? newValue : item))
+    //   )
   }
 
-  // ***************  REMOVE  *************** //
-
   const removeTodo = (id) => {
-    const removedArr = [...todos].filter((todo) => todo.id !== id)
-
-    setTodos(removedArr)
+    dispatch(actions.removeTodo(id))
   }
 
   // ***************  COMPLETE  *************** //
-
   const completeTodo = (id) => {
-    let updatedTodos = todos.map((todo) => {
-      if (todo.id === id) {
-        todo.isComplete = !todo.isComplete
-      }
-      return todo
-    })
-    setTodos(updatedTodos)
+    dispatch(actions.completeTodo(id))
+    // let updatedTodos = todos.map((todo) => {
+    //   if (todo.id === id) {
+    //     todo.isComplete = !todo.isComplete
+    //   }
+    //   return todo
+    // })
+    // setTodos(updatedTodos)
   }
 
-  const getActiveTodos = () => {
-    return todos.filter((el) => !el.isComplete).length
-  }
+  // const getActiveTodos = () => {
+  //   return todos.filter((el) => !el.isComplete).length
+  // }
   // console.log('🍒 activeTodos', getActiveTodos())
 
   return (
@@ -87,8 +81,8 @@ function TodoList() {
       <Todo
         todos={todos}
         completeTodo={completeTodo}
-        removeTodo={removeTodo}
         updateTodo={updateTodo}
+        removeTodo={removeTodo}
       />
     </>
   )
