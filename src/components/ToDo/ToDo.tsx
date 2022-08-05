@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import styles from './Welcome.module.css';
+import styles from './ToDo.module.css';
 
 const ToDo: FC = () => {
-  return <div>ToDo</div>;
+  return <div className={styles.container}>ToDo</div>;
 };
 
 export default ToDo;

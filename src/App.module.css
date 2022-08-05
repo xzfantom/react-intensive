@@ -6,26 +6,8 @@
   padding: 0;
 }
 
-html,
-body {
-  margin: 0;
-  background-color: #dcc3ec;
-}
-
-html {
-  min-height: 100vh;
-}
-body {
-  min-height: 100vh;
-  font-family: 'Poppins', sans-serif;
-}
-
 button {
   border: none;
   cursor: pointer;
   color: unset;
-}
-
-.primaryBackground {
-  color: #ddf3f7;
 }
