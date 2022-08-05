@@ -23,11 +23,12 @@
   cursor: pointer;
 }
 
-.button:not(:last-child) {
-  border-right: transparent;
-}
-
-.button:hover {
+.active {
+  composes: button;
   background-color: var(--accent-color);
   color: #000;
+}
+
+.button:not(:last-child) {
+  border-right: transparent;
 }

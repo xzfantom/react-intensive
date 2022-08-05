@@ -5,7 +5,7 @@ const AboutUsPage = () => {
   return (
     <>
       <div className={s.wrap}>
-        <img src={image} className={s.image} alt='Not found page' />
+        <img src={image} className={s.image} alt='hand' />
         <div className={s.contentWrap}>
           <h1 className={s.heading}>What is a ToDo List?</h1>
           <p className={s.description}>

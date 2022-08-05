@@ -16,21 +16,21 @@ const DisplayTodos = (props) => {
     <div className={s.container}>
       {props.todos.length > 0 && <div className={s.btnWrap}>
         <button
-          className={s.button}
+          className={sort === 'active' ? s.active : s.button}
           type='button'
           onClick={() => setSort('active')}
         >
           active
         </button>
         <button
-          className={s.button}
+          className={sort === 'completed' ? s.active : s.button}
           type='button'
           onClick={() => setSort('completed')}
         >
           completed
         </button>
         <button
-          className={s.button}
+          className={sort === 'all' ? s.active : s.button}
           type='button'
           onClick={() => setSort('all')}
         >
