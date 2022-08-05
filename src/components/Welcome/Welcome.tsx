@@ -1,19 +1,19 @@
-// import { FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import useAppSelector from '../../utils/useAppSelector';
+import useAppDispatch from '../../utils/useAppDispatch';
 import styles from './Welcome.module.css';
-import { changeUserName } from '../../redux/reducers';
+import { changeUserName } from '../../store/todoSlice';
 
 const Welcome = () => {
-  const dispatch = useDispatch();
-  const { userName } = useSelector((state) => state.todoReducer);
+  const dispatch = useAppDispatch();
+  const userName = useAppSelector((state) => state.todoReducer.userName);
 
   return (
     <div className={styles.container}>
       <label>Let's get started</label>
       <input
         onChange={(event) => {
-          debugger;
-          dispatch(changeUserName(event.currentTarget.value));
+          const newUserName = event.currentTarget.value;
+          dispatch(changeUserName(newUserName));
         }}
         id="userName"
         name="userName"
