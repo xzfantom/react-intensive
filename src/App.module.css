@@ -26,18 +26,6 @@ button {
   color: unset;
 }
 
-.headingWrapper {
-  background-color: #dcc3ec;
-  max-width: 90%;
-  min-height: 100px;
-  height: 10vh;
-  color: white;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-section {
-  background-color: white;
+.primaryBackground {
+  color: #ddf3f7;
 }

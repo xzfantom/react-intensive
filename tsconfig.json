@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "exactOptionalPropertyTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "paths": {
+      "#components/*": ["src/components/*"],
+      "#mocks/*": ["src/mocks/*"],
+      "#models/*": ["src/models/*"],
+      "#src/*": ["src/*"],
+      "#styles/*": ["src/styles/*"],
+      "#types/*": ["src/types/*"],
+      "#utils/*": ["src/utils/*"],
+      "#views": ["src/views"],
+      "#views/*": ["src/views/*"]
+    },
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "suppressExcessPropertyErrors": false,
+    "target": "es6"
+  },
+  "exclude": ["node_modules"],
+  "files": ["declarations.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/redux/store.js"]
+}
