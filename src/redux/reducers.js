@@ -1,17 +1,17 @@
-import { createReducer, createAction } from '@reduxjs/toolkit';
+import { createAction, createReducer } from '@reduxjs/toolkit';
 
 const initialState = {
-  userName: '',
-  todos: { id: { text: '', isCompleted: '' } },
+  userName: 'Sasha',
 };
 
-const changeUserName = createAction('changeUserName');
-// const addItem = createAction('addItem');
-// const deleteItem = createAction('deleteItem');
-// const markAsCompleted = createAction('markAsCompleted');
+export const changeUserName = createAction('changeUserName');
+
+//includes immer by default so that we can 'mutate' state here
 
 const todoReducer = createReducer(initialState, (builder) => {
-  builder.addCase(changeUserName, (state, action) => (state.userName = action.payload));
+  builder.addCase(changeUserName, (state, action) => {
+    state.userName = action.payload;
+  });
   // .addCase(
   //   addItem,
   //   (state, action) =>
@@ -19,7 +19,7 @@ const todoReducer = createReducer(initialState, (builder) => {
   //       ...state.todos,
   //       [action.payload.id]: { text: action.payload.text, isCompleted: false },
   //     })
-  // )
+  // );
   // .addCase(
   //   markAsCompleted,
   //   (state, action) =>

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import styles from './User.module.css';
 
 const User = () => {
-  const { userName } = useSelector((state) => state.todoReducer.userName);
+  const { userName } = useSelector((state) => state.todoReducer);
   return (
     <div className={styles.container}>
       <img
