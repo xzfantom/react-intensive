@@ -1,29 +1,26 @@
-import React, { useState } from "react";
-import Form from "./containers/Form/Form";
-import Profile from "./containers/Profile/Profile";
+import "./App.css";
+import Header from "./containers/Header/Header";
+import { Routes, Route, Navigate } from "react-router-dom";
+import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import ToDoListPage from "./pages/ToDoListPage/ToDoListPage";
 
-const App = () => {
-  const [formStatus, setFormStatus] = useState({
-    formReady: false,
-    formData: {},
-  });
-
-  const toggleFormReadiness = (data) => {
-    setFormStatus({
-      formReady: true,
-      formData: data,
-    });
-  };
-
+function App() {
   return (
-    <>
-      {formStatus.formReady ? (
-        <Profile data={formStatus.formData} />
-      ) : (
-        <Form readyForm={toggleFormReadiness} />
-      )}
-    </>
+    <div className="App">
+      <header>
+        <Header></Header>
+      </header>
+      <main>
+        <Routes>
+          <Route path="/" element={<Navigate to="/registration" />}></Route>
+          <Route path="/registration" element={<RegistrationPage />}></Route>
+          <Route path="/toDoList" element={<ToDoListPage />}></Route>
+          <Route path="*" element={<ErrorPage />}></Route>
+        </Routes>
+      </main>
+    </div>
   );
-};
+}
 
 export default App;
