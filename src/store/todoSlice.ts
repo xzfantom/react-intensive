@@ -36,8 +36,21 @@ const todoSlice = createSlice({
         text: action.payload,
       };
     },
+    patchTodoText: (state, action: PayloadAction<{ id: number; text: string }>) => {
+      const todoId = action.payload.id;
+      state.todos[todoId].text = action.payload.text;
+    },
+    changeTaskStatus: (state, action: PayloadAction<number>) => {
+      const todoId = action.payload;
+      state.todos[todoId].isCompleted = !state.todos[todoId].isCompleted;
+    },
+    deleteTodo: (state, action: PayloadAction<number>) => {
+      const todoId = action.payload;
+      delete state.todos[todoId];
+    },
   },
 });
 
 export const todoReducer = todoSlice.reducer;
-export const { changeUserName, addTodo } = todoSlice.actions;
+export const { changeUserName, addTodo, patchTodoText, deleteTodo, changeTaskStatus } =
+  todoSlice.actions;
