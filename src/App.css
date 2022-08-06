@@ -1,0 +1,20 @@
+.container {
+  width: 400px;
+  margin: 48px auto;
+  padding: 16px;
+  background-color: #f4ece6;
+  border: 2px solid #f0efeb;
+  border-radius: 28px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+h1 {
+  color: #55495f;
+  text-align: center;
+  margin-bottom: 16px;
+}
+@media (max-width: 414px) {
+  .container {
+    width: 350px;
+  }
+}

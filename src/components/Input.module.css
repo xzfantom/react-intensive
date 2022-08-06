@@ -1,0 +1,21 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.label {
+  padding-top: 8px;
+}
+input {
+  margin: 8px 0;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #f8f6fc;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 0px 4px;
+}
+input:hover,
+input:active {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
