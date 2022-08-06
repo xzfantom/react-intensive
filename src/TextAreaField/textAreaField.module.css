@@ -1,0 +1,7 @@
+textarea {
+  border-radius: 5px;
+  border-color: rgb(180, 140, 140);
+  border-width: 3px;
+  border-style: solid;
+  width: 400px;
+}
