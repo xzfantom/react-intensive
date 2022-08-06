@@ -1,238 +1,190 @@
-import React, { Component } from 'react';
-import Button from './components/Button';
-import FormHeader from './components/FormHeader';
-import InputField from './components/InputField';
-import TextAreaField from './components/TextAreaField';
-import './cssModules/app.module.css';
+import React, { useState } from 'react';
+import Button from './Button/Button';
+import FormHeader from './FormHeader/FormHeader';
+import InputField from './InputField/InputField';
+import TextAreaField from './TextAreaField/TextAreaField';
+import './app.module.css';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      surname: '',
-      dateOfBirth: '',
-      phone: '',
-      page: '',
-      aboutMe: '',
-      techStack: '',
-      lastProject: '',
-      aboutMeLength: '',
-      techStackLength: '',
-      lastProjectLength: '',
-      nameError: false,
-      surnameError: false,
-      dateOfBirthError: false,
-      phoneError: false,
-      pageError: false,
-      aboutMeError: false,
-      techStackError: false,
-      lastProjectError: false,
-      submit: false,
-    };
-    this.defaultState = JSON.stringify(this.state);
+const App = () => {
+  const defaultValues = {
+    name: '',
+    surname: '',
+    dateOfBirth: '',
+    phone: '',
+    page: '',
+    aboutMe: '',
+    techStack: '',
+    lastProject: '',
+  };
+
+  const defaultErrors = {
+    name: '',
+    surname: '',
+    dateOfBirth: '',
+    phone: '',
+    page: '',
+    aboutMe: '',
+    techStack: '',
+    lastProject: '',
+    error: '',
+  };
+
+  const [values, setValues] = useState(defaultValues);
+  const [errors, setErrors] = useState(defaultErrors);
+  const [submit, setSubmit] = useState(false);
+
+  function isValid(field, fieldName) {
+    setErrors({ ...errors, [fieldName]: false });
+    if (errors[fieldName] === false) {
+      return '';
+    }
+    if (!field) {
+      return 'Пожалуйста, заполните поле!';
+    }
+    if (fieldName === 'name' || fieldName === 'surname') {
+      if (field.charAt(0) !== field.charAt(0).toUpperCase()) {
+        return 'Первая буква должна быть заглавной!';
+      }
+      if (field.length < 2) {
+        return 'Поле должно содержать минимум 2 буквы!';
+      }
+      if (/\d/.test(field)) {
+        return 'Поле не должно содержать цифр!';
+      }
+    }
+    if (fieldName === 'phone') {
+      if (/[A-Za-z]/.test(field)) {
+        return 'Поле не должно содержать букв!';
+      }
+      if (!/^\d{1}-\d{4}-\d{2}-\d{2}$/.test(field)) {
+        return 'Номер телефона должен быть в формате X-XXXX-XX-XX!';
+      }
+    }
+    if (fieldName === 'page') {
+      if (!field.startsWith('https://')) {
+        return 'Адрес сайта должен начинаться с https:// !';
+      }
+      if (!/.[a-z]{2,}$/.test(field)) {
+        return 'Добавьте доменное имя!';
+      }
+    }
+    if (
+      fieldName === 'aboutMe' ||
+      fieldName === 'techStack' ||
+      fieldName === 'lastProject'
+    ) {
+      if (field.length > 600) {
+        return 'Превышен лимит символов!';
+      }
+    }
   }
 
-  isValidName = (field) => {
-    if (field.charAt(0) !== field.charAt(0).toUpperCase()) {
-      return 'notCapLetName';
-    }
-    if (field.length < 2) {
-      return 'tooShortName';
-    }
-    if (/\d/.test(field)) {
-      return 'noNumbersInName';
-    }
+  const handleValueChange = function (event) {
+    const target = event.target;
+    let result = target.value.trim();
+    const fieldName = target.name;
+    setValues({
+      ...values,
+      [fieldName]: result,
+    });
   };
 
-  isValidSurname = (field) => {
-    if (field.charAt(0) !== field.charAt(0).toUpperCase()) {
-      return 'notCapLetSurname';
-    }
-    if (field.length < 2) {
-      return 'tooShortSurname';
-    }
-    if (/\d/.test(field)) {
-      return 'noNumbersInSurname';
-    }
-  };
-
-  tooShortNumber = (field) => {
-    if (field.length < 12) {
-      return 'tooShortNumber';
-    }
-  };
-
-  isValidUrl = (field) => {
-    let regexp = /\.[a-z()]{2,}$/;
-    if (!field.startsWith('https://') && field.length < 8) {
-      return 'invalidPageAdress';
-    }
-    if (!regexp.test(field)) {
-      return 'forgettenDomen';
-    }
-  };
-
-  validateNumberOfSymbols = (value) => {
-    if (value.length > 600) {
-      return 'toManySymbols';
-    }
-  };
-
-  genHandler = (fieldName, errorFieldName, errorFunc) => {
-    return (field, errorField) => {
-      let state = {};
-      state[fieldName] = field.trim();
-      state[errorFieldName] = false;
-      if (!field) {
-        state[errorFieldName] = true;
-      } else if (errorFunc) {
-        state[errorFieldName] = errorFunc(field);
-      }
-      if (fieldName === 'phone') {
-        const x = field
-          .replace(/\D/g, '')
-          .match(/(\d{0,1})(\d{0,4})(\d{0,2})(\d{0,2})/);
-        field = !x[2]
-          ? x[1]
-          : x[1] +
-            '-' +
-            x[2] +
-            (x[3] ? '-' + x[3] : '') +
-            (x[4] ? '-' + x[4] : '');
-        state[fieldName] = field;
-      }
-      this.setState(state);
-    };
-  };
-
-  mySubmit = (event) => {
+  function mySubmit(event) {
     event.preventDefault();
-    let values = Object.values(this.state).slice(0, 8);
-    let errors = Object.values(this.state).slice(11, 19);
-    if (values.includes('') || errors.some((elem) => Boolean(elem) === true)) {
-      this.setState({ submit: false });
+    for (let i in errors) {
+      errors[i] = isValid(values[i], i);
+    }
+    if (
+      Object.values(values).includes('') ||
+      Object.values(errors)
+        .slice(0, 8)
+        .some((elem) => Boolean(elem) === true)
+    ) {
+      setSubmit(false);
     } else {
-      this.setState({ submit: true });
-      console.log(this.state.submit);
+      setSubmit(true);
     }
-  };
+  }
 
-  resetForm = (event) => {
-    event.preventDefault();
-    this.setState(JSON.parse(this.defaultState));
-  };
+  function resetForm(event) {
+    setValues(defaultValues);
+    setErrors(defaultErrors);
+  }
 
-  render() {
-    const submit = this.state.submit;
-    if (submit === false) {
-      return (
-        <form onSubmit={this.mySubmit} onReset={this.resetForm}>
+  return (
+    <div>
+      {submit ? (
+        <div>
+          <h1>
+            {values.name} {values.surname}
+          </h1>
+          <p>Дата рождения: {values.dateOfBirth}</p>
+          <p>Телефон: {values.phone}</p>
+          <p>Адрес сайта: {values.page}</p>
+          <p>О себе: {values.aboutMe}</p>
+          <p>Стек технологий: {values.techStack}</p>
+          <p>Описание последнего проекта: {values.lastProject}</p>
+        </div>
+      ) : (
+        <form onSubmit={mySubmit} onReset={resetForm}>
           <FormHeader />
           <div>
             <InputField
-              value={this.state.name}
+              name="name"
               field="Имя"
-              onChangeValue={this.genHandler(
-                'name',
-                'nameError',
-                this.isValidName
-              )}
-              error={this.state.nameError}
+              onChange={(event) => handleValueChange(event)}
+              error={errors.name}
             />
             <InputField
-              value={this.state.surname}
+              name="surname"
               field="Фамилия"
-              onChangeValue={this.genHandler(
-                'surname',
-                'surnameError',
-                this.isValidSurname
-              )}
-              error={this.state.surnameError}
+              onChange={(event) => handleValueChange(event)}
+              error={errors.surname}
             />
             <InputField
-              value={this.state.dateOfBirth}
+              name="dateOfBirth"
               field="Дата рождения"
-              onChangeValue={this.genHandler('dateOfBirth', 'dateOfBirthError')}
-              error={this.state.dateOfBirthError}
+              onChange={(event) => handleValueChange(event)}
+              error={errors.dateOfBirth}
               type="date"
             />
             <InputField
-              value={this.state.phone}
+              name="phone"
               field="Телефон"
-              onChangeValue={this.genHandler(
-                'phone',
-                'phoneError',
-                this.tooShortNumber
-              )}
-              error={this.state.phoneError}
+              onChange={(event) => handleValueChange(event)}
+              error={errors.phone}
             />
             <InputField
-              value={this.state.page}
+              name="page"
               field="Сайт"
-              onChangeValue={this.genHandler(
-                'page',
-                'pageError',
-                this.isValidUrl
-              )}
-              error={this.state.pageError}
+              onChange={(event) => handleValueChange(event)}
+              error={errors.page}
             />
             <TextAreaField
-              value={this.state.aboutMe}
+              name="aboutMe"
               field="О себе"
-              onChangeValue={this.genHandler(
-                'aboutMe',
-                'aboutMeError',
-                this.validateNumberOfSymbols
-              )}
-              error={this.state.aboutMeError}
-              textLength={this.state.aboutMe.length}
+              onChange={(event) => handleValueChange(event)}
+              error={errors.aboutMe}
             />
             <TextAreaField
-              value={this.state.techStack}
+              name="techStack"
               field="Стек технологий"
-              onChangeValue={this.genHandler(
-                'techStack',
-                'techStackError',
-                this.validateNumberOfSymbols
-              )}
-              error={this.state.techStackError}
-              textLength={this.state.techStack.length}
+              onChange={(event) => handleValueChange(event)}
+              error={errors.techStack}
             />
             <TextAreaField
-              value={this.state.lastProject}
+              name="lastProject"
               field="Описание последнего проекта"
-              onChangeValue={this.genHandler(
-                'lastProject',
-                'lastProjectError',
-                this.validateNumberOfSymbols
-              )}
-              error={this.state.lastProjectError}
-              textLength={this.state.lastProject.length}
+              onChange={(event) => handleValueChange(event)}
+              error={errors.lastProject}
             />
           </div>
           <Button type="submit" value="Сохранить" />
           <Button type="reset" value="Отмена" />
         </form>
-      );
-    } else {
-      return (
-        <div>
-          <h1>
-            {this.state.name} {this.state.surname}
-          </h1>
-          <div>
-            <p>Дата рождения: {this.state.dateOfBirth}</p>
-            <p>Номер телефона: {this.state.phone}</p>
-            <p>Сайт: {this.state.page}</p>
-            <p>О себе: {this.state.aboutMe}</p>
-            <p>Стек технологий: {this.state.techStack}</p>
-            <p>Описание последнего проекта: {this.state.lastProject}</p>
-          </div>
-        </div>
-      );
-    }
-  }
-}
+      )}
+    </div>
+  );
+};
 
 export default App;
