@@ -28,7 +28,7 @@ const todoSlice = createSlice({
     },
 
     addTodo: (state, action: PayloadAction<string>) => {
-      const existingIdsAsNumbers = Object.keys(state.todos).map(parseInt);
+      const existingIdsAsNumbers = Object.keys(state.todos).map((key) => parseInt(key));
       const newTodoId = Math.max(...existingIdsAsNumbers) + 1;
       state.todos[newTodoId] = {
         id: newTodoId,

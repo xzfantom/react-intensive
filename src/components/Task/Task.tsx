@@ -29,23 +29,25 @@ const Task: FC<Props> = (props) => {
     dispatch(changeTaskStatus(id));
   };
 
+  const isCompletedClassName = isCompleted ? styles.completed : '';
+
   return (
     <>
-      <div className={styles.container}>
-        <input type="checkbox" checked={isCompleted} onClick={onTaskStatusChange} />
-        <div>{id}</div>
+      <div className={`${isCompletedClassName}`}>
+        <input type="checkbox" defaultChecked={isCompleted} onClick={onTaskStatusChange} />
         {isChangeable && (
           <input onChange={isChangeable ? (e) => onTaskChange(e) : undefined} value={text} />
         )}
-        {!isChangeable && <div>{text}</div>}
+        {!isChangeable && <div className={styles.active}>{text}</div>}
 
         <Button
+          disabled={isCompleted}
           type="button"
           onClick={typeof setisChangeable != 'boolean' ? () => setisChangeable() : () => {}}
         >
           {isChangeable ? 'Save' : 'Change'}
         </Button>
-        <Button type="button" onClick={() => onTaskDelete()}>
+        <Button disabled={isCompleted} type="button" onClick={() => onTaskDelete()}>
           Delete
         </Button>
       </div>

@@ -1,4 +1,15 @@
-.container {
-  color: blue;
-  display: flex;
+.completed {
+  background-color: transparent;
+  text-decoration: line-through;
+  opacity: 0 !important;
+  height: 0px;
+  visibility: hidden;
+  transition: height 3s;
+}
+
+.active {
+  background-color: white;
+  opacity: 1;
+  height: auto;
+  visibility: visible;
 }

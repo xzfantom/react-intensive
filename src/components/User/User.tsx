@@ -5,6 +5,10 @@ import styles from './User.module.css';
 
 const User: FC = () => {
   const { userName } = useSelector((state: RootState) => state.todoReducer);
+  const allToDos = useSelector((state: RootState) => state.todoReducer.todos);
+  const arrayOfAllTasks = Object.values(allToDos);
+  let numOfActiveTasks = arrayOfAllTasks.filter((todo) => todo.isCompleted === false).length;
+
   return (
     <div className={styles.container}>
       <img
@@ -12,7 +16,8 @@ const User: FC = () => {
         alt="user avatar"
         src="https://www.homeagainsaintjohns.org/wp-content/uploads/2021/05/No-Picture-Yet-Home-Again-St-Johns-Board-Members.png"
       />
-      <div>{userName}</div>
+      <div>{`${userName}'s ToDo list`}</div>
+      <div>{`${numOfActiveTasks} tasks left to complete`}</div>
     </div>
   );
 };
