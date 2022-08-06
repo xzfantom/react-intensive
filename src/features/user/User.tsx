@@ -8,7 +8,7 @@ export default function User() {
   const userName = useSelector(selectUser);
   const dispatch = useDispatch();
 
-  const onUserChange = (event) => setUser(event.target.value);
+  const onUserChange = (event:React.ChangeEvent<HTMLInputElement>) => setUser(event.target.value);
   const onLoginClick = () => dispatch(login(user));
   const onLogoutClick = () => dispatch(logout());
 
