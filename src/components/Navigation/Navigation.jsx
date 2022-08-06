@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom'
 import s from './Navigation.module.css'
+import { connect } from 'react-redux'
+import userEvent from '@testing-library/user-event'
 
-const Navigation = () => {
+const Navigation = (props) => {
   return (
     <nav className={s.navWrap}>
       <NavLink
@@ -12,16 +14,24 @@ const Navigation = () => {
       >
         about
       </NavLink>
-      <NavLink
-        exact
-        to='/todos'
-        className={s.navLink}
-        activeClassName={s.activeLink}
-      >
-        todos
-      </NavLink>
+      {props.name && (
+        <NavLink
+          exact
+          to='/todos'
+          className={s.navLink}
+          activeClassName={s.activeLink}
+        >
+          todos
+        </NavLink>
+      )}
     </nav>
   )
 }
 
-export default Navigation
+const mapStateToProps = (state) => {
+  return {
+    name: state.name,
+  }
+}
+
+export default connect(mapStateToProps, null)(Navigation)

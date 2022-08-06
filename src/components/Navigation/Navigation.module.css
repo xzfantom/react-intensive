@@ -1,7 +1,6 @@
 .navWrap {
   display: flex;
   justify-content: space-between;
-  width: 20%;
 }
 
 .navLink {
@@ -11,6 +10,9 @@
   line-height: 1.2;
   letter-spacing: 1.5px;
   color: inherit;
+}
+.navLink:not(:last-child) {
+  margin-right: 40px;
 }
 
 .activeLink::after {
