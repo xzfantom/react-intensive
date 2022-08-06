@@ -3,13 +3,20 @@ import useAppDispatch from '../../utils/useAppDispatch';
 import styles from './Welcome.module.css';
 import { changeUserName } from '../../store/todoSlice';
 import Button from '../Button/Button';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const Welcome = () => {
   const dispatch = useAppDispatch();
+  const [isError, setIsError] = useState(false);
   const userName = useAppSelector((state) => state.todoReducer.userName);
+  const navigate = useNavigate();
   const onClickSaveButton = () => {
-    alert('saved');
+    if (!userName) {
+      setIsError(true);
+      return;
+    }
+    navigate('/to-do', { replace: true });
   };
   return (
     <div className={styles.container}>
@@ -25,11 +32,10 @@ const Welcome = () => {
         type="text"
         placeholder="Enter your name"
       />
-      <Link to="/to-do">
-        <Button type="button" onClick={onClickSaveButton}>
-          Save your name and start
-        </Button>
-      </Link>
+      {isError && <div>"Please enter your name</div>}
+      <Button type="button" onClick={onClickSaveButton}>
+        Save your name and start
+      </Button>
     </div>
   );
 };

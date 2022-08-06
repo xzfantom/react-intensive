@@ -8,12 +8,12 @@ const Input: FC = () => {
   const dispatch = useAppDispatch();
   const [inputValue, setInputValue] = useState('');
 
-  // const onTaskChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   dispatch(patchTodoText({ id: id, text: event.currentTarget.value }));
-  // };
-
   const onTaskAdd = () => {
+    if (!inputValue) {
+      return;
+    }
     dispatch(addTodo(inputValue));
+    setInputValue('');
   };
 
   return (
