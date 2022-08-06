@@ -4,8 +4,9 @@ import s from './Header.module.css'
 import logo from '../../images/logo.png'
 import BigButton from '../common/BigButton/BigButton'
 import UserMenu from '../UserMenu/UserMenu'
+import { connect } from 'react-redux'
 
-const Header = () => {
+const Header = (props) => {
   return (
     <div className={s.headerWrap}>
       <div className={s.logoLink}>
@@ -13,12 +14,21 @@ const Header = () => {
         <div className={s.logoName}>Todo List</div>
       </div>
       <Navigation />
-      <Link to='/login'>
-        <BigButton text='Log In' />
-      </Link>
-      <UserMenu />
+      {!props.name ? (
+        <Link to='/login'>
+          <BigButton text='Log In' />
+        </Link>
+      ) : (
+        <UserMenu />
+      )}
     </div>
   )
 }
 
-export default Header
+const mapStateToProps = (state) => {
+  return {
+    name: state.name,
+  }
+}
+
+export default connect(mapStateToProps, null)(Header)

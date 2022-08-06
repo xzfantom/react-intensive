@@ -10,7 +10,10 @@ const UserMenu = (props) => {
   return (
     <div className={s.wrap}>
       <span className={s.todos}>
-        Active: <span className={s.numberTodos}>{activeTodos()}</span>
+        Active:{' '}
+        <span className={s.numberTodos}>
+          <span>{activeTodos()}</span>
+        </span>
       </span>
       <img src={avatar} alt='avatar' className={s.avatar} />
       <span className={s.name}>{props.name}</span>
