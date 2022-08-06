@@ -19,13 +19,6 @@ const AboutUsPage = () => {
             <li>You sometimes forget to do things that are important.</li>
             <li>You find it a struggle to keep to deadlines.</li>
           </ul>
-
-          <p className={s.description}>
-            Don’t think you’re unusual because there are thousands of people who
-            struggle with the same every day, not just in the workplace but in
-            their personal life too. Luckily, there is something very simple you
-            can do to keep your life and work more organized.
-          </p>
           <p className={s.description}>
             Having a list of everything you need to do written down in one place
             means you shouldn’t forget anything important. By prioritising the
