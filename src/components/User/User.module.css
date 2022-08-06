@@ -1,6 +1,6 @@
 .container {
-  color: rgb(6, 6, 6);
   display: flex;
+  flex-direction: column;
 }
 
 .userAvatar {
