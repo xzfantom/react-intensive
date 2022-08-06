@@ -1,9 +1,10 @@
-// import { FC } from 'react';
+import { FC } from 'react';
 import { useSelector } from 'react-redux';
+import type { RootState } from '../../store/index';
 import styles from './User.module.css';
 
-const User = () => {
-  const { userName } = useSelector((state) => state.todoReducer);
+const User: FC = () => {
+  const { userName } = useSelector((state: RootState) => state.todoReducer);
   return (
     <div className={styles.container}>
       <img
