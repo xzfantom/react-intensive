@@ -1,57 +1,59 @@
-import { useState, useEffect, useRef } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-// import { addUser } from '../../redux/todos/todosActions'
+import { useState, useRef } from 'react'
+import { connect } from 'react-redux'
 import BigButton from '../../components/common/BigButton/BigButton'
 import s from './LoginPage.module.css'
+import { setUser } from '../../redux/reducer'
+import { useHistory } from 'react-router-dom'
 
-const LoginPage = () => {
-  // const user = useSelector((state) => state.todos.user)
-  // const dispatch = useDispatch()
+const LoginPage = (props) => {
+  const history = useHistory()
+  const [userName, setUserName] = useState('')
+  const [error, setError] = useState(false)
 
-  // const inputRef = useRef(null)
+  const inputRef = useRef(true)
 
-  // useEffect(() => {
-  //   inputRef.current.focus()
-  // }, [])
+  const handleSubmit = (e) => {
+    e.preventDefault()
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   // if (user.trim() === '') {
-  //   //   alert('Please, enter your name')
-  //   // }
-  //   dispatch(addUser(user))
-  //   // setValue('')
-  // }
+    if (userName.trim() !== '') {
+      setError(false)
+      props.setUser({ name: userName, todos: [] })
+      history.push('/todos')
+    } else {
+      setError(true)
+    }
+  }
 
-  // console.log(user)
-
-  // const onChangeInput = (e) => {
-  //   const { value } = e.target
-  // }
+  const handleChange = (e) => {
+    setUserName(e.target.value)
+  }
 
   return (
     <>
       <form className={s.form}>
         <label className={s.label}>
           User Name:
+          {error && <span className={s.error}>* Required textfield</span>}
           <input
             className={s.input}
             type='text'
             name='name'
-            // value={user}
+            value={userName}
             placeholder='Example: Kateryna'
-            // onChange={(e) => dispatch(addUser(e.currentTarget.value))}
-            // ref={inputRef}
+            onChange={(e) => handleChange(e)}
+            ref={inputRef}
           />
         </label>
-        <BigButton
-          type='button'
-          text='submit'
-          //  onClick={handleSubmit}
-        />
+        <BigButton type='button' text='submit' onClick={handleSubmit} />
       </form>
     </>
   )
 }
 
-export default LoginPage
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUser: (obj) => dispatch(setUser(obj)),
+  }
+}
+
+export default connect(null, mapDispatchToProps)(LoginPage)
