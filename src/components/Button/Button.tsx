@@ -1,17 +1,17 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import styles from './Button.module.css';
 
 type Props = {
-  buttonText: string;
+  children?: ReactNode;
   onClick: () => void;
   type: 'button' | 'submit' | 'reset' | undefined;
 };
 
 const Button: FC<Props> = (props) => {
-  const { buttonText, onClick, type = 'button' } = props;
+  const { onClick, type = 'button' } = props;
   return (
     <button type={type} className={styles.primaryButton} onClick={onClick}>
-      {buttonText}
+      {props.children}
     </button>
   );
 };

@@ -12,7 +12,10 @@ interface State {
 }
 
 const initialState: State = {
-  todos: {},
+  todos: {
+    1: { id: 1, text: 'HOHOHO', isCompleted: false },
+    2: { id: 2, text: 'WEFWEF', isCompleted: true },
+  },
   userName: '',
 };
 

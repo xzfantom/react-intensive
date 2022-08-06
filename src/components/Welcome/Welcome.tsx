@@ -26,7 +26,9 @@ const Welcome = () => {
         placeholder="Enter your name"
       />
       <Link to="/to-do">
-        <Button type="button" buttonText="Save your name and start" onClick={onClickSaveButton} />
+        <Button type="button" onClick={onClickSaveButton}>
+          Save your name and start
+        </Button>
       </Link>
     </div>
   );
