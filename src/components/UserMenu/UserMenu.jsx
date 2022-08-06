@@ -1,16 +1,28 @@
 import avatar from '../../images/default-avatar.jpg'
 import s from './UserMenu.module.css'
+import { connect } from 'react-redux'
 
-const UserMenu = ({ name = 'Kateryna', activeTodos = 3 }) => {
+const UserMenu = (props) => {
+  const activeTodos = () => {
+    props.todos.filter((todo) => !todo.completed)
+    return props.todos.length
+  }
   return (
     <div className={s.wrap}>
       <span className={s.todos}>
-        Active: <span className={s.numberTodos}>{activeTodos}</span>
+        Active: <span className={s.numberTodos}>{activeTodos()}</span>
       </span>
       <img src={avatar} alt='avatar' className={s.avatar} />
-      <span className={s.name}>{name}</span>
+      <span className={s.name}>{props.name}</span>
     </div>
   )
 }
 
-export default UserMenu
+const mapStateToProps = (state) => {
+  return {
+    name: state.name,
+    todos: state.todos,
+  }
+}
+
+export default connect(mapStateToProps, null)(UserMenu)
