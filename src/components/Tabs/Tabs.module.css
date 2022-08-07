@@ -5,9 +5,11 @@
 }
 
 .highlited {
-  background-color: aquamarine;
+  color: white;
+  background-color: black;
 }
 
 .normal {
-  background-color: black;
+  color: black;
+  background-color: white;
 }

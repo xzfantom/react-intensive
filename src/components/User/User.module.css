@@ -1,9 +1,19 @@
 .container {
+  position: relative;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+  width: 100%;
+}
+.numOfActiveTasks {
+  position: absolute;
+  font-weight: 300;
+  font-size: 20px;
+  top: 0;
+  left: 70%;
 }
 
-.userAvatar {
-  height: 50px;
-  width: 50px;
+.green {
+  color: rgb(0, 255, 170);
 }

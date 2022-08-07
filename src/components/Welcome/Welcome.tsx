@@ -31,6 +31,7 @@ const Welcome = () => {
           //  @ts-ignore
           value={userName}
           placeholder="Enter your name"
+          errorInput={true}
         />
         {isError && <div className={styles.errorMessage}>{ERROR_MESSAGE}</div>}
         <Button myStyle="primary" type="button" onClick={onClickSaveButton}>

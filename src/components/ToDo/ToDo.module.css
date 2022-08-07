@@ -1,4 +1,14 @@
 .container {
-  color: blue;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 70vw;
+  min-width: 230px;
+  height: 90vh;
+  row-gap: 30px;
+  margin: 5vh auto;
 }

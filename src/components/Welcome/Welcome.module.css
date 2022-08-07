@@ -1,7 +1,7 @@
 .layoutForWelcomePage {
   position: relative;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 20px;
   display: flex;
   justify-content: center;

@@ -8,11 +8,15 @@ import { addTodo } from '../../store/todoSlice';
 const InputTask: FC = () => {
   const dispatch = useAppDispatch();
   const [inputValue, setInputValue] = useState('');
+  const [errorInput, setErrorInput] = useState(false);
 
   const onTaskAdd = () => {
     if (!inputValue) {
+      setErrorInput(false);
+      setErrorInput(true);
       return;
     }
+    setErrorInput(false);
     dispatch(addTodo(inputValue));
     setInputValue('');
   };
@@ -21,6 +25,7 @@ const InputTask: FC = () => {
     onChangeCallback: setInputValue,
     inputValue: inputValue,
     placeholder: 'Write a new task',
+    errorInput: errorInput,
   };
 
   return (
