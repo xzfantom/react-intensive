@@ -1,18 +1,25 @@
-import { FC, useState } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
 import styles from './Tabs.module.css';
 
-const Tabs: FC = () => {
-  const [nowIsShown, setNowIsShown] = useState('active');
+export type TabSlug = 'active' | 'completed';
+
+type Props = {
+  activeTabSlug: TabSlug;
+  setActiveTabSlug: Dispatch<SetStateAction<TabSlug>>;
+};
+
+const Tabs: FC<Props> = (props) => {
+  const { activeTabSlug, setActiveTabSlug } = props;
 
   const activeCalss = () => {
-    if (nowIsShown === 'active') {
+    if (activeTabSlug === 'active') {
       return styles.highlited;
     } else {
       return styles.normal;
     }
   };
   const completedClass = () => {
-    if (nowIsShown === 'completed') {
+    if (activeTabSlug === 'completed') {
       return styles.highlited;
     } else {
       return styles.normal;
@@ -23,7 +30,7 @@ const Tabs: FC = () => {
       <div
         className={activeCalss()}
         onClick={() => {
-          setNowIsShown('active');
+          setActiveTabSlug('active');
         }}
       >
         Active
@@ -31,7 +38,7 @@ const Tabs: FC = () => {
       <div
         className={completedClass()}
         onClick={() => {
-          setNowIsShown('completed');
+          setActiveTabSlug('completed');
         }}
       >
         Completed

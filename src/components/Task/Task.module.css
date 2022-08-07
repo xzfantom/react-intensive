@@ -1,15 +1,17 @@
-.completed {
-  background-color: transparent;
-  text-decoration: line-through;
-  opacity: 0 !important;
-  height: 0px;
-  visibility: hidden;
-  transition: height 3s;
+.activeFromActiveTab {
+  background-color: white;
+  /* opaity: visible; */
 }
 
-.active {
+.completedFromActiveTab {
+  display: none;
+  transition: display 1s ease;
+}
+
+.completedFromCompletedTab {
+  text-decoration: line-through;
+}
+
+.activeTask {
   background-color: white;
-  opacity: 1;
-  height: auto;
-  visibility: visible;
 }

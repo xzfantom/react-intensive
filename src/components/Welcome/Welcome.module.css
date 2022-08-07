@@ -1,5 +1,33 @@
+.layoutForWelcomePage {
+  position: relative;
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 70vw;
+  min-width: 230px;
+  min-height: 40vh;
+  row-gap: 30px;
+}
+
+.welcomingMessage {
+  font-size: 38px;
+  font-weight: 900;
+}
+
 .container {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.errorMessage {
+  position: absolute;
+  top: 57%;
+  height: 40px;
 }

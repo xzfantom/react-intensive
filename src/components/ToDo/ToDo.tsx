@@ -1,14 +1,14 @@
 import { FC } from 'react';
 import TaskList from '../TaskList/TaskList';
 import User from '../User/User';
-import Input from '../Input/Input';
+import InputTask from '../InputTask/InputTask';
 // import styles from './ToDo.module.css';
 
 const ToDo: FC = () => {
   return (
     <>
       <User />
-      <Input />
+      <InputTask />
       <TaskList />
     </>
   );

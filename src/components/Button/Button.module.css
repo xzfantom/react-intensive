@@ -1,9 +1,30 @@
-.container {
-  color: rgb(6, 6, 6);
-  display: flex;
+.button {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
-.userAvatar {
-  height: 50px;
-  width: 50px;
+.button:hover {
+  filter: brightness(105%);
+}
+.button:active {
+  filter: brightness(95%);
+}
+
+.primary {
+  color: white;
+  background-color: #34a8b5;
+  min-height: 60px;
+  width: 250px;
+  font-size: 34px;
+  font-weight: 600;
+}
+
+.secondary {
+  background-color: #4dc4d2;
+  min-height: 50px;
+}
+
+.tool {
+  min-height: 10px;
 }

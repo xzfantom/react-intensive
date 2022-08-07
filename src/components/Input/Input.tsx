@@ -1,35 +1,20 @@
-import { FC, useState } from 'react';
-import useAppDispatch from 'src/utils/useAppDispatch';
-import Button from '../Button/Button';
-import styles from './Input.module.css';
-import { addTodo } from '../../store/todoSlice';
+import { FC } from 'react';
 
-const Input: FC = () => {
-  const dispatch = useAppDispatch();
-  const [inputValue, setInputValue] = useState('');
+type Props = {
+  onChangeCallback: (arg0: string) => void;
+  inputValue: string;
+  placeholder: string;
+};
 
-  const onTaskAdd = () => {
-    if (!inputValue) {
-      return;
-    }
-    dispatch(addTodo(inputValue));
-    setInputValue('');
-  };
-
+const Input: FC<Props> = (props) => {
+  const { inputValue, onChangeCallback, placeholder } = props;
   return (
-    <>
-      <div className={styles.container}>
-        <input
-          type="text"
-          onChange={(event) => setInputValue(event.currentTarget.value)}
-          value={inputValue}
-        />
-
-        <Button type="button" onClick={() => onTaskAdd()}>
-          Add
-        </Button>
-      </div>
-    </>
+    <input
+      type="text"
+      onChange={(event) => onChangeCallback(event.currentTarget.value)}
+      value={inputValue}
+      placeholder={placeholder}
+    />
   );
 };
 

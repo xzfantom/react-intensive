@@ -11,7 +11,7 @@ const User: FC = () => {
 
   return (
     <div className={styles.container}>
-      <div>{`ToDo list`}</div>
+      <h1>{`ToDo list`}</h1>
       <div>{`for ${userName}'`}</div>
       <div>{`${numOfActiveTasks} tasks left to complete`}</div>
     </div>

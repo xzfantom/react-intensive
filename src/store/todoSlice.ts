@@ -15,6 +15,7 @@ const initialState: State = {
   todos: {
     1: { id: 1, text: 'HOHOHO', isCompleted: false },
     2: { id: 2, text: 'WEFWEF', isCompleted: true },
+    3: { id: 3, text: 'Completed', isCompleted: true },
   },
   userName: '',
 };
