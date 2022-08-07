@@ -6,24 +6,22 @@ type TodoItem = {
 }
 
 interface TodoState {
-  todos: Array<TodoItem>
+  todos: Array<TodoItem>,
+  activeCount: number,
 }
-
 
 const initialState: TodoState = {
   todos: [],
+  activeCount: 0,
 };
 
 const todoSlice = createSlice({
   name: 'todo',
   initialState,
   reducers: {
-    todoAdded(state, action: PayloadAction<string>) {
-      const todo:TodoItem = {
-        done: false,
-        data: action.payload,
-      };
-      state.todos.push(todo);
+    todoAdded(state, action: PayloadAction<TodoItem>) {
+      state.todos.push(action.payload);
+      state.activeCount += 1;
     }
   }
 });
