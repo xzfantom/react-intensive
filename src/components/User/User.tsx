@@ -21,12 +21,11 @@ const User: FC = () => {
 
   return (
     <div className={styles.container}>
-      <h1>{`ToDo list`}</h1>
-      <div>{`for ${userName}'`}</div>
+      <div className={styles.largeText}>{`${userName}'s`}</div>
+      <div className={styles.mediumText}>{`tasks`}</div>
       <div className={`${styles.numOfActiveTasks} ${getActiveTasksClassName()}`}>
         {getTaskTrackingText()}
       </div>
-      )
     </div>
   );
 };

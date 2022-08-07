@@ -35,7 +35,7 @@ const Welcome = () => {
         />
         {isError && <div className={styles.errorMessage}>{ERROR_MESSAGE}</div>}
         <Button myStyle="primary" type="button" onClick={onClickSaveButton}>
-          Save start
+          Goooo
         </Button>
       </div>
     </div>

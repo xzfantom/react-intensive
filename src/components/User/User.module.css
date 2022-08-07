@@ -10,10 +10,19 @@
   position: absolute;
   font-weight: 300;
   font-size: 20px;
-  top: 0;
+  top: 0%;
   left: 70%;
 }
 
 .green {
   color: rgb(0, 255, 170);
+}
+.mediumText {
+  font-weight: 300;
+  font-size: 26px;
+}
+
+.largeText {
+  font-weight: 300;
+  font-size: 40px;
 }

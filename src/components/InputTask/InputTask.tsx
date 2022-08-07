@@ -33,8 +33,8 @@ const InputTask: FC = () => {
       <div className={styles.container}>
         <Input {...props} />
 
-        <Button myStyle="secondary" type="button" onClick={() => onTaskAdd()}>
-          Add
+        <Button myStyle="addTask" type="button" onClick={() => onTaskAdd()}>
+          +
         </Button>
       </div>
     </>

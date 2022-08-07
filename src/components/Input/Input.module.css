@@ -7,6 +7,7 @@
   border-radius: 10px;
   border: 1px solid rgb(212, 209, 209);
   margin-bottom: 15px;
+  padding: 0px;
 }
 .input:focus {
   outline: 2px solid #34a8b5;
@@ -22,7 +23,7 @@
 
 @keyframes myanim {
   50% {
-    outline: 3.5px solid #34a8b5;
+    outline: 3px solid #34a8b5;
   }
 }
 
