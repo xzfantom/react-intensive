@@ -1,0 +1,9 @@
+input{
+    width: 92%;
+    padding: 15px 15px;
+    margin-bottom: 15px;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;}

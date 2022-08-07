@@ -1,0 +1,11 @@
+input{
+    width: 50%;
+    border-radius: 5px;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+}
+.button{
+    border-radius: 50%;
+}
