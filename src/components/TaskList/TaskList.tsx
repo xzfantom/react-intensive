@@ -22,7 +22,7 @@ const TaskList: FC = () => {
 
   console.log(allTasksArray);
   return (
-    <div>
+    <div className={styles.taskAndTabsContainer}>
       <Tabs {...propsForTabs} />
       {activeTabSlug === 'active' && (
         <div className={styles.taskContainer}>

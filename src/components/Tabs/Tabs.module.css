@@ -2,14 +2,33 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 34px;
+}
+
+.tab {
+  padding: 10px;
+  color: black;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.tab:hover {
+  position: relative;
+  top: -3px;
+}
+.tab:active {
+  background-color: #5fc6d3;
+}
+
+.tab:active:hover {
+  background-color: #5fc6d3;
 }
 
 .highlited {
-  color: white;
-  background-color: black;
+  background-color: #5fc6d3;
+  transition: all 0.3s;
 }
 
 .normal {
-  color: black;
   background-color: white;
+  transition: all 0.3s;
 }

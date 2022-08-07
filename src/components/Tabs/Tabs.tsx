@@ -28,7 +28,7 @@ const Tabs: FC<Props> = (props) => {
   return (
     <div className={styles.container}>
       <div
-        className={activeCalss()}
+        className={`${styles.tab} ${activeCalss()}`}
         onClick={() => {
           setActiveTabSlug('active');
         }}
@@ -36,7 +36,7 @@ const Tabs: FC<Props> = (props) => {
         Active
       </div>
       <div
-        className={completedClass()}
+        className={`${styles.tab} ${completedClass()}`}
         onClick={() => {
           setActiveTabSlug('completed');
         }}
