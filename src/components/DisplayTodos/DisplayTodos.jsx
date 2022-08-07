@@ -13,10 +13,6 @@ import s from './DisplayTodos.module.css'
 const DisplayTodos = (props) => {
   const [sort, setSort] = useState("active");
 
-  //TODO: найти Bug
-  console.log(props.todos.length);
-  console.log(props.todos);
-
   return (
     <div className={s.container}>
       {props.todos.length > 0 && <div className={s.btnWrap}>

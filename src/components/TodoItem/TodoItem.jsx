@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef } from 'react'
 import s from './TodoItem.module.css'
 import editIcon from '../../images/icons/edit-icon.svg'
 import completeIcon from '../../images/icons/complete-icon.svg'
@@ -55,8 +55,6 @@ const TodoItem = (props) => {
           onClick={() => removeTodo(item.id)}
         />
       </div>
-
-
     </div>
   )
 }
