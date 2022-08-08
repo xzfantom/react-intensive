@@ -10,8 +10,11 @@
   position: absolute;
   font-weight: 300;
   font-size: 20px;
-  top: 0%;
-  left: 70%;
+  top: -5%;
+  right: 0%;
+  max-height: 50px;
+  min-width: 120px;
+  text-overflow: ellipsis;
 }
 
 .green {
@@ -20,9 +23,12 @@
 .mediumText {
   font-weight: 300;
   font-size: 26px;
+  line-height: 1;
 }
 
 .largeText {
-  font-weight: 300;
+  padding-top: 20px;
+  font-weight: 500;
   font-size: 40px;
+  line-height: 1;
 }

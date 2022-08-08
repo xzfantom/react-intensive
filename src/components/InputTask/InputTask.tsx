@@ -25,7 +25,7 @@ const InputTask: FC = () => {
     onChangeCallback: setInputValue,
     inputValue: inputValue,
     placeholder: 'Write a new task',
-    errorInput: errorInput,
+    myClassName: errorInput ? 'errorInput' : '',
   };
 
   return (
@@ -33,7 +33,7 @@ const InputTask: FC = () => {
       <div className={styles.container}>
         <Input {...props} />
 
-        <Button myStyle="addTask" type="button" onClick={() => onTaskAdd()}>
+        <Button myClassName="addTask" type="button" onClick={() => onTaskAdd()}>
           +
         </Button>
       </div>

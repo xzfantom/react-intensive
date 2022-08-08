@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react';
 import styles from './Button.module.css';
 
 type Props = {
-  myStyle: 'primary' | 'addTask' | 'tool';
+  myClassName: 'primary' | 'addTask' | 'tool';
   disabled?: boolean;
   children?: ReactNode;
   onClick: () => void;
@@ -10,11 +10,11 @@ type Props = {
 };
 
 const Button: FC<Props> = (props) => {
-  const { onClick, type = 'button', disabled = false, myStyle } = props;
+  const { onClick, type = 'button', disabled = false, myClassName } = props;
   return (
     <button
       type={type}
-      className={`${styles.button} ${styles[myStyle]}`}
+      className={`${styles.button} ${styles[myClassName]}`}
       onClick={onClick}
       disabled={disabled}
     >

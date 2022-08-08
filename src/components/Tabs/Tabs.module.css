@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 34px;
+  font-size: 30px;
+  margin-top: 5px;
 }
 
 .tab {
@@ -10,6 +11,7 @@
   color: black;
   border-radius: 10px;
   cursor: pointer;
+  font-weight: 300;
 }
 .tab:hover {
   position: relative;

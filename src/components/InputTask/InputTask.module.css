@@ -1,7 +1,9 @@
 .container {
   display: flex;
   justify-content: center;
-  column-gap: 20px;
+  column-gap: 10px;
   padding-left: 62px;
-  margin: 0 auto;
+  margin: 0 auto 10px;
+  font-size: 28px;
+  font-weight: 100;
 }

@@ -4,17 +4,17 @@ import styles from './Input.module.css';
 type Props = {
   onChangeCallback: (arg0: string) => void;
   inputValue: string;
-  placeholder: string;
-  errorInput: boolean;
+  placeholder?: string;
+  myClassName: string;
 };
 
 const Input: FC<Props> = (props) => {
-  const { inputValue, onChangeCallback, placeholder, errorInput } = props;
-
-  const errorStyle = errorInput ? styles.errorInput : null;
+  const { inputValue, onChangeCallback, placeholder, myClassName } = props;
+  console.log('inputValue');
+  console.log(inputValue);
   return (
     <input
-      className={`${styles.input} ${errorStyle}`}
+      className={`${styles.input} ${styles[myClassName]}`}
       type="text"
       onChange={(event) => onChangeCallback(event.currentTarget.value)}
       value={inputValue}

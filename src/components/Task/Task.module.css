@@ -1,6 +1,10 @@
-.activeFromActiveTab {
-  background-color: white;
-  /* opaity: visible; */
+.task {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  padding: 0 10px;
+  font-weight: 300;
 }
 
 .completedFromActiveTab {
@@ -12,6 +16,17 @@
   text-decoration: line-through;
 }
 
-.activeTask {
-  background-color: white;
+.text {
+  flex-grow: 1;
+  word-break: break-all;
+  font-size: 18px;
+}
+
+.checkbox:checked {
+  accent-color: #5fc6d3;
+}
+
+img {
+  height: 20px;
+  width: 20px;
 }

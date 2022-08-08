@@ -20,7 +20,6 @@ const TaskList: FC = () => {
     return todo.isCompleted === true;
   });
 
-  console.log(allTasksArray);
   return (
     <div className={styles.taskAndTabsContainer}>
       <Tabs {...propsForTabs} />

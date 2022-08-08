@@ -21,8 +21,7 @@ const User: FC = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.largeText}>{`${userName}'s`}</div>
-      <div className={styles.mediumText}>{`tasks`}</div>
+      <div className={styles.largeText}>{`${userName},`}</div>
       <div className={`${styles.numOfActiveTasks} ${getActiveTasksClassName()}`}>
         {getTaskTrackingText()}
       </div>

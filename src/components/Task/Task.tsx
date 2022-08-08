@@ -1,11 +1,15 @@
 import { FC } from 'react';
 import useAppDispatch from 'src/utils/useAppDispatch';
 import Button from '../Button/Button';
+import Input from '../Input/Input';
 import styles from './Task.module.css';
 import { TabSlug } from '../Tabs/Tabs';
 import { patchTodoText, deleteTodo, changeTaskStatus } from '../../store/todoSlice';
 import useToggler from '../../utils/useToggler';
 import useAppSelector from 'src/utils/useAppSelector';
+import editSRC from './editIcon.png';
+import deleteSRC from './deleteIcon.png';
+import saveSRC from './saveIcon.png';
 
 type Props = {
   id: number;
@@ -17,12 +21,14 @@ const Task: FC<Props> = (props) => {
   const dispatch = useAppDispatch();
 
   const { id, text, activeTabSlug } = props;
+  console.log('text');
+  console.log(text);
   const { isCompleted } = useAppSelector((state) => state.todoReducer.todos[id]);
 
   const [isChangeable, setisChangeable] = useToggler();
 
-  const onTaskChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(patchTodoText({ id: id, text: event.currentTarget.value }));
+  const onTaskChange = (value: string) => {
+    dispatch(patchTodoText({ id: id, text: value }));
   };
   const onTaskDelete = () => {
     dispatch(deleteTodo(id));
@@ -41,23 +47,34 @@ const Task: FC<Props> = (props) => {
 
   return (
     <>
-      <div className={`${styles.activeFromActiveTab} ${completedFromActiveTabClassName()}`}>
-        <input type="checkbox" defaultChecked={isCompleted} onClick={onTaskStatusChange} />
+      <div className={`${styles.task} ${completedFromActiveTabClassName()}`}>
+        <input
+          className={styles.checkbox}
+          type="checkbox"
+          defaultChecked={isCompleted}
+          onClick={onTaskStatusChange}
+        />
         {isChangeable && (
-          <input onChange={isChangeable ? (e) => onTaskChange(e) : undefined} value={text} />
+          <Input
+            myClassName="taskEditInput"
+            onChangeCallback={onTaskChange}
+            //  @ts-ignore
+            inputValue={text}
+          />
         )}
-        {!isChangeable && <div className={styles.active}>{text}</div>}
+        {!isChangeable && <div className={styles.text}>{text}</div>}
 
         <Button
-          myStyle="tool"
+          myClassName="tool"
           disabled={isCompletedTabSlugActive}
           type="button"
           onClick={typeof setisChangeable != 'boolean' ? () => setisChangeable() : () => {}}
         >
-          {isChangeable ? 'Save' : 'Change'}
+          {isChangeable && <img src={saveSRC} alt="save" />}
+          {!isChangeable && <img src={editSRC} alt="edit" />}
         </Button>
-        <Button myStyle="tool" type="button" onClick={() => onTaskDelete()}>
-          Delete
+        <Button myClassName="tool" type="button" onClick={() => onTaskDelete()}>
+          <img src={deleteSRC} alt="delete" />
         </Button>
       </div>
     </>

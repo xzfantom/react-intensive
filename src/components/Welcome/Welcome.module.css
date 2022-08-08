@@ -11,11 +11,11 @@
   min-width: 230px;
   min-height: 40vh;
   row-gap: 30px;
+  font-weight: 100;
 }
 
 .welcomingMessage {
   font-size: 38px;
-  font-weight: 900;
 }
 
 .container {
@@ -24,6 +24,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  font-size: 28px;
 }
 
 .errorMessage {
