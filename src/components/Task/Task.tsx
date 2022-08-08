@@ -40,6 +40,8 @@ const Task: FC<Props> = (props) => {
   const completedFromActiveTabClassName = () => {
     if (isCompleted && isActiveTabSlugActive) {
       return styles.completedFromActiveTab;
+    } else if (isCompletedTabSlugActive) {
+      return styles.completedFromCompletedTab;
     }
   };
 

@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react';
 import styles from './Button.module.css';
 
 type Props = {
-  myClassName: 'primary' | 'addTask' | 'tool';
+  myClassName: 'primary' | 'addTask' | 'tool' | 'exit';
   disabled?: boolean;
   children?: ReactNode;
   onClick: () => void;

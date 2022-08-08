@@ -12,7 +12,7 @@
   transition: display 1s ease;
 }
 
-.completedFromCompletedTab {
+.completedFromCompletedTab div {
   text-decoration: line-through;
 }
 
