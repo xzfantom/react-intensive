@@ -1,0 +1,26 @@
+.LoginForm {
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 35px 20px;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+
+.LoginForm__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.LoginForm label {
+  width: 80%;
+}
+
+.LoginForm button{
+  padding: 10px 20px;
+}
+
+.Error {
+  color: rgb(255, 0, 0);
+  font-weight: bold;
+}
