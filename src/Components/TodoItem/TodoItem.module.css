@@ -1,0 +1,16 @@
+textarea {
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #e1ebfd;
+    color: #271c6c;
+    height: 70%;
+
+
+}
+.item{
+    margin-bottom: 20px
+}
+.line{
+    text-decoration: line-through;
+}

@@ -1,0 +1,13 @@
+.add{
+    font-size: 14px;
+    line-height: 18px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #fff200;
+    margin-top: 17px;
+}
+.add:hover{
+    box-shadow: 2px 2px 10px 2px #595959;
+    cursor: pointer;
+}
