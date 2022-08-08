@@ -1,0 +1,56 @@
+.container {
+  border: 3px solid rgba(0, 0, 0, 0.4);
+  padding: 10px;
+  background-color: white;
+}
+
+.toDoSelectionContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 20px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.toDoSelectionContainer::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 30px;
+  background-color: black;
+  border-radius: 10px;
+}
+
+.itemsContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+.button {
+  min-width: 109px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  background-image: linear-gradient(to top, #d8d9db 0%, #fff 80%, #fdfdfd 100%);
+  border-radius: 30px;
+  border: 1px solid #8f9092;
+  transition: all 0.2s ease;
+  font-size: 15px;
+  font-weight: 600;
+  color: #606060;
+  text-shadow: 0 1px #fff;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.activeStatus {
+  box-shadow: 0 4px 3px 1px #fcfcfc, 0 6px 8px #d6d7d9, 0 -4px 4px #cecfd1,
+    0 -6px 4px #fefefe, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
+}

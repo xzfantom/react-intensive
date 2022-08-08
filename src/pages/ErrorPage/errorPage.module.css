@@ -1,0 +1,9 @@
+.container {
+  position: absolute;
+  top: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 25px;
+  font-weight: 700;
+  text-align: center;
+}

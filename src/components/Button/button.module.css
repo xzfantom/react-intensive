@@ -1,0 +1,30 @@
+.button {
+  cursor: pointer;
+  font-family: Helvetica,"sans-serif";
+  transition: all .2s;
+  padding: 5px 15px;
+  border-radius: 15px;
+  background: rgba(38, 243, 198, 0.45);
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.button:hover {
+  background: rgba(38, 243, 198, 0.6);
+}
+
+.button > svg {
+  width: 34px;
+  margin-left: 10px;
+  transition: transform .3s ease-in-out;
+}
+
+.button:hover svg {
+  transform: translateX(5px);
+}
+
+.button:active {
+  transform: scale(0.95);
+}

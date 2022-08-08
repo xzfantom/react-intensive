@@ -1,0 +1,26 @@
+.container {
+  background-color: rgba(38, 243, 198, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  padding: 12px;
+  font-size: 30px;
+  border: 3px solid black;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.255);
+  margin: 10px 0;
+}
+
+.wrapper{
+    display: flex;
+    column-gap: 10px;
+}
+
+.activeToDoItems{
+    align-self: flex-end;
+    font-size: 22px;
+}
+
