@@ -7,6 +7,7 @@ import Authentication from "./routes/Authentication";
 import TodoList from "./routes/TodoList";
 import App from './App';
 import './index.css';
+import NotFound from './routes/NotFound';
 
 const container = document.getElementById('root') as HTMLElement;
 const root = createRoot(container);
@@ -16,10 +17,11 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
       <Routes>
-                <Route path='/' element={<App />}>
+            <Route path='/' element={<App />}>
             <Route index element={<TodoList />} />
             <Route path='login' element={<Authentication />} />
             <Route path='todoList' element={<TodoList />} />
+            <Route path='*' element={<NotFound />} />
           </Route>
           </Routes>
       </BrowserRouter>
