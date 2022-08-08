@@ -1,35 +1,24 @@
-import { useState } from 'react';
+import React from "react";
 import styles from './App.module.css';
-import Form from './components/Form/Form';
-import UserProfile  from './components/UserProfile/UserProfile';
+import Header from "./components/Header/Header";
+import Todo from "./components/Todo/Todo";
+import Login from "./components/Login/Login";
+import {Routes, Route, Navigate} from "react-router-dom";
+import {useSelector} from "react-redux";
 
-function App (){
-
-  const [ person, setPerson ] = useState( {} );
-  const [ isData, setIsData ] = useState( false );
-
-  const onChange = ({ person, isData }) => {
-    setPerson( person );
-    setIsData( isData );
-  };
-  
-  return(
-    <div>
-      <div className = { styles.background }>
-          <Form 
-            person = { person }
-            isData = { isData }
-            className = { (isData === true) ? styles.disable : styles.container }
-            changeData = { onChange }
-          /> 
-          <UserProfile 
-            person = { person }
-            className = { (isData === true) ? styles.container : styles.disable }
-          />
-      </div>
-    </div>
+const App = () => {
+    const isLogin = useSelector( state => state.isLogin );
+    return(
+        <div className = { styles.container }>
+            <div className = { styles.appWrapper }>
+                <Header />
+                <Routes>
+                    <Route path = "/" element = {< Login />}/>
+                    <Route path = "/todos" element = { !isLogin ? <Navigate to="/" replace /> : < Todo />}/>
+                </Routes>
+            </div>
+        </div>
   )
 }
 
 export default App;
- 
