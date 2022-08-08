@@ -6,8 +6,8 @@ const Header = () => {
   const user = useSelector((state) => state);
 
   const thingsToDo = () => {
-    const toDo = user.toDoList.filter((todo) => todo.completed === false);
-    return toDo.length;
+    const toDoNumber = user.toDoList.filter((todo) => todo.completed === false);
+    return toDoNumber.length;
   };
 
   return (

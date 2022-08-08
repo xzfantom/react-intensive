@@ -42,11 +42,11 @@ const ToDoList = ({ selectedStatus, setSelectedStatus }) => {
         <div className={style.itemsContainer}>
           {selectedStatus === "active" &&
             activeTodoItems.map((todo) => (
-              <ToDoItem key={todo.id} todoInfo={todo} />
+              <ToDoItem key={todo.id} currentTodo={todo} />
             ))}
           {selectedStatus === "completed" &&
             completedTodoItems.map((todo) => (
-              <ToDoItem key={todo.id} todoInfo={todo} />
+              <ToDoItem key={todo.id} currentTodo={todo} />
             ))}
         </div>
       </div>

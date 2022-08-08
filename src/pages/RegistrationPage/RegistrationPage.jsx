@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import style from "./registrationPage.module.css";
-import { updateUser } from "../../store/actions";
+import { setUser } from "../../store/actions";
 import Button from "../../components/Button/Button";
 
 const RegistrationPage = () => {
@@ -14,9 +14,9 @@ const RegistrationPage = () => {
   const handleSubmitClick = (e) => {
     e.preventDefault();
 
-    if (userName.trim() !== "") {
+    if (userName.trim()) {
       setError(false);
-      dispatch(updateUser({ name: userName, toDoList: [] }));
+      dispatch(setUser(userName));
       navigate("/toDoList", { replace: true });
     } else {
       setError(true);
@@ -27,10 +27,6 @@ const RegistrationPage = () => {
     if (e.key === "Enter") {
       handleSubmitClick(e);
     }
-  };
-
-  const handleChange = (e) => {
-    setUserName(e.target.value);
   };
 
   return (
@@ -46,7 +42,7 @@ const RegistrationPage = () => {
             placeholder="Name"
             type="text"
             value={userName}
-            onChange={handleChange}
+            onChange={(e) => setUserName(e.target.value)}
             onKeyDown={handleEnterPress}
           />
           {error && (

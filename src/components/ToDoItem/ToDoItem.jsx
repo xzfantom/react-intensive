@@ -5,21 +5,17 @@ import { ReactComponent as DeleteSVG } from "../../svg/delete-svg.svg";
 import { ReactComponent as CircleSVG } from "../../svg/circle-svg.svg";
 import { ReactComponent as DoneSVG } from "../../svg/done-svg.svg";
 import { ReactComponent as OkSVG } from "../../svg/ok-button-svg.svg";
-import { useSelector, useDispatch } from "react-redux";
-import { updateUser } from "../../store/actions";
+import { useDispatch } from "react-redux";
+import { removeTodo, toggleCompletion, updateTodo } from "../../store/actions";
 
-const ToDoItem = ({ todoInfo: currentTodo }) => {
-  const user = useSelector((state) => state);
+const ToDoItem = ({ currentTodo }) => {
   const dispatch = useDispatch();
   const item = useRef();
   const [value, setValue] = useState(currentTodo.todo);
   const [editing, setEditing] = useState(false);
 
   const handleDeleteClick = () => {
-    const removedTodoItem = user.toDoList.filter(
-      (todo) => todo.id !== currentTodo.id
-    );
-    dispatch(updateUser({ ...user, toDoList: removedTodoItem }));
+    dispatch(removeTodo(currentTodo.id));
   };
 
   const handleEditClick = () => {
@@ -28,31 +24,14 @@ const ToDoItem = ({ todoInfo: currentTodo }) => {
     item.current.focus();
   };
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
-
   const handleBlur = () => {
-    const updatedTodoItemValue = user.toDoList.map((todo) => {
-      if (todo.id === currentTodo.id) {
-        todo.todo = value;
-      }
-      return todo;
-    });
-    dispatch(updateUser({ ...user, toDoList: updatedTodoItemValue }));
-
+    dispatch(updateTodo(value, currentTodo.id));
     setEditing(false);
     item.current.disabled = true;
   };
 
   const handleCompletionClick = () => {
-    const completionChanged = user.toDoList.map((todo) => {
-      if (todo.id === currentTodo.id) {
-        todo.completed = !todo.completed;
-      }
-      return todo;
-    });
-    dispatch(updateUser({ ...user, toDoList: completionChanged }));
+    dispatch(toggleCompletion(currentTodo.id));
   };
 
   return (
@@ -72,7 +51,7 @@ const ToDoItem = ({ todoInfo: currentTodo }) => {
         className={
           currentTodo.completed ? `${style.crossed} ${style.item}` : style.item
         }
-        onChange={handleChange}
+        onChange={(e) => setValue(e.target.value)}
         onBlur={handleBlur}
         value={value}
         disabled={true}

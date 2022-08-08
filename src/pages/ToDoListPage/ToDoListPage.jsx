@@ -3,7 +3,7 @@ import ToDoList from "../../containers/ToDoList/ToDoList";
 import style from "./toDoListPage.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../../store/actions";
+import { addTodo } from "../../store/actions";
 
 const ToDoListPage = () => {
   const user = useSelector((state) => state);
@@ -19,14 +19,14 @@ const ToDoListPage = () => {
   const handleToDoSubmit = (e) => {
     e.preventDefault();
 
-    if (toDoInputValue.trim() !== "") {
+    if (toDoInputValue.trim()) {
       const newTodo = {
         todo: toDoInputValue,
         completed: false,
         id: Date.now(),
       };
 
-      dispatch(updateUser({ ...user, toDoList: [...user.toDoList, newTodo] }));
+      dispatch(addTodo(newTodo));
       setToDoInputValue("");
       setSelectedStatus("active");
       setError(false);
