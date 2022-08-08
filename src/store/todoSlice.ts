@@ -12,11 +12,7 @@ interface State {
 }
 
 const initialState: State = {
-  todos: {
-    1: { id: 1, text: 'HOHOHO', isCompleted: false },
-    2: { id: 2, text: 'WEFWEF', isCompleted: true },
-    3: { id: 3, text: 'Completed', isCompleted: true },
-  },
+  todos: {},
   userName: '',
 };
 
@@ -29,8 +25,12 @@ const todoSlice = createSlice({
     },
 
     addTodo: (state, action: PayloadAction<string>) => {
-      const existingIdsAsNumbers = Object.keys(state.todos).map((key) => parseInt(key));
-      const newTodoId = Math.max(...existingIdsAsNumbers) + 1;
+      let newTodoId = 1;
+      if (Object.keys(state.todos).length) {
+        const existingIdsAsNumbers = Object.keys(state.todos).map((key) => parseInt(key));
+        newTodoId = Math.max(...existingIdsAsNumbers) + 1;
+      }
+
       state.todos[newTodoId] = {
         id: newTodoId,
         isCompleted: false,

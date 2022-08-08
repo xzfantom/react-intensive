@@ -20,7 +20,6 @@ const Welcome = () => {
       return;
     }
     navigate('/to-do', { replace: true });
-    localStorage.setItem('userName', userName);
   };
 
   const inputProps = {
