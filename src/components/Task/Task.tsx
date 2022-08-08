@@ -7,9 +7,9 @@ import { TabSlug } from '../Tabs/Tabs';
 import { patchTodoText, deleteTodo, changeTaskStatus } from '../../store/todoSlice';
 import useToggler from '../../utils/useToggler';
 import useAppSelector from 'src/utils/useAppSelector';
-import editSRC from './editIcon.png';
-import deleteSRC from './deleteIcon.png';
-import saveSRC from './saveIcon.png';
+import editSRC from '../../assets/editIcon.png';
+import deleteSRC from '../../assets/deleteIcon.png';
+import saveSRC from '../../assets/saveIcon.png';
 
 type Props = {
   id: number;
@@ -43,6 +43,12 @@ const Task: FC<Props> = (props) => {
     }
   };
 
+  const inputProps = {
+    onChangeCallback: onTaskChange,
+    inputValue: text,
+    myClassName: 'taskEditInput',
+  };
+
   return (
     <>
       <div className={`${styles.task} ${completedFromActiveTabClassName()}`}>
@@ -52,14 +58,7 @@ const Task: FC<Props> = (props) => {
           defaultChecked={isCompleted}
           onClick={onTaskStatusChange}
         />
-        {isChangeable && (
-          <Input
-            myClassName="taskEditInput"
-            onChangeCallback={onTaskChange}
-            //  @ts-ignore
-            inputValue={text}
-          />
-        )}
+        {isChangeable && <Input {...inputProps} />}
         {!isChangeable && <div className={styles.text}>{text}</div>}
 
         <Button

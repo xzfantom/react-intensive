@@ -21,7 +21,7 @@ const InputTask: FC = () => {
     setInputValue('');
   };
 
-  const props = {
+  const inputProps = {
     onChangeCallback: setInputValue,
     inputValue: inputValue,
     placeholder: 'Write a new task',
@@ -31,7 +31,7 @@ const InputTask: FC = () => {
   return (
     <>
       <div className={styles.container}>
-        <Input {...props} />
+        <Input {...inputProps} />
 
         <Button myClassName="addTask" type="button" onClick={() => onTaskAdd()}>
           +

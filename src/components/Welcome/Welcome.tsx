@@ -23,17 +23,18 @@ const Welcome = () => {
     localStorage.setItem('userName', userName);
   };
 
+  const inputProps = {
+    onChangeCallback: (value: string) => dispatch(changeUserName(value)),
+    inputValue: userName,
+    placeholder: 'Enter your name',
+    myClassName: isError ? 'errorInput' : '',
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.layoutForWelcomePage}>
         <label className={styles.welcomingMessage}>Let's get started</label>
-        <Input
-          onChangeCallback={(value) => dispatch(changeUserName(value))}
-          //  @ts-ignore
-          value={userName}
-          placeholder="Enter your name"
-          errorInput={true}
-        />
+        <Input {...inputProps} />
         {isError && <div className={styles.errorMessage}>{ERROR_MESSAGE}</div>}
         <Button myClassName="primary" type="button" onClick={onClickSaveButton}>
           Go
