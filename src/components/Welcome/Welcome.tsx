@@ -20,6 +20,7 @@ const Welcome = () => {
       return;
     }
     navigate('/to-do', { replace: true });
+    localStorage.setItem('userName', userName);
   };
 
   return (
@@ -35,7 +36,7 @@ const Welcome = () => {
         />
         {isError && <div className={styles.errorMessage}>{ERROR_MESSAGE}</div>}
         <Button myClassName="primary" type="button" onClick={onClickSaveButton}>
-          Goooo
+          Go
         </Button>
       </div>
     </div>

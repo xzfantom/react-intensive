@@ -10,8 +10,6 @@ type Props = {
 
 const Input: FC<Props> = (props) => {
   const { inputValue, onChangeCallback, placeholder, myClassName } = props;
-  console.log('inputValue');
-  console.log(inputValue);
   return (
     <input
       className={`${styles.input} ${styles[myClassName]}`}

@@ -32,3 +32,9 @@
   font-size: 40px;
   line-height: 1;
 }
+
+img {
+  height: 20px;
+  width: 20px;
+  align-self: center;
+}

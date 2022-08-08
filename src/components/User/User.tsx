@@ -1,5 +1,6 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import type { RootState } from '../../store/index';
 import styles from './User.module.css';
 
@@ -19,11 +20,20 @@ const User: FC = () => {
     if (numOfActiveTasks === 0) return styles.green;
   };
 
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!userName) {
+      navigate('/', { replace: true });
+    }
+  });
+
   return (
     <div className={styles.container}>
-      <div className={styles.largeText}>{`${userName},`}</div>
-      <div className={`${styles.numOfActiveTasks} ${getActiveTasksClassName()}`}>
-        {getTaskTrackingText()}
+      <div className={styles.container}>
+        <div className={styles.largeText}>{`${userName},`}</div>
+        <div className={`${styles.numOfActiveTasks} ${getActiveTasksClassName()}`}>
+          {getTaskTrackingText()}
+        </div>
       </div>
     </div>
   );

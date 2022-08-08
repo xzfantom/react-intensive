@@ -39,6 +39,10 @@
 .tool {
   height: 30px;
   min-width: 30px;
-  width: 30px;
+  width: auto;
   font-size: 14px;
+}
+
+.tool:disabled {
+  cursor: not-allowed;
 }

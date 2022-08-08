@@ -21,8 +21,6 @@ const Task: FC<Props> = (props) => {
   const dispatch = useAppDispatch();
 
   const { id, text, activeTabSlug } = props;
-  console.log('text');
-  console.log(text);
   const { isCompleted } = useAppSelector((state) => state.todoReducer.todos[id]);
 
   const [isChangeable, setisChangeable] = useToggler();
