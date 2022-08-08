@@ -21,6 +21,7 @@
   line-height: 1.2;
   font-weight: 300;
 }
+
 .description:not(:last-child) {
   margin-bottom: 15px;
 }
@@ -28,6 +29,7 @@
 ul {
   padding-left: 30px;
 }
+
 .image {
   margin: auto 30px auto 0;
   height: 600px;
