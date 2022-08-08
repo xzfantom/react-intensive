@@ -28,9 +28,9 @@ const AboutUsPage = () => {
           </p>
         </div>
       </div>
-      <h1 className={s.message}>
+      <h2 className={s.message}>
         To start using App should <span className={s.login}>Log In</span>
-      </h1>
+      </h2>
     </>
   )
 }
