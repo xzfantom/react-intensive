@@ -3,13 +3,12 @@ import InputField from "../InputField/InputField";
 import DisplayTodos from "../DisplayTodos/DisplayTodos";
 
 const Main = () => {
-  return (
-    <>
-
-      <InputField />
-      <DisplayTodos />
-    </>
-  );
+    return (
+        <>
+            <InputField/>
+            <DisplayTodos/>
+        </>
+    );
 };
 
 export default Main;

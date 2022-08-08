@@ -1,5 +1,5 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { todoReducer } from "./toDoSlice";
+import { todoReducer } from "./toDoSlicer";
 import { userReducer } from "./userSlicer";
 import { userNameReducer } from "./userNameSlicer";
 import {

@@ -5,7 +5,7 @@ import {
   completedTodos,
   removeTodos,
   updateTodos,
-} from "../../store/toDoSlice";
+} from "../../store/toDoSlicer";
 import TodoItem from "../TodoItem/TodoItem";
 import s from "./DisplayTodos.module.css";
 import MyButton from "../MyButton/MyButton";

@@ -42,15 +42,15 @@ const TodoItem = (props) => {
 
       <MyButton onClick={() => removeTodo(item.id)}>
         {" "}
-        <img src={Delete} alt="#" />
+        <img src={Delete} alt="delete" />
       </MyButton>
       <MyButton onClick={() => completedTodo(item.id)}>
         {" "}
-        <img src={Complete} alt="#" />
+        <img src={Complete} alt="complete" />
       </MyButton>
 
       <MyButton onClick={() => changeFocus()}>
-        <img src={Edit} alt="#" />
+        <img src={Edit} alt="edit" />
       </MyButton>
     </li>
   );
