@@ -1,0 +1,26 @@
+.wrap {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  border-radius: 50%;
+  margin-right: 10px;
+  width: 40px;
+}
+
+.name {
+  font-weight: 500;
+}
+
+.todos {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 1.5px;
+  margin-right: 10px;
+}
+.todos span {
+  color: var(--accent-color);
+}
