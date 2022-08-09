@@ -1,0 +1,30 @@
+.Stats {
+  display: flex;
+  margin: 2rem auto;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.Stats__item {
+  width: 10rem;
+  height: 10rem;
+  border: 1px solid #fafafa;
+  background-color: #646ff0;
+  color: #fafafa;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.Stats__value {
+  font-size: 2.8rem;
+  font-weight: 500;
+}
+
+.Stats__label {
+  font-size: 1.4rem;
+}
