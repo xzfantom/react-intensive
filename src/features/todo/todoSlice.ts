@@ -9,7 +9,7 @@ type TodoItem = {
   data: string,
 }
 
-interface TodoState {
+export interface TodoState {
   todos: Array<TodoItem>,
   activeCount: number,
 }
