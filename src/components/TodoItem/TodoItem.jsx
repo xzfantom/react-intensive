@@ -3,7 +3,8 @@ import styles from './todoItem.module.css';
 import Save from '../Icons/saveIcon.png'
 import Delete from '../Icons/deleteIcon.png';
 import Edit from '../Icons/editIcon.png';
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
+import { CHANGE_COMPLETED, EDIT_TODO, DELETE_TODO } from "../../redux/actionsTypes";
 
 function TodoItem({ id, title, isCompleted }) {
     const ALT_TEXT = {
@@ -15,17 +16,15 @@ function TodoItem({ id, title, isCompleted }) {
     const [ isEditTodo, setIsEditTodo ] = useState(false);
     const [ todoValue, setTodoValue ] = useState( title );
     const onChangeCompleted = () => dispatch({
-        type: "CHANGE_COMPLETED",
+        type: CHANGE_COMPLETED,
         payload: id
     })
-    const onChangeValue = ( e ) => {
-        setTodoValue( e.target.value )
-    }
+    const onChangeValue = ( e ) => { setTodoValue( e.target.value )}
     const onEdit = () => { setIsEditTodo( !isEditTodo )}
     const onSave = ()  => {
         setIsEditTodo( !isEditTodo )
         dispatch({
-            type: "EDIT_TODO",
+            type: EDIT_TODO,
             payload: {
                 id: id,
                 title: todoValue
@@ -33,7 +32,7 @@ function TodoItem({ id, title, isCompleted }) {
         });
     }
     const onDelete = () => dispatch({
-        type: "DELETE_TODO",
+        type: DELETE_TODO,
         payload: id
     })
 

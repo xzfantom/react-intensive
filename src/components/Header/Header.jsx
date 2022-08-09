@@ -1,15 +1,13 @@
 import React from 'react';
 import styles from './header.module.css';
-import { useSelector } from "react-redux";
+import { STATE } from "../../redux/selectors";
 
 const Header = () => {
-    const count = useSelector( state => state.todos.filter(( todo ) => todo.completed === false).length );
-    const name = useSelector( state => state.name );
-    const isLogin = useSelector( state => state.isLogin );
-    const ACTIVE_TASK_TEXT = (isLogin) ? `Активных задач: ${count}` : "Введите ваше имя";
+    const { activeTodosCount, userName, isLogin } = STATE();
+    const ACTIVE_TASK_TEXT = ( isLogin ) ? `Активных задач: ${activeTodosCount}` : "Введите ваше имя";
     return (
         <div className={ styles.header }>
-            <h1>{ name }</h1>
+            <h1>{ userName }</h1>
             <div>{ ACTIVE_TASK_TEXT }</div>
         </div>
     )

@@ -1,14 +1,10 @@
 import React from 'react';
 import styles from './todoList.module.css';
 import TodoItem from "../TodoItem/TodoItem";
-import { useSelector } from "react-redux";
+import { STATE } from "../../redux/selectors";
 
 const TodoList = () => {
-    const selectedTodos = useSelector(( state ) => state.selectedTodos);
-    const todos = useSelector(( state ) =>
-        ( selectedTodos === "active" ) ? state.todos.filter(( todo ) => todo.completed === false)
-        : ( selectedTodos === "inactive" ) ? state.todos.filter(( todo ) => todo.completed === true)
-        :  state.todos );
+    const { todos } = STATE();
     if (!todos) return <div></div>
     return(
         <ul className = { styles.todoList }>
