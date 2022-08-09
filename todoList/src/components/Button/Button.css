@@ -3,6 +3,7 @@ button {
   border: none;
   font-size: inherit;
   border-radius: 10px;
+  cursor: pointer;
   transition: all .3s ease-in-out;
 }
 

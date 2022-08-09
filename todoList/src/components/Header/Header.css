@@ -5,6 +5,10 @@
   margin-bottom: 25px;
 }
 
+.Header__title {
+  font-style: italic;
+}
+
 .Header__inner {
   display: flex;
   align-items: center;

@@ -10,7 +10,7 @@ export default function Header() {
     <div className='Header'>
      <div className='Container'>
         <div className='Header__inner'>
-          <h1>Welcome, {name || 'Stranger'}!</h1>
+          <h1 className='Header__title'>Welcome, {name || 'Newcomer'}!</h1>
           {todoQuantity.length > 0 
               ? todoQuantity.length === 1 
                   ? (<p>You have {todoQuantity.length} task.</p>)

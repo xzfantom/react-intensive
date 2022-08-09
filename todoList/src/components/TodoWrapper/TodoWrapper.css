@@ -9,36 +9,23 @@
   opacity: .3;
 }
 
-.TodoWrapper__item input:checked + p {
+.TodoWrapper__item input:checked + input[type='text'] {
   text-decoration: line-through;
   color: rgba(0, 0, 0, .4);
 }
 
-.TodoWrapper__list input:checked + label {
-  text-decoration: line-through;
-  color: rgba(0, 0, 0, .6);
-  background-color: rgba(0, 0, 0, .2);
-  border: 1px solid rgba(0, 0, 0, .6);
-}
-
-
 .TodoWrapper__item:not(:last-child) {
   margin-bottom: 10px;
-}
-
-.TodoWrapper__item label{
-  border: 1px solid #000;
-  border-radius: 10px;
-  padding: 25px 20px;
-  display: flex;
-  align-items: center;
 }
 
 .TodoWrapper__item button {
   margin-left: auto;
   padding: 15px 15px 10.2px;
   position: relative;
-  z-index: 3;
+}
+
+.TodoWrapper__item input:checked + button {
+  opacity: .4;
 }
 
 .TodoTab__list {

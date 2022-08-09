@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from "./TodoList.css";
 import TodoItem from '../TodoItem/TodoItem';
 
 export default function TodoList(props) {

@@ -1,4 +1,4 @@
-import { LOGIN_NAME, ADD_TODO, TOGGLE_TODO, DELETE_TODO } from "./types";
+import { LOGIN_NAME, ADD_TODO, TOGGLE_TODO, DELETE_TODO, EDIT_TODO } from "./types";
 
 export function loginName(name) {
   return {
@@ -25,5 +25,12 @@ export function deleteTodo(id) {
   return {
     type: DELETE_TODO,
     payload: id,
+  }
+}
+
+export function editTodo(updatedTodo) {
+  return {
+    type: EDIT_TODO,
+    payload: updatedTodo
   }
 }

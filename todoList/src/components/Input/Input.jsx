@@ -11,6 +11,7 @@ export default function Input(props) {
       name={props.name}
       placeholder={props.title}
       checked={props.checked}
+      readOnly={props.readOnly}
       onChange={props.inputChangeHandler}
     />
   )

@@ -1,4 +1,4 @@
-import {ADD_TODO, DELETE_TODO, TOGGLE_TODO} from './types';
+import {ADD_TODO, DELETE_TODO, EDIT_TODO, TOGGLE_TODO} from './types';
 
 const initialState = {
   todoList: [],
@@ -21,6 +21,16 @@ export const todoReducer = (state = initialState, action) => {
           return item
         })
       }
+      case EDIT_TODO:
+        return {
+          ...state,
+          todoList: state.todoList.map(item => {
+            if (item.id === action.payload.id) {
+              return {...item, title: action.payload.title}
+            }
+            return item
+          })
+        }
       case DELETE_TODO :
         return {
           ...state,
