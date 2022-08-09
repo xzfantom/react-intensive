@@ -1,0 +1,12 @@
+.todoWrapper{
+    width: 350px;
+    min-height: 400px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fdfcff;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    box-shadow: #333 1px 1px 10px 1px;
+    padding: 20px;
+}
