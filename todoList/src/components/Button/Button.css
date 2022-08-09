@@ -1,0 +1,30 @@
+button {
+  color: #fff;
+  border: none;
+  font-size: inherit;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+[name="delete"] {
+  background-color: rgba(255, 0, 0, .7);
+}
+
+[name="delete"]:focus,
+[name="delete"]:hover {
+  outline: transparent;
+  box-shadow: 0px 0px 10px 5px rgba(255, 0, 0, 1);
+  background-color: rgba(255, 0, 0, 1);
+}
+
+[type="submit"] {
+  background-color: rgba(0, 0, 255, .7);
+}
+
+[type="submit"]:focus,
+[type="submit"]:hover {
+  outline: transparent;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 255, 1);
+  background-color: rgba(0, 0, 255, 1);
+}

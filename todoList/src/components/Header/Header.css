@@ -1,0 +1,20 @@
+.Header {
+  padding: 20px;
+  background-color: rgb(0, 0, 255);
+  color: #fff;
+  margin-bottom: 25px;
+}
+
+.Header__title {
+  font-style: italic;
+}
+
+.Header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Header__inner p {
+  font-size: 22px;
+}
