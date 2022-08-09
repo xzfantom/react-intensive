@@ -1,22 +1,24 @@
-import React, { useState } from "react";
+import React, {ChangeEvent, FC, FormEvent, useState} from "react";
 import styles from "./todo.module.css";
 import Form from "../Form/Form";
 import TodoList from "../TodoList/TodoList";
 import TabContainer from "../TabContainer/TabContainer";
 import { useDispatch } from "react-redux";
-import { ADD_TODO } from "../../redux/actionsTypes";
+import { TodosActionTypes } from "../../types/actionsTypes";
 
-const Todo = () => {
+const Todo: FC = () => {
     const BUTTON_NAME = "Добавить";
     const INPUT_PLACEHOLDER = "Введите новую задачу";
     const dispatch = useDispatch();
-    const [ todo, setTodo ] = useState("")
-    const onChange = ( e ) => { setTodo( e.target.value ) }
-    const onSubmit = ( e ) => {
-        dispatch({
-            type: ADD_TODO,
-            payload: todo
-        });
+    const [ todo, setTodo ] = useState<string>("")
+    const onChange = ( e: ChangeEvent<HTMLInputElement> ) => { setTodo( e.target.value ) }
+    const onSubmit = ( e: FormEvent<HTMLFormElement> ) => {
+        if ( todo ) {
+            dispatch({
+                type: TodosActionTypes.ADD_TODO,
+                payload: todo
+            });
+        }
         setTodo( "" )
         e.preventDefault();
     };

@@ -1,6 +1,0 @@
-export const ADD_TODO = "ADD_TODO";
-export const EDIT_TODO = "EDIT_TODO";
-export const DELETE_TODO = "DELETE_TODO";
-export const CHANGE_COMPLETED = "CHANGE_COMPLETED";
-export const ADD_LOGIN = "ADD_LOGIN";
-export const CHANGE_SELECTED_TODOS = "CHANGE_SELECTED_TODOS";

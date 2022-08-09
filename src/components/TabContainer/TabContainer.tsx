@@ -1,23 +1,23 @@
-import React, {useState} from 'react';
+import React, {MouseEvent, FC, useState } from 'react';
 import styles from './tabContainer.module.css';
 import { useDispatch } from "react-redux";
-import { CHANGE_SELECTED_TODOS } from "../../redux/actionsTypes";
+import { TodosActionTypes} from "../../types/actionsTypes";
 import { STATE } from "../../redux/selectors";
 
-const TabContainer = () => {
+const TabContainer: FC = () => {
     const BUTTON_NAME = {
         all: "Все",
         active: "Активные",
         inactive: "Неактивные",
     };
     const { selectedTodosList } = STATE()
-    const [ isActiveButton, setIsActiveButton ] = useState( selectedTodosList );
+    const [ isActiveButton, setIsActiveButton ] = useState<string>( selectedTodosList );
     const dispatch = useDispatch();
-    const onClick = ( e ) => {
-        setIsActiveButton( e.target.name )
+    const onClick = ( e: MouseEvent<HTMLButtonElement>  ) => {
+        setIsActiveButton( (e.target as any).name )
         dispatch({
-            type: CHANGE_SELECTED_TODOS,
-            payload: e.target.name
+            type: TodosActionTypes.CHANGE_SELECTED_TODOS,
+            payload: (e.target as any).name
         });
     }
     return(

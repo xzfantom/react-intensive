@@ -1,24 +1,33 @@
-import { ADD_TODO, EDIT_TODO, DELETE_TODO,CHANGE_COMPLETED, ADD_LOGIN, CHANGE_SELECTED_TODOS } from '../actionsTypes'
+import { TodosActionTypes } from '../../types/actionsTypes'
+import { TodosActions } from "../../types/actions";
+import { ITodo } from "../../types/types";
 
-const initialState = {
+interface TodosState {
+    todos: any[],
+    name: string,
+    isLogin: boolean,
+    selectedTodos: string
+}
+
+const initialState: TodosState = {
     todos: [],
     name: "",
     isLogin: false,
     selectedTodos: "all"
 }
-export const todosReducer = ( state = initialState, action ) => {
-    const newTodo = {
+export const todosReducer = ( state = initialState, action : TodosActions ) : TodosState => {
+    const newTodo : ITodo = {
         id: Date.now(),
         title: action.payload,
         completed: false,
     }
     switch ( action.type ){
-        case ADD_TODO:
+        case TodosActionTypes.ADD_TODO:
             return {
                 ...state,
                 todos: [ ...state.todos, newTodo ]
             };
-        case EDIT_TODO:
+        case TodosActionTypes.EDIT_TODO:
             return {
                 ...state,
                 todos: state.todos.map(( todo ) => {
@@ -28,12 +37,12 @@ export const todosReducer = ( state = initialState, action ) => {
                     return todo
                 }),
             };
-        case DELETE_TODO:
+        case TodosActionTypes.DELETE_TODO:
             return {
                 ...state,
                 todos: state.todos.filter(( todo ) => todo.id !== action.payload)
             };
-        case CHANGE_COMPLETED:
+        case TodosActionTypes.CHANGE_COMPLETED:
             return {
                 ...state,
                 todos: state.todos.map(( todo ) => {
@@ -43,13 +52,13 @@ export const todosReducer = ( state = initialState, action ) => {
                     return todo
                 }),
             };
-        case ADD_LOGIN:
+        case TodosActionTypes.ADD_LOGIN:
             return{
                 ...state,
                 name: action.payload,
                 isLogin: true
             };
-        case CHANGE_SELECTED_TODOS:
+        case TodosActionTypes.CHANGE_SELECTED_TODOS:
             return{
                 ...state,
                 selectedTodos: action.payload,
@@ -58,3 +67,5 @@ export const todosReducer = ( state = initialState, action ) => {
             return state;
     }
 }
+
+export type RootState = ReturnType<typeof todosReducer>

@@ -1,19 +1,18 @@
-import React from 'react';
+import React, {FC} from 'react';
 import styles from './todoList.module.css';
 import TodoItem from "../TodoItem/TodoItem";
 import { STATE } from "../../redux/selectors";
+import { ITodo } from "../../types/types";
 
-const TodoList = () => {
+const TodoList: FC = () => {
     const { todos } = STATE();
     if (!todos) return <div></div>
     return(
         <ul className = { styles.todoList }>
-            {todos.map(( todo ) => (
+            {todos.map(( todo:ITodo ) => (
                 <TodoItem
-                    id = { todo.id }
-                    title = { todo.title }
                     key = { todo.id }
-                    isCompleted = { todo.completed }
+                    todo = { todo }
                 />
             ))}
         </ul>

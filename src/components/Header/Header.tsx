@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styles from './header.module.css';
 import { STATE } from "../../redux/selectors";
 
-const Header = () => {
+const Header: FC = () => {
     const { activeTodosCount, userName, isLogin } = STATE();
     const ACTIVE_TASK_TEXT = ( isLogin ) ? `Активных задач: ${activeTodosCount}` : "Введите ваше имя";
     return (

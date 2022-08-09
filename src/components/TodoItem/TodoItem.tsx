@@ -1,48 +1,55 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, FC, useState} from 'react';
 import styles from './todoItem.module.css';
 import Save from '../Icons/saveIcon.png'
 import Delete from '../Icons/deleteIcon.png';
 import Edit from '../Icons/editIcon.png';
 import { useDispatch } from "react-redux";
-import { CHANGE_COMPLETED, EDIT_TODO, DELETE_TODO } from "../../redux/actionsTypes";
+import { TodosActionTypes } from "../../types/actionsTypes";
+import { ITodo } from "../../types/types";
 
-function TodoItem({ id, title, isCompleted }) {
+interface TodoItemProps { todo: ITodo }
+
+const TodoItem: FC<TodoItemProps> = ({ todo }) => {
     const ALT_TEXT = {
         editIcon: "This is edit task icon",
         saveIcon: "This is save editing task icon",
         deleteIcon: "This is delete task icon"
     }
     const dispatch = useDispatch();
-    const [ isEditTodo, setIsEditTodo ] = useState(false);
-    const [ todoValue, setTodoValue ] = useState( title );
-    const onChangeCompleted = () => dispatch({
-        type: CHANGE_COMPLETED,
-        payload: id
-    })
-    const onChangeValue = ( e ) => { setTodoValue( e.target.value )}
+    const [ isEditTodo, setIsEditTodo ] = useState<boolean>(false);
+    const [ todoValue, setTodoValue ] = useState<string>( todo.title );
+    const onChangeCompleted = ( ) => {
+       if ( !isEditTodo ) {
+           dispatch({
+               type: TodosActionTypes.CHANGE_COMPLETED,
+               payload: todo.id
+           })
+       }
+    }
+    const onChangeValue = ( e: ChangeEvent<HTMLInputElement>  ) => { setTodoValue( (e.target as any).value )}
     const onEdit = () => { setIsEditTodo( !isEditTodo )}
     const onSave = ()  => {
         setIsEditTodo( !isEditTodo )
         dispatch({
-            type: EDIT_TODO,
+            type: TodosActionTypes.EDIT_TODO,
             payload: {
-                id: id,
+                id: todo.id,
                 title: todoValue
             }
         });
     }
     const onDelete = () => dispatch({
-        type: DELETE_TODO,
-        payload: id
+        type: TodosActionTypes.DELETE_TODO,
+        payload: todo.id
     })
 
     return (
         <li className = { styles.todoWrapper } >
             <input
-                className = {`${styles.todoOutput} ${isCompleted ? styles.todoOutputCompleted : ""}`}
+                className = {`${styles.todoOutput} ${todo.completed ? styles.todoOutputCompleted : ""}`}
                 value = { todoValue }
                 readOnly = { !isEditTodo }
-                onClick = { !isEditTodo ? onChangeCompleted : onChangeValue }
+                onClick = { onChangeCompleted  }
                 onChange = { onChangeValue }
             />
             <button

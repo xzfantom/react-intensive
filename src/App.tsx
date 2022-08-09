@@ -4,10 +4,10 @@ import Header from "./components/Header/Header";
 import Todo from "./components/Todo/Todo";
 import Login from "./components/Login/Login";
 import {Routes, Route, Navigate} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {STATE} from "./redux/selectors";
 
 const App = () => {
-    const isLogin = useSelector( state => state.isLogin );
+    const { isLogin } = STATE()
     return(
         <div className = { styles.container }>
             <div className = { styles.appWrapper }>
