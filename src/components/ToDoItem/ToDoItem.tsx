@@ -1,4 +1,5 @@
-import React, { useRef, useState } from "react";
+import { FC, useRef, useState } from 'react';
+import { ToDoItem as ToDoItemInterface } from '../../types/toDoItemTypes';
 import style from "./toDoItem.module.css";
 import { ReactComponent as EditSVG } from "../../svg/edit-svg.svg";
 import { ReactComponent as DeleteSVG } from "../../svg/delete-svg.svg";
@@ -8,9 +9,13 @@ import { ReactComponent as OkSVG } from "../../svg/ok-button-svg.svg";
 import { useDispatch } from "react-redux";
 import { removeTodo, toggleCompletion, updateTodo } from "../../store/actions";
 
-const ToDoItem = ({ currentTodo }) => {
+interface ToDoItemProps {
+  currentTodo: ToDoItemInterface;
+}
+
+const ToDoItem: FC<ToDoItemProps> = ({ currentTodo }) => {
   const dispatch = useDispatch();
-  const item = useRef();
+  const item = useRef<HTMLTextAreaElement>(null);
   const [value, setValue] = useState(currentTodo.todo);
   const [editing, setEditing] = useState(false);
 
@@ -20,14 +25,18 @@ const ToDoItem = ({ currentTodo }) => {
 
   const handleEditClick = () => {
     setEditing(true);
-    item.current.disabled = false;
-    item.current.focus();
+    if (item.current) {
+      item.current.disabled = false;
+      item.current.focus();
+    }
   };
 
   const handleBlur = () => {
     dispatch(updateTodo(value, currentTodo.id));
     setEditing(false);
-    item.current.disabled = true;
+    if (item.current) {
+      item.current.disabled = true;
+    }
   };
 
   const handleCompletionClick = () => {
@@ -40,12 +49,12 @@ const ToDoItem = ({ currentTodo }) => {
         <DoneSVG
           className={`${style.svgIcon}`}
           onClick={handleCompletionClick}
-        ></DoneSVG>
+        />
       ) : (
         <CircleSVG
           className={`${style.svgIcon}`}
           onClick={handleCompletionClick}
-        ></CircleSVG>
+        />
       )}
       <textarea
         className={
@@ -62,14 +71,14 @@ const ToDoItem = ({ currentTodo }) => {
         <EditSVG
           className={`${style.svgIcon} ${style.edit}`}
           onClick={handleEditClick}
-        ></EditSVG>
+        />
       ) : (
-        <OkSVG className={`${style.svgIcon} ${style.edit}`}></OkSVG>
+        <OkSVG className={`${style.svgIcon} ${style.edit}`}/>
       )}
       <DeleteSVG
         className={`${style.svgIcon} ${style.delete}`}
         onClick={handleDeleteClick}
-      ></DeleteSVG>
+      />
     </div>
   );
 };

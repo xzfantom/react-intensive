@@ -1,54 +1,57 @@
-import React from "react";
+import { FC } from "react";
+import { RootState } from '../../store/store';
+import { SelectedStatus } from '../../types/selectedStatusEnum';
 import style from "./toDoList.module.css";
 import ToDoItem from "../../components/ToDoItem/ToDoItem";
 import { useSelector } from "react-redux";
-import { User } from "../../types/userTypes";
 
-const ToDoList = ({ selectedStatus, setSelectedStatus }) => {
-  const toDoList = useSelector((state: User) => state.toDoList);
-  const activeTodoItems = toDoList.filter((todo) => todo.completed === false);
-  const completedTodoItems = toDoList.filter((todo) => todo.completed === true);
+interface ToDoListProps {
+  selectedStatus: SelectedStatus;
+  setSelectedStatus: (name: SelectedStatus) => void;
+}
 
-  const handleStatusClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    setSelectedStatus(e.target.name);
-  };
+const ToDoList: FC<ToDoListProps> = ({ selectedStatus, setSelectedStatus }) => {
+  const toDoList = useSelector((state: RootState) => state.toDoList);
+  const activeTodoItems = toDoList.filter((todo) => !todo.completed);
+  const completedTodoItems = toDoList.filter((todo) => todo.completed);
 
   return (
     <div className={style.container}>
       <div className={style.content}>
         <div className={style.toDoSelectionContainer}>
           <button
-            name="active"
             className={
-              selectedStatus === "active"
+              selectedStatus === SelectedStatus.ACTIVE
                 ? `${style.button} ${style.activeStatus}`
                 : style.button
             }
-            onClick={handleStatusClick}
+            onClick={() => setSelectedStatus(SelectedStatus.ACTIVE)}
           >
             Active
           </button>
           <button
-            name="completed"
             className={
-              selectedStatus === "completed"
+              selectedStatus === SelectedStatus.COMPLETED
                 ? `${style.button} ${style.activeStatus}`
                 : style.button
             }
-            onClick={handleStatusClick}
+            onClick={() => setSelectedStatus(SelectedStatus.COMPLETED)}
           >
             Completed
           </button>
         </div>
         <div className={style.itemsContainer}>
-          {selectedStatus === "active" &&
-            activeTodoItems.map((todo) => (
-              <ToDoItem key={todo.id} currentTodo={todo} />
-            ))}
-          {selectedStatus === "completed" &&
-            completedTodoItems.map((todo) => (
-              <ToDoItem key={todo.id} currentTodo={todo} />
-            ))}
+          {selectedStatus === SelectedStatus.ACTIVE
+            ? (
+              activeTodoItems.map((todo) => (
+                <ToDoItem key={todo.id} currentTodo={todo} />
+              ))
+            ) : (
+              completedTodoItems.map((todo) => (
+                <ToDoItem key={todo.id} currentTodo={todo} />
+              ))
+            )
+          }
         </div>
       </div>
     </div>

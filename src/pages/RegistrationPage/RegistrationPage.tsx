@@ -1,4 +1,4 @@
-import { useState, FC} from "react";
+import { useState, FC } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import style from "./registrationPage.module.css";
@@ -11,9 +11,7 @@ const RegistrationPage: FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleSubmitClick: React.MouseEventHandler<HTMLButtonElement> = (
-    e
-  ): void => {
+  const handleSubmitClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
 
     if (userName.trim()) {

@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import { useState, FC } from "react";
 import ToDoList from "../../containers/ToDoList/ToDoList";
+import { RootState } from "../../store/store";
+import { SelectedStatus } from "../../types/selectedStatusEnum";
 import style from "./toDoListPage.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo } from "../../store/actions";
-import { User } from "../../types/userTypes";
 
-const ToDoListPage = () => {
-  const user = useSelector((state: User) => state);
+const ToDoListPage: FC = () => {
+  const user = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
   const [toDoInputValue, setToDoInputValue] = useState("");
-  const [selectedStatus, setSelectedStatus] = useState("active");
+  const [selectedStatus, setSelectedStatus] = useState(SelectedStatus.ACTIVE);
   const [error, setError] = useState(false);
 
   const handleToDoSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
@@ -25,7 +26,7 @@ const ToDoListPage = () => {
 
       dispatch(addTodo(newTodo));
       setToDoInputValue("");
-      setSelectedStatus("active");
+      setSelectedStatus(SelectedStatus.ACTIVE);
       setError(false);
     } else {
       setError(true);
@@ -49,10 +50,7 @@ const ToDoListPage = () => {
                 onChange={(e) => setToDoInputValue(e.target.value)}
                 placeholder="type in new todo item"
               />
-              <button
-                className={style.button}
-                type="submit"
-              >
+              <button className={style.button} type="submit">
                 Add Todo
               </button>
             </div>

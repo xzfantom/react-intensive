@@ -1,6 +1,8 @@
+import { ToDoItem } from './toDoItemTypes';
+
 export interface UserState {
   name: string;
-  toDoList: any[];
+  toDoList: ToDoItem[];
 }
 
 export enum ActionTypes {
@@ -21,7 +23,7 @@ interface SetUserAction {
 interface AddTodoAction {
   type: ActionTypes.ADD_TODO;
   payload: {
-    todo: {};
+    todo: ToDoItem;
   };
 }
 

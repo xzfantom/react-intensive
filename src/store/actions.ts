@@ -1,15 +1,18 @@
+import { ToDoItem } from '../types/toDoItemTypes';
+import { ActionTypes } from '../types/reducerTypes';
+
 export const setUser = (name: string) => {
   return {
-    type: "SET_USER",
+    type: ActionTypes.SET_USER,
     payload: {
       name: name,
     },
   };
 };
 
-export const addTodo = (todo: {}) => {
+export const addTodo = (todo: ToDoItem) => {
   return {
-    type: "ADD_TODO",
+    type: ActionTypes.ADD_TODO,
     payload: {
       todo: todo,
     },
@@ -18,7 +21,7 @@ export const addTodo = (todo: {}) => {
 
 export const removeTodo = (id: number) => {
   return {
-    type: "REMOVE_TODO",
+    type: ActionTypes.REMOVE_TODO,
     payload: {
       id: id,
     },
@@ -27,7 +30,7 @@ export const removeTodo = (id: number) => {
 
 export const updateTodo = (value: string, id: number) => {
   return {
-    type: "UPDATE_TODO",
+    type: ActionTypes.UPDATE_TODO,
     payload: {
       newValue: value,
       id: id,
@@ -37,7 +40,7 @@ export const updateTodo = (value: string, id: number) => {
 
 export const toggleCompletion = (id: number) => {
   return {
-    type: "TOGGLE_COMPLETION",
+    type: ActionTypes.TOGGLE_COMPLETION,
     payload: {
       id: id,
     },
