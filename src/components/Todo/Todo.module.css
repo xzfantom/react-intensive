@@ -1,0 +1,23 @@
+.main {
+  display: flex;
+  border: 1px solid black;
+  min-width: 300px;
+  justify-content: flex-start;
+}
+
+.main > :nth-child(2) {
+  margin-left: auto;
+}
+
+.crossed {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.main > input {
+  width: 100%;
+}
+
+.button {
+  cursor: pointer;
+}
