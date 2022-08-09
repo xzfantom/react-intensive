@@ -46,146 +46,74 @@ function Form(props) {
     setErrorState(errorInitialState);
   }
 
-  const submit = function(event) {
-    let tempErrorState = {...errorState};
-    event.preventDefault();
-    let isValid = true;
-    if (!inputState.name) {
-      tempErrorState = {
-        ...tempErrorState,
-        nameError: 'Поле пустое. Заполните пожалуйста',
-      };
-      isValid = false;
-    } else if (inputState.name[0].toUpperCase() !== inputState.name[0]) {
-      tempErrorState = {
-        ...tempErrorState,
-        nameError: 'Имя должно начинаться с большой буквы!',
-      };
-      isValid = false;
-    } else {
-      tempErrorState = {
-        ...tempErrorState,
-        nameError: '',
-      };
+  const validateOnEmpty = (value) => {
+    if (!value) {
+      return 'Поле пустое. Заполните пожалуйста';
     }
+    return '';
+  }
 
-    if (!inputState.surname) {
-      tempErrorState = {
-        ...tempErrorState,
-        surnameError: 'Поле пустое. Заполните пожалуйста',
-      };
-      isValid = false;
-    } else if (inputState.surname[0].toUpperCase() !== inputState.surname[0]) {
-      tempErrorState = {
-        ...tempErrorState,
-        surnameError: 'Имя должно начинаться с большой буквы!',
-      };
-      isValid = false;
-    } else {
-      tempErrorState = {
-        ...tempErrorState,
-        surnameError: '',
-      };
+  const validateName = (value) => {
+    const emptyError = validateOnEmpty(value);
+    if (emptyError) {
+      return emptyError;
     }
-
-    if (!inputState.date) {
-      tempErrorState = {
-        ...tempErrorState,
-        dateError: 'Поле пустое. Заполните пожалуйста',
-      };
-    } else {
-      tempErrorState = {
-        ...tempErrorState,
-        dateError: '',
-      };
+    if (value[0].toUpperCase() !== value[0]) {
+      return 'Имя должно начинаться с большой буквы!';
     }
+    return '';
+  }
 
+  const validatePhoneNumber = (value) => {
     const phoneReg = /^[0-9]{1}-[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
-    if (!inputState.num) {
-      tempErrorState = {
-        ...tempErrorState,
-        numError: 'Поле пустое. Заполните пожалуйста.',
-      };
-      isValid = false;
-    } else if (!phoneReg.test(inputState.num)) {
-      tempErrorState = {
-        ...tempErrorState,
-        numError: 'Телефон должен быть формата X-XXXX-XX-XX',
+    const emptyError = validateOnEmpty(value);
+
+    if (emptyError) {
+      return emptyError;
+    }
+    if (!phoneReg.test(value)) {
+      return 'Телефон должен быть формата X-XXXX-XX-XX';
+    }
+    return '';
+  }
+
+  const validateWebsite = (value) => {
+    const emptyError = validateOnEmpty(value);
+    if (emptyError) {
+      return emptyError;
+    }
+    if (!(value.includes('https://') && !value.includes('https://', 1))) {
+      return 'Сайт должен начинаться с https://!';
+    }
+    return '';
+  }
+
+  const validateTextarea = (value) => {
+    const emptyError = validateOnEmpty(value);
+    if (emptyError) {
+      return emptyError;
+    }
+    if (value.length > 600) {
+      return undefined;
+    }
+    return '';
+  }
+
+  const submit = function(event) {
+    event.preventDefault();
+
+    let tempErrorState = {
+      nameError: validateName(inputState.name),
+      surnameError: validateName(inputState.surname),
+      dateError: validateOnEmpty(inputState.date),
+      numError: validatePhoneNumber(inputState.num),
+      websiteError: validateWebsite(inputState.website),
+      aboutError: validateTextarea(inputState.about),
+      technologyStackError: validateTextarea(inputState.technologyStack),
+      lastProjectDescriptionError: validateTextarea(inputState.lastProjectDescription),
     };
-    isValid = false;
-    } else {
-      tempErrorState = {
-        ...tempErrorState,
-        numError: '',
-      };
-    }
-
-    if (!inputState.website) {
-      tempErrorState = {
-        ...tempErrorState,
-        websiteError: 'Поле пустое. Заполните пожалуйста',
-      };
-      isValid = false;
-    } else if (!(inputState.website.includes('https://') && !inputState.website.includes('https://', 1))) {
-      tempErrorState = {
-        ...tempErrorState,
-        websiteError: 'Сайт должен начинаться с https://!',
-      };
-      isValid = false;
-    } else {
-      tempErrorState = {
-        ...tempErrorState,
-        websiteError: '',
-      };
-    }
-
-    if (!inputState.about) {
-      tempErrorState = {
-        ...tempErrorState,
-        aboutError: 'Поле пустое. Заполните пожалуйста',
-      };
-      isValid = false;
-    } else if (inputState.about.length > 600) {
-      isValid = false;
-    } else {
-      tempErrorState = {
-        ...tempErrorState,
-        aboutError: '',
-      };
-    }
-
-    if (!inputState.technologyStack) {
-      tempErrorState = {
-        ...tempErrorState,
-        technologyStackError: 'Поле пустое. Заполните пожалуйста',
-      };
-      isValid = false;
-    } else if (inputState.technologyStack.length > 600) {
-      isValid = false;
-    } else {
-      tempErrorState = {
-        ...tempErrorState,
-        technologyStackError: '',
-      };
-    }
-
-    if (!inputState.lastProjectDescription) {
-      tempErrorState = {
-        ...tempErrorState,
-        lastProjectDescriptionError: 'Поле пустое. Заполните пожалуйста',
-      };
-      isValid = false;
-    } else if (inputState.lastProjectDescription.length > 600) {
-      isValid = false;
-    } else {
-      tempErrorState = {
-        ...tempErrorState,
-        lastProjectDescriptionError: '',
-      };
-    }
-
+    const isValid = Object.keys(tempErrorState).every(key => tempErrorState[key] === '')
     setErrorState(tempErrorState);
-
     if (isValid) {
         props.onSave(inputState);
     }
