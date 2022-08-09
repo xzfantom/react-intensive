@@ -1,9 +1,10 @@
-import React from "react";
+import { FC } from "react";
 import { useSelector } from "react-redux";
 import style from "./header.module.css";
+import { User } from "../../types/userTypes";
 
-const Header = () => {
-  const user = useSelector((state) => state);
+const Header: FC = () => {
+  const user = useSelector((state: User) => state);
 
   const thingsToDo = () => {
     const toDoNumber = user.toDoList.filter((todo) => todo.completed === false);

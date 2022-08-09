@@ -1,12 +1,12 @@
 import React from "react";
 import style from "./button.module.css";
-import {ReactComponent as ArrowSVG} from '../../svg/btn-arrow.svg';
+import { ReactComponent as ArrowSVG } from "../../svg/btn-arrow.svg";
 
-const Button = ({children, handleClick}) => {
+const Button = ({ text, handleClick }) => {
   return (
     <button className={style.button} onClick={handleClick}>
-      <span>{children}</span>
-      <ArrowSVG></ArrowSVG>
+      <span>{text}</span>
+      <ArrowSVG />
     </button>
   );
 };

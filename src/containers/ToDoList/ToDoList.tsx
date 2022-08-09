@@ -2,13 +2,14 @@ import React from "react";
 import style from "./toDoList.module.css";
 import ToDoItem from "../../components/ToDoItem/ToDoItem";
 import { useSelector } from "react-redux";
+import { User } from "../../types/userTypes";
 
 const ToDoList = ({ selectedStatus, setSelectedStatus }) => {
-  const toDoList = useSelector((state) => state.toDoList);
+  const toDoList = useSelector((state: User) => state.toDoList);
   const activeTodoItems = toDoList.filter((todo) => todo.completed === false);
   const completedTodoItems = toDoList.filter((todo) => todo.completed === true);
 
-  const handleStatusClick = (e) => {
+  const handleStatusClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     setSelectedStatus(e.target.name);
   };
 

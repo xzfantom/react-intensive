@@ -5,7 +5,7 @@ import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import ToDoListPage from "./pages/ToDoListPage/ToDoListPage";
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <header>
@@ -21,6 +21,6 @@ function App() {
       </main>
     </div>
   );
-}
+};
 
 export default App;

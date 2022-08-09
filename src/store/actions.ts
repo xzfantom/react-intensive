@@ -1,4 +1,4 @@
-export const setUser = (name) => {
+export const setUser = (name: string) => {
   return {
     type: "SET_USER",
     payload: {
@@ -7,7 +7,7 @@ export const setUser = (name) => {
   };
 };
 
-export const addTodo = (todo) => {
+export const addTodo = (todo: {}) => {
   return {
     type: "ADD_TODO",
     payload: {
@@ -16,7 +16,7 @@ export const addTodo = (todo) => {
   };
 };
 
-export const removeTodo = (id) => {
+export const removeTodo = (id: number) => {
   return {
     type: "REMOVE_TODO",
     payload: {
@@ -25,7 +25,7 @@ export const removeTodo = (id) => {
   };
 };
 
-export const updateTodo = (value, id) => {
+export const updateTodo = (value: string, id: number) => {
   return {
     type: "UPDATE_TODO",
     payload: {
@@ -35,7 +35,7 @@ export const updateTodo = (value, id) => {
   };
 };
 
-export const toggleCompletion = (id) => {
+export const toggleCompletion = (id: number) => {
   return {
     type: "TOGGLE_COMPLETION",
     payload: {
