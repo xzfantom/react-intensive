@@ -1,0 +1,49 @@
+.todo {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+}
+
+.todo__actions {
+	display: flex;
+	align-items: center;
+}
+
+.todo__delete {
+	color: #000000;
+}
+
+.todo__reminder {
+	margin-left: 1rem;
+	color: #000000;
+}
+
+.todo__reminder.active {
+	color: rgb(233, 223, 223);
+	background: #000000;
+}
+
+.btnWrapper {
+	margin-right: 0px;
+}
+
+.btn {
+	background: rgba(0, 0, 0, 0);
+	font-size: 2rem;
+	padding: 0.5rem 1rem;
+	margin-bottom: 10px;
+	border: solid black 2px;
+	width: 150px;
+}
+
+.btnWrapper :hover {
+	background-color: black;
+	color: white;
+}
+
+input {
+	font-size: 24px;
+	background-color: rgba(0, 0, 0, 0);
+}

@@ -1,0 +1,41 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 10px;
+	font-family: "GeneralSans-Regular", sans-serif;
+}
+
+body {
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #000000;
+	background: #f1eebd;
+	height: 100vh;
+	display: flex;
+	padding: 2rem;
+}
+
+button,
+input {
+	border: none;
+	outline: none;
+	font-family: inherit;
+}
+
+button {
+	cursor: pointer;
+}
+
+#root {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: 0 auto;
+	width: 500px;
+}
