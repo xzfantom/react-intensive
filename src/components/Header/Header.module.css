@@ -1,0 +1,22 @@
+.headerWrap {
+  margin: 20px 0 0;
+  padding: 25px 0 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 35px;
+  margin-right: 15px;
+}
+
+.logoName {
+  font-family: var(--accent-font);
+  font-size: 35px;
+}

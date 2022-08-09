@@ -1,0 +1,26 @@
+.navWrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navLink {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 1.5px;
+  color: inherit;
+}
+.navLink:not(:last-child) {
+  margin-right: 40px;
+}
+
+.activeLink::after {
+  margin-top: 5px;
+  position: absolute;
+  width: 66px;
+  content: '';
+  display: block;
+  height: 2px;
+  background-color: var(--accent-color);
+}

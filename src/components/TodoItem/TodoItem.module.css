@@ -1,0 +1,75 @@
+.completed {
+  position: relative;
+  background-color: var(--accent-color);
+  border: 2px solid #fff;
+  color: #e1ebfd;
+  font-weight: 900;
+  font-size: 14px;
+  padding: 5px 8px;
+}
+
+.input {
+  color: #fff;
+  border-color: transparent;
+  background-color: transparent;
+  padding: 8px 0;
+  box-sizing: border-box;
+  width: 50%;
+  font-size: 16px;
+}
+
+.todoRow {
+  width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 6px auto;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255, 118, 20, 1) 0%,
+    rgba(255, 84, 17, 1) 100%
+  );
+
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.todoRow:nth-child(4n + 1) {
+  background: linear-gradient(
+    90deg,
+    rgba(93, 12, 255, 1) 0%,
+    rgba(155, 0, 250, 1) 100%
+  );
+}
+
+.todoRow:nth-child(4n + 2) {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 12, 241, 1) 0%,
+    rgba(212, 0, 179, 1) 100%
+  );
+}
+
+.todoRow:nth-child(4n + 3) {
+  background: linear-gradient(
+    90deg,
+    rgba(20, 159, 255, 1) 0%,
+    rgba(17, 122, 255, 1) 100%
+  );
+}
+
+.iconWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  height: 35px;
+  cursor: pointer;
+  padding: 5px;
+}
+.icon:not(:last-child) {
+  margin-right: 10px;
+}

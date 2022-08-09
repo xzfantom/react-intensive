@@ -1,0 +1,52 @@
+.wrap {
+  padding: 50px 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.contentWrap {
+  width: 50%;
+  margin: auto;
+}
+
+.heading {
+  font-family: var(--accent-font);
+  font-size: 55px;
+  margin-bottom: 50px;
+}
+
+.description {
+  font-size: 25px;
+  line-height: 1.2;
+  font-weight: 300;
+}
+
+.description:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+ul {
+  padding-left: 30px;
+}
+
+.image {
+  margin: auto 30px auto 0;
+  height: 600px;
+  width: 400px;
+}
+.message {
+  width: 100%;
+  margin: 0 0 150px 0;
+  padding: 20px 0 20px;
+  box-sizing: border-box;
+  text-align: center;
+  border: 2px solid var(--text-color);
+  font-family: var(--accent-font);
+}
+
+.login {
+  display: inline-block;
+  margin-left: 15px;
+  color: var(--accent-color);
+}
