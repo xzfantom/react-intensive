@@ -25,6 +25,5 @@
     "target": "es6"
   },
   "exclude": ["node_modules"],
-  "files": ["declarations.d.ts"],
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "files": ["declarations.d.ts"]
 }

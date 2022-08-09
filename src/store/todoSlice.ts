@@ -6,7 +6,7 @@ interface Todo {
   text: string;
 }
 
-interface State {
+export interface State {
   todos: Record<number, Todo>;
   userName: string;
 }
