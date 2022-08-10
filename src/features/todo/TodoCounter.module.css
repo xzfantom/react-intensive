@@ -6,7 +6,7 @@
   padding: 1px 3px;
   font-size: 10px;
   
-  position: absolute; /* Position the badge within the relatively positioned button */
+  position: absolute; 
   top: 0;
   right: 0;
 }

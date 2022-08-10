@@ -8,8 +8,8 @@
 }
 
 .span {
-  display: inline-block; /* Inline elements with width and height. TL;DR they make the icon buttons stack from left-to-right instead of top-to-bottom */
-  position: relative; /* All 'absolute'ly positioned elements are relative to this one */
+  display: inline-block; 
+  position: relative; 
   padding: 2px 5px;
 }
 
