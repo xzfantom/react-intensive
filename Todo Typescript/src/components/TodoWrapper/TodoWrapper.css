@@ -1,0 +1,56 @@
+.TodoWrapper__item input {
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+}
+
+.TodoWrapper__item input:checked,
+.TotoWrapper__item input:checked + button {
+  opacity: .3;
+}
+
+.TodoWrapper__item input:checked + input[type='text'] {
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, .4);
+}
+
+.TodoWrapper__item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.TodoWrapper__item button {
+  margin-left: auto;
+  padding: 15px 15px 10.2px;
+  position: relative;
+}
+
+.TodoWrapper__item input:checked + button {
+  opacity: .4;
+}
+
+.TodoTab__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.TodoTab__item:not(:last-child) {
+  margin-right: 25px;
+}
+
+.TodoTab__item button {
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 255, .7);
+}
+
+.TodoTab__item button:focus,
+.TodoTab__item button:hover {
+  outline: transparent;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 255, 1);
+  background-color: rgba(0, 0, 255, 1);
+}
+
+.Empty {
+  text-align: center;
+}

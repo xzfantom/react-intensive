@@ -1,0 +1,20 @@
+.TodoForm {
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 35px 20px;
+  margin-bottom: 25px;
+}
+
+.TodoForm__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.TodoForm label {
+  width: 80%;
+}
+
+.TodoForm button {
+  padding: 10px 20px;
+}
