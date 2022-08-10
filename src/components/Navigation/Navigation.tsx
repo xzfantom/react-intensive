@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 import s from './Navigation.module.css'
 import { connect } from 'react-redux'
 
-const Navigation = (props) => {
+const Navigation = (props: { name: string }) => {
   return (
     <nav className={s.navWrap}>
       <NavLink
@@ -27,7 +27,7 @@ const Navigation = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: { name: string }) => {
   return {
     name: state.name,
   }

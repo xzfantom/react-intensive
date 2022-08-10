@@ -1,5 +1,12 @@
 import s from './BigButton.module.css'
-import { IBigButton } from '../../../interfaces'
+
+interface IBigButton {
+  text: string
+  icon: string
+  onClick?: () => void
+  type?: 'button' | 'submit' | 'reset' | undefined
+  disabled: boolean
+}
 
 const BigButton = (props: IBigButton) => {
   const {

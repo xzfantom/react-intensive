@@ -2,7 +2,18 @@ import avatar from '../../images/default-avatar.jpg'
 import s from './UserMenu.module.css'
 import { connect } from 'react-redux'
 
-const UserMenu = (props) => {
+interface ITodo {
+  completed: boolean
+  id: number
+  item: string
+}
+
+interface IProps {
+  name: string | ''
+  todos: ITodo[]
+}
+
+const UserMenu = (props: IProps) => {
   const getActiveTodos = () =>
     props.todos.filter((todo) => !todo.completed).length
 
@@ -20,7 +31,7 @@ const UserMenu = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: { name: any; todos: any }) => {
   return {
     name: state.name,
     todos: state.todos,
