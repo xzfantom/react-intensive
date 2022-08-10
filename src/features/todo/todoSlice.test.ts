@@ -1,11 +1,13 @@
 import reducer, { todoAdded, todoToggled, todoChanged, todoRemoved } from './todoSlice';
 
+const INITIAL_STATE = {todos: [], activeCount: 0, };
+
 test('должен вернуть начальное состояние', () => {
-  expect(reducer(undefined, { type: undefined })).toEqual({todos: [], activeCount: 0, })
+  expect(reducer(undefined, { type: undefined })).toEqual({...INITIAL_STATE })
 })
 
 test('должен добавить новую задачу', () => {
-  const previousState = {todos: [], activeCount: 0,};
+  const previousState = {...INITIAL_STATE};
   expect(reducer(previousState, todoAdded({data:'data', id:0, done:false}))).toMatchObject({activeCount: 1, todos:[{data:'data', done:false}]});
 })
 
@@ -22,5 +24,5 @@ test('должен изменить текст задачи', () => {
 
 test('должен удалить задачу', () => {
   const previousState = {activeCount: 1, todos:[{data:'data', id: 1, done:false}]};
-  expect(reducer(previousState, todoRemoved(1))).toEqual({todos: [], activeCount: 0, })
+  expect(reducer(previousState, todoRemoved(1))).toEqual({...INITIAL_STATE })
 })
