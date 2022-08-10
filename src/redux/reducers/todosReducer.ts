@@ -2,11 +2,11 @@ import {TodosActionTypes} from '../../types/actionsTypes'
 import {TodosActions} from "../../types/actions";
 import {ITodo} from "../../types/types";
 
-interface TodosState {
+export interface TodosState {
     todos: any[],
     name: string,
     isLogin: boolean,
-    selectedTodos: string
+    selectedTodos: "all" | "active" | "inactive"
 }
 
 const initialState: TodosState = {
@@ -17,7 +17,7 @@ const initialState: TodosState = {
 }
 export const todosReducer = (state = initialState, action : TodosActions): TodosState => {
     const newTodo : ITodo = {
-        id: Date.now(),
+        id: Math.floor(Date.now()/100),
         title: action.payload,
         completed: false,
     }

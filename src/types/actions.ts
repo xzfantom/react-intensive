@@ -7,7 +7,7 @@ export interface newTodo {
 }
 interface AddTodoActionType {
     type: TodosActionTypes.ADD_TODO,
-    payload: newTodo
+    payload: string
 }
 interface EditTodoActionType {
     type: TodosActionTypes.EDIT_TODO,
@@ -27,7 +27,7 @@ interface ChangeCompletedActionType {
 }
 interface ChangeSelectedActionType {
     type: TodosActionTypes.CHANGE_SELECTED_TODOS,
-    payload: string
+    payload: "active" | "inactive" | "all"
 }
 export type TodosActions =
     AddTodoActionType
