@@ -1,18 +1,18 @@
-import { useState, useRef } from 'react'
+import { useState, ChangeEvent } from 'react'
 import { connect } from 'react-redux'
 import BigButton from '../../components/common/BigButton/BigButton'
 import s from './LoginPage.module.css'
 import { setUser } from '../../redux/reducer'
 import { useHistory } from 'react-router-dom'
 
-const LoginPage = (props) => {
+const LoginPage = (props: {
+  setUser: (arg0: { name: string; todos: never[] }) => void
+}) => {
   const history = useHistory()
   const [userName, setUserName] = useState('')
   const [error, setError] = useState(false)
 
-  const inputRef = useRef(true)
-
-  const handleSubmit = (e) => {
+  const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault()
 
     if (userName.trim() !== '') {
@@ -24,7 +24,7 @@ const LoginPage = (props) => {
     }
   }
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUserName(e.target.value)
   }
 
@@ -41,18 +41,25 @@ const LoginPage = (props) => {
             value={userName}
             placeholder='Example: Kateryna'
             onChange={(e) => handleChange(e)}
-            ref={inputRef}
           />
         </label>
-        <BigButton type='button' text='submit' onClick={handleSubmit} />
+        <BigButton
+          type='button'
+          text='submit'
+          onClick={handleSubmit}
+          icon={''}
+          disabled={false}
+        />
       </form>
     </>
   )
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (
+  dispatch: (arg0: { payload: any; type: string }) => any
+) => {
   return {
-    setUser: (obj) => dispatch(setUser(obj)),
+    setUser: (obj: any) => dispatch(setUser(obj)),
   }
 }
 

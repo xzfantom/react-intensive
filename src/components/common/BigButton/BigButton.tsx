@@ -3,7 +3,7 @@ import s from './BigButton.module.css'
 interface IBigButton {
   text: string
   icon: string
-  onClick?: () => void
+  onClick?: any
   type?: 'button' | 'submit' | 'reset' | undefined
   disabled: boolean
 }

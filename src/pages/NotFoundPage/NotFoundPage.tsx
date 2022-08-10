@@ -5,17 +5,16 @@ import image from '../../images/frame.png'
 
 const NotFoundPage = () => {
   const history = useHistory()
-  const location = useLocation()
 
   const onGoBack = () => {
-    history.push(location?.state?.from ?? '/')
+    history.push('/')
   }
 
   return (
     <>
       <img src={image} className={s.image} alt='Not found page' />
       <h1 className={s.message}>404 - Not Found Page</h1>
-      <BigButton text='go home' onClick={onGoBack} />
+      <BigButton text='go home' onClick={onGoBack} icon={''} disabled={false} />
     </>
   )
 }
