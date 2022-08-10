@@ -3,16 +3,15 @@ import s from './UserMenu.module.css'
 import { connect } from 'react-redux'
 
 const UserMenu = (props) => {
-  const activeTodos = () => {
-    props.todos.filter((todo) => !todo.completed)
-    return props.todos.length
-  }
+  const getActiveTodos = () =>
+    props.todos.filter((todo) => !todo.completed).length
+
   return (
     <div className={s.wrap}>
       <span className={s.todos}>
         Active:{' '}
         <span className={s.numberTodos}>
-          <span>{activeTodos()}</span>
+          <span>{getActiveTodos()}</span>
         </span>
       </span>
       <img src={avatar} alt='avatar' className={s.avatar} />
