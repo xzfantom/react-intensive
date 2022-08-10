@@ -1,0 +1,26 @@
+
+    /** pseudo **/
+
+.button:hover{
+    border-bottom: 1px solid gray;
+}
+
+    /** common **/
+
+.tabContainerWrapper{
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.button{
+    cursor: pointer;
+    border: 1px solid lightgray;
+    border-width: 0 0 1px;
+    padding: 5px;
+    background-color: #fdfcff;
+}
+.activeButton{
+    border-bottom: 1px solid gray;
+    font-weight: bolder;
+}

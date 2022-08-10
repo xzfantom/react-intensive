@@ -1,0 +1,48 @@
+
+    /** pseudo **/
+
+.button:hover{
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid rgba(22, 3, 30, 0.2);
+}
+.todoOutput:hover{
+    cursor: pointer;
+}
+::selection {
+    background: transparent;
+}
+
+    /** common **/
+
+*{
+    box-sizing: border-box;
+}
+.todoWrapper{
+    margin: 0 5px 10px;
+    align-self: flex-start;
+    width: 100%;
+    list-style-type: none;
+    display: flex;
+}
+.todoOutput{
+    padding: 3px 0;
+    font-size: 16px;
+    resize: none;
+    width: 100%;
+    border: 0;
+    background-color: #fdfcff;
+    max-height: 28px;
+}
+.todoOutputCompleted{
+    text-decoration: line-through;
+}
+.button{
+    background-color: #fdfcff;
+    padding: 0 4px;
+    border: 1px solid transparent;
+}
+.buttonImage{
+    height: 17px;
+    width: 17px;
+}
