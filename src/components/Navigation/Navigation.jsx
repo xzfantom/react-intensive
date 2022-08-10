@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import s from './Navigation.module.css'
 import { connect } from 'react-redux'
-import userEvent from '@testing-library/user-event'
 
 const Navigation = (props) => {
   return (

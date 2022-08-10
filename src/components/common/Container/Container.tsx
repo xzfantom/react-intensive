@@ -1,6 +1,10 @@
 import s from './Container.module.css'
 
-const Container = ({ children }) => {
+type Props = {
+  children?: JSX.Element
+}
+
+const Container = ({ children }: Props) => {
   return <div className={s.container}>{children}</div>
 }
 

@@ -1,6 +1,7 @@
 import s from './BigButton.module.css'
+import { IBigButton } from '../../../interfaces'
 
-const BigButton = (props) => {
+const BigButton = (props: IBigButton) => {
   const {
     text,
     icon,
