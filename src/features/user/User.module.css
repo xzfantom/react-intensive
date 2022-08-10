@@ -1,0 +1,17 @@
+.btn {
+  height: 32px;
+  width: 150px;
+  margin: 10px;
+  font-size: 1.2em;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper input {
+  height: 32px;
+  padding: 0;
+}

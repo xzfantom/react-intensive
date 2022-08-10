@@ -1,0 +1,17 @@
+.currentTab {
+  background-color: aquamarine;
+}
+
+.tab {
+  background-color: white;
+}
+
+.container {
+  margin: 10px;
+}
+
+.container button {
+  margin: 10px;
+  font-size: 1.5em;
+  width: 200px;
+}

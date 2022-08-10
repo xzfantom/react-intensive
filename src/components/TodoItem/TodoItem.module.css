@@ -1,0 +1,29 @@
+.btn {
+  width: 32px;
+  height: 32px;
+}
+
+.li {
+  width: 100%;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.li input {
+  width: 500px;
+  height: 32px;
+  background-color: white;
+}
+
+.li input[disabled] {
+  pointer-events:none;
+  border: none;
+  background-color: lightgray;
+  color: black;
+}
+
+.finished {
+  text-decoration: line-through;
+}
