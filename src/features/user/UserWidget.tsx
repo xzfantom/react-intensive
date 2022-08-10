@@ -17,10 +17,8 @@ export default function UserWidget({children}:Props) {
     <span>
       <span className={style.span}>
         <span className={style.user}>{userName}</span>
-        {' '}
         {children}
       </span>
-      {' '}
       <button className={style.btn} onClick={onLogoutClick}>Выйти</button>
     </span>
   ) 
