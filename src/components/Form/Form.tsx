@@ -4,9 +4,9 @@ import styles from './form.module.css';
 interface FormProps {
     buttonName: string;
     placeholder: string;
-    onSubmit: ( e: FormEvent<HTMLFormElement> ) => void;
+    onSubmit: (e: FormEvent<HTMLFormElement>) => void;
     value: string;
-    onChange: ( e: ChangeEvent<HTMLInputElement> ) => void;
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Form: FC<FormProps> =
@@ -18,16 +18,16 @@ const Form: FC<FormProps> =
        onChange
     }) => {
         return (
-            <form onSubmit = { onSubmit } className = { styles.formWrapper }>
+            <form onSubmit={onSubmit} className={styles.formWrapper}>
                 <input
-                    type = "text"
-                    placeholder = { placeholder }
-                    className = { styles.inputField }
-                    onChange = { onChange }
-                    value = { value }
+                    type="text"
+                    placeholder={placeholder}
+                    className={styles.inputField}
+                    onChange={onChange}
+                    value={value}
                 />
-                <button type = "submit" className = { styles.submit }>
-                    { buttonName }
+                <button type="submit" className={styles.submit}>
+                    {buttonName}
                 </button>
             </form>
         );

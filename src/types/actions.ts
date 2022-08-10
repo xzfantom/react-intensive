@@ -1,38 +1,38 @@
-import { TodosActionTypes } from "./actionsTypes";
+import {TodosActionTypes} from "./actionsTypes";
 
 export interface newTodo {
     id: number,
     title: string,
     completed: false,
 }
-interface AddTodoAction {
+interface AddTodoActionType {
     type: TodosActionTypes.ADD_TODO,
     payload: newTodo
 }
-interface EditTodoAction {
+interface EditTodoActionType {
     type: TodosActionTypes.EDIT_TODO,
     payload: any
 }
-interface DeleteTodoAction {
+interface DeleteTodoActionType {
     type: TodosActionTypes.DELETE_TODO,
     payload: number
 }
-interface AddLoginAction {
+interface AddLoginActionType {
     type: TodosActionTypes.ADD_LOGIN,
     payload: string
 }
-interface ChangeCompletedAction {
+interface ChangeCompletedActionType {
     type: TodosActionTypes.CHANGE_COMPLETED,
     payload: number
 }
-interface ChangeSelectedAction {
+interface ChangeSelectedActionType {
     type: TodosActionTypes.CHANGE_SELECTED_TODOS,
     payload: string
 }
 export type TodosActions =
-    AddTodoAction
-    | EditTodoAction
-    | DeleteTodoAction
-    | AddLoginAction
-    | ChangeCompletedAction
-    | ChangeSelectedAction
+    AddTodoActionType
+    | EditTodoActionType
+    | DeleteTodoActionType
+    | AddLoginActionType
+    | ChangeCompletedActionType
+    | ChangeSelectedActionType

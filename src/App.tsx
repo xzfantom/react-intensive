@@ -7,14 +7,14 @@ import {Routes, Route, Navigate} from "react-router-dom";
 import {STATE} from "./redux/selectors";
 
 const App = () => {
-    const { isLogin } = STATE()
+    const {isLogin} = STATE()
     return(
-        <div className = { styles.container }>
-            <div className = { styles.appWrapper }>
+        <div className={styles.container}>
+            <div className={styles.appWrapper}>
                 <Header />
                 <Routes>
-                    <Route path = "/" element = {< Login />}/>
-                    <Route path = "/todos" element = { !isLogin ? <Navigate to="/" replace /> : < Todo />}/>
+                    <Route path="/" element={< Login />}/>
+                    <Route path="/todos" element={!isLogin ? <Navigate to="/" replace /> : < Todo />}/>
                 </Routes>
             </div>
         </div>
