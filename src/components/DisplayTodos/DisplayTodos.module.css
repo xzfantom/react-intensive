@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btnWrap {
+  margin-bottom: 30px;
+}
+
+.button {
+  width: calc(600px / 3);
+  margin: 0 auto;
+  padding: 12px 0;
+  box-sizing: border-box;
+  border: 2px solid var(--accent-color);
+  background-color: transparent;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.active {
+  composes: button;
+  background-color: var(--accent-color);
+  color: #000;
+}
+
+.button:not(:last-child) {
+  border-right: transparent;
+}
