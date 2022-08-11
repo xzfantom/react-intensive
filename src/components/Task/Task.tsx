@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import useAppDispatch from 'src/utils/useAppDispatch';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
@@ -24,9 +24,14 @@ const Task: FC<Props> = (props) => {
   const { isCompleted } = useAppSelector((state) => state.todoReducer.todos[id]);
 
   const [isChangeable, setisChangeable] = useToggler();
+  const [editedValue, setEditedValue] = useState(text);
 
   const onTaskChange = (value: string) => {
-    dispatch(patchTodoText({ id: id, text: value }));
+    setEditedValue(value);
+  };
+  const onSaveClick = () => {
+    dispatch(patchTodoText({ id: id, text: editedValue }));
+    setisChangeable();
   };
   const onTaskDelete = () => {
     dispatch(deleteTodo(id));
@@ -47,8 +52,12 @@ const Task: FC<Props> = (props) => {
 
   const inputProps = {
     onChangeCallback: onTaskChange,
-    inputValue: text,
+    inputValue: editedValue,
     myClassName: 'taskEditInput',
+  };
+
+  const onEditClick = () => {
+    setisChangeable();
   };
 
   return (
@@ -60,19 +69,30 @@ const Task: FC<Props> = (props) => {
           defaultChecked={isCompleted}
           onClick={onTaskStatusChange}
         />
-        {isChangeable && <Input {...inputProps} />}
         {!isChangeable && <div className={styles.text}>{text}</div>}
+        {isChangeable && <Input {...inputProps} />}
 
-        <Button
-          myClassName="tool"
-          disabled={isCompletedTabSlugActive}
-          type="button"
-          onClick={typeof setisChangeable != 'boolean' ? () => setisChangeable() : () => {}}
-        >
-          {isChangeable && <img src={saveSRC} alt="save" />}
-          {!isChangeable && <img src={editSRC} alt="edit" />}
-        </Button>
-        <Button myClassName="tool" type="button" onClick={() => onTaskDelete()}>
+        {!isChangeable && (
+          <Button
+            myClassName="tool"
+            disabled={isCompletedTabSlugActive}
+            type="button"
+            onClick={onEditClick}
+          >
+            <img src={editSRC} alt="edit" />
+          </Button>
+        )}
+        {isChangeable && (
+          <Button
+            myClassName="tool"
+            disabled={isCompletedTabSlugActive}
+            type="button"
+            onClick={onSaveClick}
+          >
+            <img src={saveSRC} alt="save" />
+          </Button>
+        )}
+        <Button myClassName="tool" type="button" onClick={onTaskDelete}>
           <img src={deleteSRC} alt="delete" />
         </Button>
       </div>

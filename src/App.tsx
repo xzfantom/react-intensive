@@ -6,8 +6,6 @@ import store from './store/index';
 import Welcome from './components/Welcome/Welcome';
 import ToDo from './components/ToDo/ToDo';
 
-// import styles from './App.module.css';
-
 const App: FC = () => {
   return (
     <Provider store={store}>

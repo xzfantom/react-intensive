@@ -16,9 +16,7 @@ const TaskList: FC = () => {
 
   const allTasksArray = Object.entries(todos);
 
-  const filteredCompletedTasksArray = allTasksArray.filter(([, todo]) => {
-    return todo.isCompleted === true;
-  });
+  const filteredCompletedTasksArray = allTasksArray.filter(([, todo]) => todo.isCompleted === true);
 
   return (
     <div className={styles.taskAndTabsContainer}>
