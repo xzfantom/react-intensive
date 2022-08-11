@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import useAppDispatch from 'src/utils/useAppDispatch';
+import useAppDispatch from '../../utils/useAppDispatch';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import styles from './InputTask.module.css';

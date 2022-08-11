@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import useAppSelector from 'src/utils/useAppSelector';
+import useAppSelector from '../../utils/useAppSelector';
 import Task from '../Task/Task';
 import Tabs from '../Tabs/Tabs';
 import { TabSlug } from '../Tabs/Tabs';
