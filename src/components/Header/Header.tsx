@@ -6,20 +6,20 @@ import BigButton from '../common/BigButton/BigButton'
 import UserMenu from '../UserMenu/UserMenu'
 import { connect } from 'react-redux'
 
-const Header = (props: { name: any }) => {
+const Header = (props: { name: string | '' }) => {
   return (
     <div className={s.headerWrap}>
       <div className={s.logoLink}>
         <img className={s.logo} src={logo} alt='logo' />
         <div className={s.logoName}>Todo List</div>
       </div>
-      <Navigation name={''} />
+      <Navigation />
       {!props.name ? (
         <Link to='/login'>
-          <BigButton text='Log In' icon={''} disabled={false} />
+          <BigButton text='Log In' disabled={false} />
         </Link>
       ) : (
-        <UserMenu name={''} todos={[]} />
+        <UserMenu todos={[]} name={''} />
       )}
     </div>
   )

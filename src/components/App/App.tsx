@@ -9,20 +9,17 @@ import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage'
 const App: React.FC = () => {
   return (
     <>
-      <Header name={undefined} />
+      <Header name={''} />
       <Switch>
         <Route exact path='/'>
           <AboutUsPage />
         </Route>
-
         <Route path='/todos'>
           <HomePage />
         </Route>
-
         <Route exact path='/login'>
           <LoginPage />
         </Route>
-
         <Route>
           <NotFoundPage />
         </Route>

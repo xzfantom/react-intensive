@@ -20,7 +20,7 @@ const UserMenu = (props: IProps) => {
   return (
     <div className={s.wrap}>
       <span className={s.todos}>
-        Active:{' '}
+        Active:
         <span className={s.numberTodos}>
           <span>{getActiveTodos()}</span>
         </span>
