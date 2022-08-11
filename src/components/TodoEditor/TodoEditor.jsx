@@ -23,13 +23,13 @@ const TodoEditor = ({ onSubmit, onSave }) => {
   };
 
   return (
-    <form className={styles.TodoEditor} onSubmit={handleSubmit}>
+    <form className={styles.todoEditor} onSubmit={handleSubmit}>
       <textarea
-        className={styles.TodoEditor__textarea}
+        className={styles.todoEditor__textarea}
         value={message}
         onChange={handleChange}
       ></textarea>
-      <button type="submit" className={styles.TodoEditor__button}>
+      <button type="submit" className={styles.todoEditor__button}>
         Save
       </button>
     </form>

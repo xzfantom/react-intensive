@@ -13,7 +13,6 @@ const TodosView = () => {
       <Container>
         <Header />
         <ButtonsGroup />
-
         <TodoList />
       </Container>
       <Footer>

@@ -6,7 +6,7 @@ import styles from "./TodoList.module.css";
 
 const TodoList = ({ todos, onDeleteTodo, onToggleCompleted, onEditTodo }) => {
   return (
-    <ul className={styles.TodoList}>
+    <ul className={styles.todoList}>
       {todos.map(({ id, text, completed }) => {
         let style = "";
         if (completed) {
@@ -15,7 +15,7 @@ const TodoList = ({ todos, onDeleteTodo, onToggleCompleted, onEditTodo }) => {
         return (
           <li
             key={id}
-            className={`${styles.TodoList__item} ${styles.TodoList__item}${style}`}
+            className={`${styles.todoList__item} ${styles.todoList__item}${style}`}
           >
             <Todo
               text={text}

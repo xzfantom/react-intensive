@@ -1,4 +1,4 @@
-.TodoList {
+.todoList {
   justify-content: center;
   align-items: flex-start;
   display: grid;
@@ -8,7 +8,7 @@
   margin-bottom: 5rem;
 }
 
-.TodoList__item {
+.todoList__item {
   position: relative;
   display: flex;
   padding: 15px;
