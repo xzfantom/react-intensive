@@ -20,13 +20,8 @@ const Input = (props) => {
 
   const numOfSymbolsLeft =
     textareaLimit - value.trim().length < 0 ? 0 : textareaLimit - value.trim().length;
-  const checkIfNumOfSymbolsLeft = () => {
-    if (textareaLimit - value.length < 0) {
-      return false;
-    } else {
-      return true;
-    }
-  };
+
+  const checkIfNumOfSymbolsLeft = () => textareaLimit - value.length >= 0;
 
   if (isProfileShown) {
     return (
