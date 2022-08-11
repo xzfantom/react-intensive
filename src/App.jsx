@@ -28,10 +28,7 @@ const App = () => {
 
   const validateIsValid = (value, inputName) => {
     const regExp = new RegExp(validationRegExps[inputName]);
-    if (regExp.test(value)) {
-      return true;
-    }
-    return false;
+    return regExp.test(value);
   };
 
   const applyMask = (value, mask) => {
@@ -46,22 +43,9 @@ const App = () => {
 
   const onChange = (event) => {
     const inputName = event.target.name;
-    let value = event.target.value;
+    let value = event.target.value.trim();
 
-    if (validateIsNotEmpty(value.trim()) === false) {
-      setInputs((prevState) => ({
-        ...prevState,
-        [inputName]: value,
-      }));
-      setErrors((prevState) => ({
-        ...prevState,
-        [inputName]: '',
-      }));
-
-      return;
-    }
-
-    if (validateIsValid(value.trim(), inputName)) {
+    if (validateIsNotEmpty(value) === false) {
       setInputs((prevState) => ({
         ...prevState,
         [inputName]: value,
@@ -71,7 +55,18 @@ const App = () => {
         [inputName]: '',
       }));
     }
-    if (validateIsValid(value.trim(), inputName) === false) {
+
+    if (validateIsValid(value, inputName)) {
+      setInputs((prevState) => ({
+        ...prevState,
+        [inputName]: value,
+      }));
+      setErrors((prevState) => ({
+        ...prevState,
+        [inputName]: '',
+      }));
+    }
+    if (validateIsValid(value, inputName) === false) {
       setInputs((prevState) => ({
         ...prevState,
         [inputName]: value,
@@ -105,7 +100,7 @@ const App = () => {
       }));
     }
 
-    if (validateIsValid(value.trim(), inputName)) {
+    if (validateIsValid(value, inputName)) {
       setInputs((prevState) => ({
         ...prevState,
         [inputName]: value,
@@ -116,7 +111,7 @@ const App = () => {
       }));
     }
 
-    if (validateIsValid(value.trim(), inputName) === false) {
+    if (validateIsValid(value, inputName) === false) {
       setInputs((prevState) => ({
         ...prevState,
         [inputName]: value,
