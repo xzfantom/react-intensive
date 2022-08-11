@@ -1,0 +1,12 @@
+.header {
+	padding: 1.5rem 0;
+	background: rgba(0, 0, 0, 0);
+	color: #000000;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+.header .header__title {
+	font-size: 2.3rem;
+}

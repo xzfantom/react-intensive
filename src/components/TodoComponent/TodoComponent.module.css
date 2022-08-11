@@ -1,0 +1,33 @@
+.todo {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border: 1px solid #000000;
+	padding: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.todo__actions {
+	display: flex;
+	align-items: center;
+}
+
+.todo__delete {
+	color: #000000;
+}
+
+.todo__reminder {
+	margin-left: 1rem;
+	color: #000000;
+}
+
+.todo__reminder.active {
+	color: rgb(233, 223, 223);
+	background: #000000;
+}
+
+.btn {
+	background: rgb(233, 223, 223);
+	font-size: 2rem;
+	padding: 0.5rem 1rem;
+}
