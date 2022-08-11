@@ -17,3 +17,17 @@ section {
 	flex-direction: column;
 	align-items: center;
 }
+
+.input {
+	cursor: pointer;
+	padding: 2.3rem 1.5rem;
+	background: gray;
+	font-size: 18px;
+	color: rgb(233, 223, 223);
+	display: inline-block;
+	width: 100%;
+}
+
+.input::placeholder {
+	color: rgb(233, 223, 223);
+}

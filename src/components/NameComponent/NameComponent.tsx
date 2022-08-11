@@ -1,21 +1,21 @@
-import React, {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import React, {ChangeEvent, useState} from 'react';
 import { setUsername } from '../../redux/usernameSlice';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import styles from './NameComponent.module.css';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../redux/hooks';
 
-function NameComponent() {
-    const [name, setName] = useState();
-    const dispatch = useDispatch();
+const NameComponent = () => {
+    const [name, setName] = useState('');
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
-    const onChange = function(event) {
+    const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
     }
 
-    const save = function() {
+    const save = () => {
         dispatch(setUsername(name));
         navigate('/todos');
     }
@@ -23,7 +23,7 @@ function NameComponent() {
     return (
         <div className={styles.header}>
             <h1>Введите ваше имя:</h1>
-            <Input onChange={onChange}/>
+            <Input onChange={onChange} className={styles.input}/>
             <Button onClick={save} text='Создать'/>
         </div>
     );

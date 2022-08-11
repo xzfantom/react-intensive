@@ -1,14 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { getTodos } from '../../redux/todoSlice';
+import { useAppSelector } from '../../redux/hooks';
+import { getTodos, Todo } from '../../redux/todoSlice';
 import { selectUsername } from '../../redux/usernameSlice';
 import AddTodo from '../AddTodo/AddTodo';
-import Todo from '../Todo/Todo';
+import TodoComponent from '../TodoComponent/TodoComponent';
 import styles from './TodoList.module.css' 
 
-function TodoList() {
-    const username = useSelector(selectUsername);
-    const todos = useSelector(getTodos);
+const TodoList = () => {
+    const username = useAppSelector(selectUsername);
+    const todos = useAppSelector(getTodos);
 
     return (
         <>
@@ -16,8 +16,8 @@ function TodoList() {
             <AddTodo/>
             <div>
                 {
-                    todos.map((todo) => (
-                        <Todo key={todo.id} todo={todo} />
+                    todos.map((todo: Todo) => (
+                        <TodoComponent key={todo.id} todo={todo} />
                     ))
                 }
             </div>

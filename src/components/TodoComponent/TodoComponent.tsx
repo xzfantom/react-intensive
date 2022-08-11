@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
-import styles from './Todo.module.css'
-import { deleteTodo } from '../../redux/todoSlice'
-import { useDispatch } from 'react-redux'
+import { useState } from 'react'
+import styles from './TodoComponent.module.css'
+import { deleteTodo, Todo } from '../../redux/todoSlice'
 import EditTodo from '../EditTodo/EditTodo';
+import { useAppDispatch } from '../../redux/hooks';
 
-const Todo = ({ todo: { title, id } }) => {
+interface TodoState {
+    todo: Todo;
+}
+
+const TodoComponent = ({ todo: { title, id } }: TodoState) => {
     const [editMode, setEditMode] = useState(false);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     return (
         <div className={styles.todo}>
@@ -33,4 +37,4 @@ const Todo = ({ todo: { title, id } }) => {
     )
 }
 
-export default Todo
+export default TodoComponent;
