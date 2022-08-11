@@ -1,0 +1,75 @@
+        /* pseudo */
+
+.inputField:hover, .textArea:hover{
+    border: 1px solid gray;
+    border-width: 0 0 1px;
+}
+.inputField[type="reset"]:active, .inputField[type="submit"]:active{
+    border: 1px solid lightgray;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px #fdfcff inset !important;
+}
+
+        /*  */
+
+.label{
+    margin: 10px 3px 0;
+    font-size: 14px;
+    color:rgba(22, 3, 30, 0.75);
+}
+.inputField, .textArea{
+    padding: 3px 3px 8px;
+    width: 100%;
+    resize: none;
+    border: 1px solid lightgray;
+    border-width: 0 0 1px;
+    background-color: #fdfcff;
+    font-size: 16px;
+}
+.titleForm{
+    font-size: larger;
+    align-self: center;
+}
+.inputField[type="date"]{
+    color: rgb(167, 167, 167);
+    font-size: 12px;
+}
+  
+.inputField[type="reset"], .inputField[type="submit"]{
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 8px;
+}
+.inputField[type="reset"]{
+    background-color: white;
+    border-width: 1px;
+}
+.inputField[type="submit"]{
+    background-color: rgb(6, 225, 177);
+    font-weight: bolder;
+}
+.hasDateValue{
+    padding: 3px 3px 8px;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-width: 0 0 1px;
+    background-color: #fdfcff;
+    color: black;
+    font-size: 16px;
+}
+.error{
+    color:red;
+    font-size: 11px;
+    text-align: left;
+    font-style: italic;
+}
+.counter{
+    font-size: 11px;
+}
+.disable{
+    display: none !important;
+}
