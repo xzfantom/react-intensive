@@ -1,0 +1,16 @@
+.header {
+  padding: 5rem 0;
+  font-size: 2rem;
+  text-align: center;
+  border-bottom: 0.5rem solid #bac8ff;
+  color: #555;
+}
+
+.todo_header {
+  display: inline-block;
+  font-size: 4rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  text-align: center;
+  margin-top: 4rem;
+}
