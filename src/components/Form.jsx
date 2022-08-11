@@ -1,56 +1,55 @@
-import React, { Component } from 'react';
-import Input                from './InputField';
-import TextArea             from './TextArea';
-import styles               from './Form.module.css';
+import React, {Component} from 'react';
+import Input from './InputField';
+import TextArea from './TextArea';
+import styles from './Form.module.css';
 
 
 export class Form extends Component {
 
-    constructor( props ){
-        super( props );
+    constructor(props){
+        super(props);
         this.initialState = {
-            firstName:       "",
-            lastName:       "",
-            birthday:       "",
-            phone:          "",
-            url:            "",
-            aboutUser:      "",
-            stack:          "",
-            lastProject:    "",
-            errors:         {
-                firstName:       "",
-                lastName:       "",
-                birthday:       "",
-                phone:          "",
-                url:            "",
-                aboutUser:      "",
-                stack:          "",
-                lastProject:    "",
+            firstName: "",
+            lastName: "",
+            birthday: "",
+            phone: "",
+            url: "",
+            aboutUser: "",
+            stack: "",
+            lastProject: "",
+            errors: {
+                firstName: "",
+                lastName: "",
+                birthday: "",
+                phone: "",
+                url: "",
+                aboutUser: "",
+                stack: "",
+                lastProject: "",
             },
-            counters:       {
-                aboutUser:      600,
-                stack:          600,
-                lastProject:    600,
+            counters: {
+                aboutUser: 600,
+                stack: 600,
+                lastProject: 600,
             }
         }
-        this.state      = this.initialState;
-        this.person     = this.props.person;
-        this.isData     = this.props.isData;
-        this.resetForm  = this.resetForm.bind(this);
-        this.onSubmit   = this.onSubmit.bind(this);
-        this.onChange   = this.onChange.bind(this);
-
+        this.state = this.initialState;
+        this.person = this.props.person;
+        this.isData = this.props.isData;
+        this.resetForm = this.resetForm.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
     
-    onChange = ( e ) => {
-        const fieldName  = e.target.name;
-        const counters   = this.state.counters;
-        const errors     = this.state.errors;
+    onChange = (e) => {
+        const fieldName = e.target.name;
+        const counters = this.state.counters;
+        const errors = this.state.errors;
         const countValue = 600 - e.target.value.length;
 
         errors[fieldName] = ""; 
 
-        this.setState({ [e.target.name] : e.target.value });
+        this.setState({[e.target.name] : e.target.value });
         if ( e.target.type === "tel" ) {
             const matchedString = e.target.value.replace(/\D/g, "").match(/(\d{0,1})(\d{0,4})(\d{0,2})(\d{0,2})/);
             e.target.value = !matchedString[2] ? matchedString[1] 
@@ -61,13 +60,13 @@ export class Form extends Component {
         if ( e.target.className === styles.textArea ) counters[fieldName] = countValue;
     }
 
-    formValidation = ( e ) => {
+    formValidation = (e) => {
         let isValid     = true;
         const state     = this.state;
         const errors    = this.state.errors;
 
-        for( let i in state ) {
-            if ( !state[i] ) errors[i] = "Поле пустое. Заполните пожалуйста"
+        for(let i in state) {
+            if (!state[i]) errors[i] = "Поле пустое. Заполните пожалуйста"
             else if (( i === "firstName" || i === "lastName" ) && state[i].trim().charAt(0) !== state[i].charAt(0).toUpperCase() ){
                 errors[i] = "Используйте заглавную букву для написания первого символа"
             } else if ( i === "phone" && state[i].trim() === state[i].trim().replace(/^[0-9]{1}-[0-9]{4}-[0-9]{2}-[0-9]{2}$/,'')){
@@ -78,15 +77,15 @@ export class Form extends Component {
                 errors[i] = " "; // this error exists to prevent submit form, when the maximum value is exceeded (checked and render by TextArea)
             } else errors[i] = ""  
         }
-        this.setState({ errors })
+        this.setState({errors})
         isValid = !Object.values(errors).some((value) => !!value);
         return isValid;
     }
 
-    onSubmit = ( e ) => {
+    onSubmit = (e) => {
         this.isData = this.formValidation();
-        if ( this.isData ) {
-            this.setState( this.initialState );
+        if (this.isData) {
+            this.setState(this.initialState);
             this.person = this.state;
         }
         const isData = this.isData;
@@ -96,96 +95,96 @@ export class Form extends Component {
     }
 
     resetForm(){ 
-        this.setState( this.initialState )        
-        for ( let i in this.state.counters ){ this.state.counters[i] = 600 } 
+        this.setState(this.initialState)
+        for (let i in this.state.counters){this.state.counters[i] = 600}
     }
 
     render() {
-        const { firstName, lastName, birthday, phone, url, aboutUser, stack, lastProject, errors, counters } = this.state;
+        const {firstName, lastName, birthday, phone, url, aboutUser, stack, lastProject, errors, counters} = this.state;
         const FORM_TITLE = "Создание анкеты";
 
         return (
                 <form 
-                    className   = { this.props.className }
-                    onSubmit    = { this.onSubmit } 
+                    className={this.props.className}
+                    onSubmit={this.onSubmit}
                 >
-                    <legend className = { styles.titleForm }>{ FORM_TITLE }</legend>
+                    <legend className={styles.titleForm}>{FORM_TITLE}</legend>
                     <Input 
-                        label       = "Имя"
-                        placeholder = "Введите свое имя"
-                        name        = "firstName"
-                        value       = { firstName }
-                        onChange    = { this.onChange }
-                        error       = { errors.firstName }
+                        label="Имя"
+                        placeholder="Введите свое имя"
+                        name="firstName"
+                        value={firstName}
+                        onChange={this.onChange}
+                        error={errors.firstName}
                     />
                     <Input 
-                        label       = "Фамилия"
-                        placeholder = "Введите свою фамилию"
-                        name        = "lastName"
-                        value       = { lastName }
-                        onChange    = { this.onChange }
-                        error       = { errors.lastName }
+                        label="Фамилия"
+                        placeholder="Введите свою фамилию"
+                        name="lastName"
+                        value={lastName}
+                        onChange={this.onChange}
+                        error={errors.lastName}
                     />
                     <Input 
-                        type        = "date" 
-                        label       = "Дата рождения"
-                        name        = "birthday"
-                        value       = { birthday }
-                        onChange    = { this.onChange }
-                        error       = { errors.birthday }
+                        type="date"
+                        label="Дата рождения"
+                        name="birthday"
+                        value={birthday}
+                        onChange={this.onChange}
+                        error={errors.birthday}
                     />
                     <Input 
-                        type        = "tel" 
-                        label       = "Телефон"
-                        placeholder = "Введите свой номер телефона"
-                        name        = "phone"
-                        value       = { phone }
-                        onChange    = { this.onChange }
-                        maxLength   = "12"
-                        error       = { errors.phone }
+                        type="tel"
+                        label="Телефон"
+                        placeholder="Введите свой номер телефона"
+                        name="phone"
+                        value={phone}
+                        onChange={this.onChange}
+                        maxLength="12"
+                        error={errors.phone}
                     />
                     <Input 
-                        type        = "url" 
-                        label       = "Сайт"
-                        placeholder = "Введите ссылку на сайт"
-                        name        = "url"
-                        value       = { url }
-                        onChange    = { this.onChange }
-                        error       = { errors.url }
+                        type="url"
+                        label="Сайт"
+                        placeholder="Введите ссылку на сайт"
+                        name="url"
+                        value={url}
+                        onChange={this.onChange}
+                        error={errors.url}
                     />
                     <TextArea 
-                        label       = "О себе" 
-                        placeholder = "Введите информацию о себе"
-                        name        = "aboutUser"
-                        value       = { aboutUser }
-                        onChange    = { this.onChange }
-                        error       = { errors.aboutUser }
-                        counter     = { counters.aboutUser }
+                        label="О себе"
+                        placeholder="Введите информацию о себе"
+                        name="aboutUser"
+                        value={aboutUser}
+                        onChange={this.onChange}
+                        error={errors.aboutUser}
+                        counter={counters.aboutUser}
                     />
-                    <TextArea 
-                        label       = "Стек технологий"
-                        placeholder = "Введите используемый стек технологий"
-                        name        = "stack"
-                        value       = { stack }
-                        onChange    = { this.onChange }
-                        error       = { errors.stack }
-                        counter     = { counters.stack }
+                    <TextArea
+                        label="Стек технологий"
+                        placeholder="Введите используемый стек технологий"
+                        name="stack"
+                        value={stack}
+                        onChange={this.onChange}
+                        error={errors.stack}
+                        counter={counters.stack}
                     />
-                    <TextArea 
-                        label       = "Описание последнего проекта"
-                        placeholder = "Введите описание последнего проекта"
-                        name        = "lastProject"
-                        value       = { lastProject }
-                        onChange    = { this.onChange }
-                        error       = { errors.lastProject }
-                        counter     = { counters.lastProject }
+                    <TextArea
+                        label="Описание последнего проекта"
+                        placeholder="Введите описание последнего проекта"
+                        name="lastProject"
+                        value={lastProject}
+                        onChange={this.onChange}
+                        error={errors.lastProject}
+                        counter={counters.lastProject}
                     />
                     <Input 
-                        type        = "reset"  
-                        valueButton = "Отмена" 
-                        onClick     = { this.resetForm }
+                        type="reset"
+                        valueButton="Отмена"
+                        onClick={this.resetForm}
                     />
-                    <Input type = "submit" valueButton = "Сохранить"/>                
+                    <Input type="submit" valueButton="Сохранить"/>
                 </form>
         )
     }
