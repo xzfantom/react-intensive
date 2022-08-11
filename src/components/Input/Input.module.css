@@ -1,0 +1,45 @@
+.input {
+  display: block;
+  text-align: center;
+  height: 50px;
+  width: 100%;
+  max-width: 400px;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  border-radius: 10px;
+  border: 1px solid rgb(212, 209, 209);
+  margin-bottom: 15px;
+  padding: 0px;
+  align-self: center;
+}
+.input:focus {
+  outline: 2px solid #34a8b5;
+  border-radius: 10px;
+  border-color: transparent;
+}
+.input:hover {
+  outline: 2px solid #34a8b5;
+  transition: outline 0.05s linear;
+  border-radius: 10px;
+  border-color: transparent;
+}
+
+@keyframes pulsation {
+  50% {
+    outline: 3px solid #34a8b5;
+  }
+}
+
+.errorInput {
+  outline: 0px solid #34a8b5;
+  animation: pulsation 3s infinite;
+}
+
+.taskEditInput {
+  font-size: 18px;
+  font-weight: 300 !important;
+  height: auto;
+  margin: 0;
+  text-align: left;
+}
