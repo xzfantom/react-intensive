@@ -1,5 +1,7 @@
+import NotFound from "../components/NotFound";
+
 const NotFoundView = () => {
-  return <h1>404 not found</h1>;
+  return <NotFound />;
 };
 
 export default NotFoundView;

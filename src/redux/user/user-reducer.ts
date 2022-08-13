@@ -7,17 +7,13 @@ interface IUserAction {
 }
 
 interface IUser {
-  username: {
-    name: string;
-    isLoggedIn: boolean;
-  };
+  name: string;
+  isLoggedIn: boolean;
 }
 
 const initialState: IUser = {
-  username: {
-    name: "",
-    isLoggedIn: false,
-  },
+  name: "",
+  isLoggedIn: false,
 };
 
 const username = createReducer(initialState, {
