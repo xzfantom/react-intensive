@@ -1,0 +1,53 @@
+form {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  gap: 3rem;
+  background-color: #ebeefe;
+  padding: 6rem;
+}
+
+.input-field input {
+  display: block;
+  font: inherit;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  color: #555;
+  font-size: 2rem;
+
+  margin: 0 auto;
+}
+
+.input-field label {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.6rem;
+  line-height: 4;
+  color: #555;
+}
+
+.btn {
+  font-family: inherit;
+  padding: 1.2rem 3.6rem;
+  border-radius: 5rem;
+  border: 3px solid transparent;
+  box-shadow: 0 0 0 2em #4f69fa inset;
+  text-transform: capitalize;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fbe6f1;
+  transition: all 0.5s ease;
+}
+
+.btn:hover {
+  background-color: #fbe6f1;
+  color: #4f69fa;
+  box-shadow: inset 0 0 0 3px #fbe6f1;
+  border: solid 3px #4f69fa;
+}

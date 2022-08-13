@@ -1,0 +1,37 @@
+.button {
+  display: inline-block;
+  height: auto;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 1.6rem;
+  text-decoration: none;
+  text-transform: capitalize;
+  cursor: pointer;
+  overflow: hidden;
+}
+.button__select {
+  color: #555;
+  padding: 1rem;
+  border: none;
+  background-color: #edfdfd;
+
+  width: 150px;
+  cursor: pointer;
+}
+
+.button__primary {
+  background-color: #646ff0;
+  color: #fff;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #364fc7;
+  color: #fff;
+}
+
+.button:active {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+}

@@ -1,0 +1,7 @@
+.buttongroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  border-bottom: 0.5rem solid #bac8ff;
+}
