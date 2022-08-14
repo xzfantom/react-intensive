@@ -1,0 +1,60 @@
+.todoWrapper__item input {
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+}
+
+.todoWrapper__item input:checked,
+.totoWrapper__item input:checked + button {
+  opacity: .3;
+}
+
+.todoWrapper__item input:checked + input[type='text'] {
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, .4);
+}
+
+.todoWrapper__item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.todoWrapper__item button {
+  margin-left: auto;
+  padding: 15px 15px 10.2px;
+  position: relative;
+}
+
+.todoWrapper__item input:checked + button {
+  opacity: .4;
+}
+
+.todoTab__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.todoTab__item:not(:last-child) {
+  margin-right: 25px;
+}
+
+.todoTab__item button {
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 255, .7);
+}
+
+.todoTab__item button:focus,
+.todoTab__item button:hover {
+  outline: transparent;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 255, 1);
+  background-color: rgba(0, 0, 255, 1);
+}
+
+.btn.active {
+  transform: scale(1.1);
+}
+
+.empty {
+  text-align: center;
+}

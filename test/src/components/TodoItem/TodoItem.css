@@ -1,0 +1,40 @@
+.todoItem {
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 25px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.todoItem input[type='text'] {
+  width: 100%;
+}
+
+.todoItem input:not(:read-only) {
+  background-color: rgba(0, 0, 0, .1)
+}
+
+
+.todoItem input:read-only {
+  border: none;
+  cursor: default;
+  font-size: inherit
+}
+
+.todoItem input:read-only:focus,
+.todoItem input:read-only:hover {
+  box-shadow: none;
+}
+
+.todoItem button[name='edit'] {
+  padding: 10.5px 12.5px;
+  background-color: rgba(20, 176, 20, 0.7);
+  margin-right: 15px;
+}
+
+.todoItem button[name='edit']:focus,
+.todoItem button[name='edit']:hover {
+  outline: transparent;
+  box-shadow: 0px 0px 10px 5px rgba(20, 176, 20, 1);
+  background-color: rgba(20, 176, 20, 1);
+} 

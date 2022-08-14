@@ -1,0 +1,13 @@
+.errorPage {
+  text-align: center;
+  font-size: 24px;
+}
+
+.errorPage p:not(:last-child){
+  margin-bottom: 15px;
+}
+
+.errorPage a {
+  text-decoration: none;
+  color: rgb(0, 0, 255);
+}

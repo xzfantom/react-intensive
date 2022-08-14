@@ -1,0 +1,18 @@
+.input {
+  width: 100%;
+  padding: 10px;
+  outline: transparent;
+  transition: all .3s ease-in-out;
+  border: 1px solid #000;
+  border-radius: 10px;
+  font-size: inherit;
+}
+
+.input::placeholder {
+  font-size: 16px;
+}
+
+.input:focus,
+.input:hover {
+  box-shadow: 0px 0px 10px 3px #000;
+}
