@@ -1,0 +1,26 @@
+.loginForm {
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 35px 20px;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+
+.loginForm__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.loginForm label {
+  width: 80%;
+}
+
+.loginForm button{
+  padding: 10px 20px;
+}
+
+.error {
+  color: rgb(255, 0, 0);
+  font-weight: bold;
+}
