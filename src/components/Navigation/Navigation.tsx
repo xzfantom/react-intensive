@@ -11,15 +11,13 @@ interface INavProps {
 
 const Navigation: React.FC<INavProps> = ({ isLoggedIn }) => {
   return (
-    <>
-      <Switch>
-        <Route exact path="/" component={HomeView} />
-        <Route exact path="/todos">
-          {!isLoggedIn ? <Redirect to="/" /> : <TodosView />}
-        </Route>
-        <Route component={NotFoundView} />;
-      </Switch>
-    </>
+    <Switch>
+      <Route exact path="/" component={HomeView} />
+      <Route exact path="/todos">
+        {!isLoggedIn ? <Redirect to="/" /> : <TodosView />}
+      </Route>
+      <Route component={NotFoundView} />;
+    </Switch>
   );
 };
 

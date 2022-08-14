@@ -22,6 +22,15 @@ const Footer: FC<IFooterProps> = ({ children }) => {
       >
         Art and design icons created by Freepik - Flaticon
       </a>
+      <a
+        className={styles["footer__icon-author"]}
+        title="art and design icons"
+        target="_blank"
+        rel="noreferrer"
+        href="https://icons8.com/"
+      >
+        Icons on buttons created by Icons8
+      </a>
     </footer>
   );
 };
