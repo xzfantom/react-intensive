@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './EditTodo.module.css';
 import { editTodo } from '../../redux/todoSlice';
+import Input from '../Input/Input';
 
 const EditTodo = ({ id, title, onClose }) => {
   const [todoText, setTodoText] = useState(title);
@@ -24,7 +25,7 @@ const EditTodo = ({ id, title, onClose }) => {
 
   return (
       <div className={styles.todo}>
-        <input value={todoText} type="text" placeholder="Введите задачу" onChange={getTodoText} />
+        <Input value={todoText} type="text" placeholder="Введите задачу" onChange={getTodoText} className={styles.editInput}/>
         <div className={styles.btnWrapper}>
           <button className={styles.btn} onClick={save}>Сохранить</button>
           <button className={styles.btn} onClick={onClose}>Отменить</button>

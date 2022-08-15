@@ -43,7 +43,7 @@
 	color: white;
 }
 
-input {
+.editInput {
 	font-size: 24px;
 	background-color: rgba(0, 0, 0, 0);
 }

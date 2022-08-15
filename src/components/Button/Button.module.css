@@ -2,7 +2,7 @@
 	font-size: 24px;
 	font-weight: rgb(233, 223, 223);
 	font-weight: 600;
-    margin-top: 15px;
+	margin-top: 15px;
 	text-transform: uppercase;
 	letter-spacing: 1.3px;
 	padding: 2.3rem 1.5rem;
@@ -13,7 +13,7 @@
 }
 
 .button:hover {
-    color: white;
-    background-color: rgba(112, 137, 65, 0.822);
-    border-color: grey;
+	color: white;
+	background-color: rgba(112, 137, 65, 0.822);
+	border-color: grey;
 }
